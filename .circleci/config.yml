@@ -3,14 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          RAILS_ENV: test
       - image: circleci/postgres:12.1
-          environment:
-            POSTGRES_USER: pguser
-            POSTGRES_DB: bookstore_test
-            POSTGRES_PASSWORD: root
-            DATABASE_URL: "postgres://ubuntu@localhost:5432/bookstore_test"
+        environment:
+          POSTGRES_USER: pguser
+          POSTGRES_DB: bookstore_test
+          POSTGRES_PASSWORD: root
+          DATABASE_URL: "postgresql://localhost:5432/bookstore_test"
     steps:
       - checkout
 
