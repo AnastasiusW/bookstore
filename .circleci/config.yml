@@ -1,12 +1,9 @@
 version: 2.1
 jobs:
   build:
-    branches:
-      only:
-        - feature/step1
     docker:
-       - image: circleci/ruby:2.6.3-node-browsers-legacy
-       - image: circleci/postgres:12.1
+      - image: circleci/ruby:2.6.3-node-browsers-legacy
+      - image: circleci/postgres:12.1
           environment:
             POSTGRES_USER: pguser
             POSTGRES_DB: bookstore_test
