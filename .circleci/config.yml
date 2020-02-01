@@ -8,7 +8,7 @@ jobs:
           POSTGRES_USER: pguser
           POSTGRES_DB: bookstore_test
           POSTGRES_PASSWORD: root
-          DATABASE_URL: "postgresql://localhost:5432/bookstore_test"
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/bookstore_test"
     steps:
       - checkout
 
