@@ -38,4 +38,7 @@ test:
 
 
 production:
-  url: <%= ENV['DATABASE_URL']%>
+  <<: *default
+  database: bookstore_production
+  username: bookstore
+  password: <%= ENV['BOOKSTORE_DATABASE_PASSWORD'] %>
