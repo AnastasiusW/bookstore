@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'tmp/*'
+    - 'storage/*'
+    - 'config/**/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'app/assets/*'
+    - 'public/*'
+    - 'app/javascript/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+    Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
