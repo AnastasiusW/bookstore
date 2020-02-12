@@ -19,6 +19,8 @@ gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'javascript', '~> 0.1.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'seedbank', '~> 0.5.0'
+gem 'ffaker', '~> 2.13'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
