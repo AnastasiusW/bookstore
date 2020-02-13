@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Author, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject {build(:author)}
+
+  context "it check associations" do
+    it { expect(subject).to have_many(:books)}
+  end
+
+  %i[firstname lastname].each do |field|
+    it { expect(subject).to validate_presence_of(field)}
+  end
+
 end
