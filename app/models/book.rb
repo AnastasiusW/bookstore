@@ -2,6 +2,8 @@ class Book < ApplicationRecord
     FILTERS = [:newest, :price_asc, :price_desc,
                :title_asc,:title_desc ].freeze
     DEFAULT_FILTER = :filter_newest
+    DEFAULT_ORDER = 'created_at DESC'
+    BOOKS_PER_PAGE = 12
 
     belongs_to :category
     has_many :authors_books, dependent: :destroy

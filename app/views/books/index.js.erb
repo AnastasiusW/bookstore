@@ -1,0 +1,3 @@
+$("<%=j render(partial: 'books/index/books', object: @books) %>").insertBefore( ".text-center" );
+
+$('.text-center').html("<%=j render(partial: 'books/index/view_more', object: @books) %>");

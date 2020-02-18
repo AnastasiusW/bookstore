@@ -22,7 +22,7 @@ en:
     catalog: "Catalog"
     filter_by: "Filter by category"
     sort_by: "Sort by"
-    more: 'View More'
+    view_more: 'View More'
     all: "All"
 
   book:
@@ -32,4 +32,12 @@ en:
       price_desc: "Price: High to low"
       by_title_asc: "Title: A - Z"
       by_title_desc: "Title: Z - A"
+
+  sorting:
+    "created_at DESC": 'Newest first'
+    "price ASC": 'Price: low to high'
+    "price DESC": 'Price: high to low'
+    "title ASC": 'Title: A-Z'
+    "title DESC": 'Title: Z-A'
+    "popular": 'Popular first'
 

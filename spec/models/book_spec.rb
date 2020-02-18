@@ -5,6 +5,7 @@ RSpec.describe Book, type: :model do
 
   context 'it check associations' do
     it 'it belongs to category' do
+
       expect(subject).to belong_to(:category)
     end
 

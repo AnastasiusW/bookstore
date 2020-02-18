@@ -1,0 +1,12 @@
+%ul.list-inline.pt-10.mb-25.mr-240
+    %li.mr-35
+        %a.filter-link{href: books_path}
+            = t('shop.all')
+            %span.badge.general-badge= Book.count
+    %li.mr-35
+        %a.filter-link{href: "#"}
+            -   @categories.each do |category|
+                %li.mr-35
+                    .filter-link
+                        = link_to category.title, books_path(category_id: category.id), class: 'collapse-link'
+                        %span.badge.general-badge= category.books.count
