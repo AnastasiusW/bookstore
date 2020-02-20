@@ -26,12 +26,14 @@ en:
     all: "All"
 
   book:
-    filters:
-      newest: Newest first
-      price_asc: "Price: Low to high"
-      price_desc: "Price: High to low"
-      by_title_asc: "Title: A - Z"
-      by_title_desc: "Title: Z - A"
+    back_to_result: "Back to results"
+    publication_year: "Year of publication"
+    dimensions: "Dimensions"
+    materials: "Materials"
+    description: "Description"
+    read_more: "Read More"
+    read_less: "Read Less"
+
 
   sorting:
     "created_at DESC": 'Newest first'

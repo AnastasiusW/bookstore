@@ -1,0 +1,5 @@
+.general-info-wrap.divider-lg#full_description
+    %p= t('book.description')
+    %p.lead.small.line-height-2
+        = @book.description
+        = link_to t('book.read_less'), @book, class: 'in-gold-500 ml-10', remote: true

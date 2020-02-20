@@ -4,6 +4,7 @@ class Book < ApplicationRecord
     DEFAULT_FILTER = :filter_newest
     DEFAULT_ORDER = 'created_at DESC'
     BOOKS_PER_PAGE = 12
+    DESCRIPTION_LIMIT=100
 
     belongs_to :category
     has_many :authors_books, dependent: :destroy

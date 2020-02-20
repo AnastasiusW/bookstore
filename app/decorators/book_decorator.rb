@@ -11,4 +11,8 @@ class BookDecorator < Draper::Decorator
     authors.map(&:full_name).join(', ')
   end
 
+  def dimensions
+    ["H: #{height} \"", "W: #{width}\"", "D: #{depth}\""].join(' x ')
+  end
+
 end

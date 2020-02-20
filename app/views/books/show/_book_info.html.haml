@@ -1,0 +1,14 @@
+
+= render 'books/show/short_description'
+.general-info-wrap.divider-lg
+    .clearfix
+        %p.pull-left= t('book.publication_year')
+        %p.lead.small.pull-right= @book.year
+.general-info-wrap.divider-lg
+    .clearfix
+        %p.pull-left= t('book.dimensions')
+        %p.lead.small.pull-right= @book.dimensions
+.general-info-wrap.divider-lg
+    .clearfix
+        %p.pull-left= t('book.materials')
+        %p.lead.small.pull-right= @book.material
