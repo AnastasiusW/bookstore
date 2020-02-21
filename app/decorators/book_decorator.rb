@@ -14,5 +14,4 @@ class BookDecorator < Draper::Decorator
   def dimensions
     ["H: #{height} \"", "W: #{width}\"", "D: #{depth}\""].join(' x ')
   end
-
 end

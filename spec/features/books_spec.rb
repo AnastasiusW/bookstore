@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Books", type: :feature,js:true do
-  let(:book){create(:book, description: "world" * Book::DESCRIPTION_LIMIT)}
+RSpec.describe 'Books', type: :feature, js: true do
+  let(:book) { create(:book, description: 'world' * Book::DESCRIPTION_LIMIT) }
 
   context 'with description' do
     it 'show full description' do
@@ -11,13 +11,11 @@ RSpec.feature "Books", type: :feature,js:true do
     end
   end
 
-
   context 'with price calculator' do
-      it 'show case when increment count book' do
+    it 'show case when increment count book' do
       visit(book_path(book))
-      find('i.fa.fa-plus').click()
-      expect(page.find_by_id("quantity_input").value).to eq("2")
+      find('i.fa.fa-plus').click
+      expect(page.find_by_id('quantity_input').value).to eq('2')
     end
   end
-
 end

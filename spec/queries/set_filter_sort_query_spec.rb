@@ -3,7 +3,7 @@ RSpec.describe SetFilterSortQuery do
   let(:params) { {} }
   let!(:first_book) { create(:book, title: 'AAAAA', price: 1) }
   let!(:second_book) { create(:book, title: 'BBBBB', price: 2) }
-  let!(:third_book) { create(:book,title:'CCCCC',price:3) }
+  let!(:third_book) { create(:book, title: 'CCCCC', price: 3) }
 
   context 'with filtering books' do
     let(:params) { { category_id: third_book.category_id } }
@@ -15,6 +15,7 @@ RSpec.describe SetFilterSortQuery do
 
   context 'with sorting parameter title ASC' do
     let(:params) { { sort_param: 'title ASC' } }
+
     it 'returns books in chosen order title ASC' do
       expect(result).to eq([first_book, second_book, third_book])
     end
@@ -22,21 +23,23 @@ RSpec.describe SetFilterSortQuery do
 
   context 'with sorting parameter title DESC' do
     let(:params) { { sort_param: 'title DESC' } }
-    it 'returns books in chosen order title DESC' do
-      expect(result).to eq([ third_book,second_book,first_book])
 
+    it 'returns books in chosen order title DESC' do
+      expect(result).to eq([third_book, second_book, first_book])
     end
   end
 
   context 'with sorting parameter price ASC' do
     let(:params) { { sort_param: 'price ASC' } }
+
     it 'returns books in chosen order price ASC' do
       expect(result).to eq([first_book, second_book, third_book])
-
     end
   end
+
   context 'with sorting parameter price DESC' do
     let(:params) { { sort_param: 'price DESC' } }
+
     it 'returns books in chosen order price DESC' do
       expect(result).to eq([third_book, second_book, first_book])
     end
@@ -47,7 +50,6 @@ RSpec.describe SetFilterSortQuery do
       expect(result).to eq([third_book, second_book, first_book])
     end
   end
-
 
   context 'with return latest books' do
     let(:params) { { latest_books: true } }
@@ -60,5 +62,4 @@ RSpec.describe SetFilterSortQuery do
       expect(result).to match_array([third_book, second_book])
     end
   end
-
 end

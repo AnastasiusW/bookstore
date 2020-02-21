@@ -1,26 +1,23 @@
-
 RSpec.describe Book, type: :model do
-
   subject { build(:book) }
 
-  context 'it check associations' do
-
-    it 'it belongs to category' do
+  context 'with check associations' do
+    it 'belongs to category' do
       expect(subject).to belong_to(:category)
     end
 
-    it 'it have and belong to many authors' do
+    it 'have and belong to many authors' do
       expect(subject).to have_many(:authors)
     end
   end
 
-  context 'it check validates' do
+  context 'with check validates' do
     %i[title description price quantity year].each do |field|
-      it {expect(subject).to validate_presence_of(field) }
+      it { expect(subject).to validate_presence_of(field) }
     end
 
     %i[width height depth].each do |field|
-      it {expect(subject).to validate_numericality_of(field).is_greater_than(0) }
+      it { expect(subject).to validate_numericality_of(field).is_greater_than(0) }
     end
 
     it 'is invalid with incorrect price' do
