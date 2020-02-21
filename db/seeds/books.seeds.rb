@@ -7,7 +7,7 @@ after :authors, :categories do
 BOOKS_COUNT.times do
     Book.create! do |book|
       book.title        = FFaker::Book.unique.title
-      book.description  = FFaker::Book.description(rand(4..10)
+      book.description  = FFaker::Book.description(rand(4..10))
       book.price        = rand(5.0..500.00)
       book.quantity     = rand(0..10)
       book.width  = rand(DIMENSION).floor(2)
