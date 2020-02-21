@@ -1,9 +1,9 @@
 .dropdowns.pull-right
   .dropdown.width-240
     %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-      = t("sorting.#{@order_param}")
+      = Book::SORTING_LIST[@order_param&.to_sym]
       %i.fa.fa-angle-down.dropdown-icon.pull-right
     %ul.dropdown-menu
-      - t(:sorting).to_a.each do |sort|
+      - Book::SORTING_LIST.each do |sort_index, sort_name|
         %li
-          = link_to sort.last, books_path(category_id: params[:category_id], sort_by: sort.first)
+          = link_to sort_name, books_path(category_id: params[:category_id], sort_by: sort_index)

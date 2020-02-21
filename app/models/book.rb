@@ -1,10 +1,17 @@
 class Book < ApplicationRecord
-    FILTERS = [:newest, :price_asc, :price_desc,
-               :title_asc,:title_desc ].freeze
-    DEFAULT_FILTER = :filter_newest
     DEFAULT_ORDER = 'created_at DESC'
     BOOKS_PER_PAGE = 12
-    DESCRIPTION_LIMIT=100
+    DESCRIPTION_LIMIT=250
+
+    SORTING_LIST = {
+    "created_at DESC": I18n.t('sorting.newest_first'),
+    "popular": I18n.t('sorting.popular_book'),
+    "price ASC": I18n.t('sorting.price_asc'),
+    "price DESC": I18n.t('sorting.price_desc'),
+    "title ASC": I18n.t('sorting.title_asc'),
+    "title DESC": I18n.t('sorting.title_desc')
+    }
+
 
     belongs_to :category
     has_many :authors_books, dependent: :destroy
@@ -13,12 +20,4 @@ class Book < ApplicationRecord
     validates :title, :description, :price, :year, :quantity, presence: true
     validates :price, numericality: { greater_than: 0 }
     validates :height, :width, :depth, numericality: { greater_than: 0 }
-
-    scope :newest, -> { order('created_at DESC') }
-    scope :price_desc, -> { order('price DESC')}
-    scope :price_asc, -> { order('price')}
-    scope :by_title_asc, -> { order('title')}
-    scope :by_title_desc, -> {order('title DESC')}
-    scope :by_filter, -> (filter) {public_send(filter)}
-
 end

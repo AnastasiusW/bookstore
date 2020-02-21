@@ -5,9 +5,6 @@ RSpec.describe SetFilterSortQuery do
   let!(:second_book) { create(:book, title: 'BBBBB', price: 2) }
   let!(:third_book) { create(:book,title:'CCCCC',price:3) }
 
-
-
-
   context 'with filtering books' do
     let(:params) { { category_id: third_book.category_id } }
 
@@ -22,6 +19,7 @@ RSpec.describe SetFilterSortQuery do
       expect(result).to eq([first_book, second_book, third_book])
     end
   end
+
   context 'with sorting parameter title DESC' do
     let(:params) { { sort_param: 'title DESC' } }
     it 'returns books in chosen order title DESC' do
@@ -47,6 +45,19 @@ RSpec.describe SetFilterSortQuery do
   context 'without sorting parameter' do
     it 'returns books in default order created_at DESC' do
       expect(result).to eq([third_book, second_book, first_book])
+    end
+  end
+
+
+  context 'with return latest books' do
+    let(:params) { { latest_books: true } }
+
+    before do
+      stub_const('SetFilterSortQuery::LATEST_BOOK_COUNT', 2)
+    end
+
+    it 'returns 2 last books' do
+      expect(result).to match_array([third_book, second_book])
     end
   end
 

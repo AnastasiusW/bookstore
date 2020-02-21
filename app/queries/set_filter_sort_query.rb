@@ -2,6 +2,7 @@ class SetFilterSortQuery
     DEFAULT_ORDER = 'created_at DESC'
     LATEST_BOOK_COUNT = 3
 
+
     def initialize(**params)
       @params = params
     end
@@ -31,7 +32,7 @@ class SetFilterSortQuery
     end
 
     def sort(connection)
-        sort_order = I18n.t(:sorting).keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : SetFilterSortQuery::DEFAULT_ORDER
+        sort_order = Book::SORTING_LIST.keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : SetFilterSortQuery::DEFAULT_ORDER
         return popular_first(connection) if sort_order == 'popular'
         connection.order(sort_order)
     end

@@ -36,10 +36,10 @@ en:
 
 
   sorting:
-    "created_at DESC": 'Newest first'
-    "price ASC": 'Price: low to high'
-    "price DESC": 'Price: high to low'
-    "title ASC": 'Title: A-Z'
-    "title DESC": 'Title: Z-A'
-    "popular": 'Popular first'
+    newest_first: 'Newest first'
+    price_asc: 'Price: low to high'
+    price_desc: 'Price: high to low'
+    title_asc: 'Title: A-Z'
+    title_desc: 'Title: Z-A'
+    popular_book: 'Popular first'
 
