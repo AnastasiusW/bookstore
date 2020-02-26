@@ -1,32 +1,5 @@
 %main.container
-  #slider.carousel.slide{'data-ride': "carousel"}
-    %ol.carousel-indicators
-      - @latest_books.each_with_index do |_book, index|
-        -if index.zero?
-          %li.active{'data-target': "#slider", 'data-slide-to': "#{index}"}
-        -else
-        %li{'data-target': "#slider", 'data-slide-to': "#{index}"}
-    .carousel-inner{role: "listbox"}
-      - @latest_books.each_with_index do |book,index|
-        .item{ class: ('active' if index.zero?) }
-          .row
-            .col-sm-5
-              .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .col-sm-7
-              .mb-60
-                %h1= book.title
-                %p.lead= book.description
-                %p.lead.small= book.authors_names
-                .general-align
-                  %button.disabled.btn=t('home.buy_now')
-
-    %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
-      %span.icon-prev{'aria-hidden': "true"}
-      %span.sr-only Previous
-    %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
-      %span.icon-next{'aria-hidden': "true"}
-      %span.sr-only Next
+  = render partial: 'carusel'
 .container
   .jumbotron.text-center.mb-0
     %h2.h1=t('home.greeting')

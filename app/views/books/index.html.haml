@@ -3,17 +3,24 @@
     %h1.general-title-margin= t('shop.catalog')
     .hidden-xs.clearfix
         = render partial: 'books/index/sorting'
-        = render partial: 'books/index/filter'
+        %ul.list-inline.pt-10.mb-25.mr-240
+            %li.mr-35
+                %a.filter-link{href: books_path}
+                    = t('shop.all')
+                    %span.badge.general-badge= Book.count
+            = render partial: 'books/index/filter', collection: @presenter.categories, :as => :category
     .dropdowns.mb-25.visible-xs
         %p.lead.small.mb-10= t('shop.filter_by')
         .dropdown
-            = render partial: 'books/index/mobile_filter'
+            = render partial: 'books/index/mobile_filter', collection: @presenter.categories, :as => :category
         %p.lead.small.mb-10 Sort by
         .dropdown
             = render partial: 'books/index/mobile_sort'
     .mb-120
-        = render partial: 'books/index/books'
+        = render partial: 'books/index/books', collection: @presenter.books, :as=> :book_view
         .text-center
-            = render partial: 'books/index/view_more', object: @books
+    .text-center
+        = pagy_bootstrap_nav(@pagy).html_safe
+
 
 

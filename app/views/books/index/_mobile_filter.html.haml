@@ -4,6 +4,5 @@
 %ul.dropdown-menu
   %li
     %a{href: "#"}= t('shop.all')
-  - @categories.each do |category|
     %li
       = link_to category.title, books_path(category_id: category.id)

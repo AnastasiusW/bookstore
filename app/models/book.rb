@@ -2,15 +2,7 @@ class Book < ApplicationRecord
   DEFAULT_ORDER = 'created_at DESC'.freeze
   BOOKS_PER_PAGE = 12
   DESCRIPTION_LIMIT = 250
-
-  SORTING_LIST = {
-    "created_at DESC": I18n.t('sorting.newest_first'),
-    "popular": I18n.t('sorting.popular_book'),
-    "price ASC": I18n.t('sorting.price_asc'),
-    "price DESC": I18n.t('sorting.price_desc'),
-    "title ASC": I18n.t('sorting.title_asc'),
-    "title DESC": I18n.t('sorting.title_desc')
-  }.freeze
+  LATEST_BOOK_COUNT = 3
 
   belongs_to :category
   has_many :authors_books, dependent: :destroy
@@ -19,4 +11,14 @@ class Book < ApplicationRecord
   validates :title, :description, :price, :year, :quantity, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :height, :width, :depth, numericality: { greater_than: 0 }
+
+  scope :newest, -> { order('created_at DESC') }
+  scope :by_title_asc, -> { order('title ASC') }
+  scope :by_title_desc, -> { order('title DESC') }
+  scope :by_price_asc, -> { order('price ASC') }
+  scope :by_price_desc, -> { order('price DESC') }
+  scope :popular, -> { order('created_at DESC') }
+  scope :category_filter, ->(category_id) { where("category_id=?", category_id)}
+  scope :latest, -> {order('created_at DESC').limit(LATEST_BOOK_COUNT)}
+
 end

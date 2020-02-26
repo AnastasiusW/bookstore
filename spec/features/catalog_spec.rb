@@ -20,8 +20,9 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
       create_list(:book, 2)
       stub_const('Book::BOOKS_PER_PAGE', 1)
       visit(books_path)
-
-      expect { click_link(I18n.t('shop.view_more')); sleep(1) }.to change { all('.title').count }.by(1)
+      expect(page).to have_selector('.title', count: 1)
+      click_link(I18n.t('shop.view_more'))
+      expect(page).to have_selector('.title', count: 2)
     end
 
     it 'hides button when all books are shown' do
