@@ -12,22 +12,18 @@ module Queries
         by_title_desc: I18n.t('sorting.title_desc')
       }.freeze
 
-        def initialize(**params)
-            @params = params
-        end
+      def initialize(**params)
+        @params = params
+      end
 
+      def call
+        @params[:collection_filtered].yield_self(&method(:sort))
+      end
 
-        def call
-          @params[:collection_filtered].yield_self(&method(:sort))
-        end
-
-        def sort(collection)
-          sort_order = SortOrder::SORTING_LIST.keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : SortOrder::DEFAULT_ORDER
-          collection.public_send(sort_order)
-        end
+      def sort(collection)
+        sort_order = SortOrder::SORTING_LIST.keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : SortOrder::DEFAULT_ORDER
+        collection.public_send(sort_order)
+      end
     end
   end
-
 end
-
-

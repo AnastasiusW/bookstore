@@ -18,7 +18,6 @@ class Book < ApplicationRecord
   scope :by_price_asc, -> { order('price ASC') }
   scope :by_price_desc, -> { order('price DESC') }
   scope :popular, -> { order('created_at DESC') }
-  scope :category_filter, ->(category_id) { where("category_id=?", category_id)}
-  scope :latest, -> {order('created_at DESC').limit(LATEST_BOOK_COUNT)}
-
+  scope :category_filter, ->(category_id) { where('category_id=?', category_id) }
+  scope :latest, -> { order('created_at DESC').limit(LATEST_BOOK_COUNT) }
 end
