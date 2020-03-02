@@ -1,5 +1,19 @@
 %main.container
-  = render partial: 'carusel'
+  #slider.carousel.slide{'data-ride': "carousel"}
+    %ol.carousel-indicators
+      - @latest_books.each_with_index do |_book, index|
+        -if index.zero?
+          %li.active{'data-target': "#slider", 'data-slide-to': "#{index}"}
+        -else
+          %li{'data-target': "#slider", 'data-slide-to': "#{index}"}
+    .carousel-inner{role: "listbox"}
+      = render partial: 'carusel', collection: @latest_books, :as => :last_books
+    %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
+      %span.icon-prev{'aria-hidden': "true"}
+      %span.sr-only= t('home.previous')
+    %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
+      %span.icon-next{'aria-hidden': "true"}
+      %span.sr-only= t('home.next')
 .container
   .jumbotron.text-center.mb-0
     %h2.h1=t('home.greeting')

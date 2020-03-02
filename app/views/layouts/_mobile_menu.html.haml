@@ -9,7 +9,7 @@
             %li
                 %a{href: books_path}= t('shop.all')
             %li
-            -  Category.all.each do |category|
+            -  @presenter_header.categories.each do |category|
                 %li
                     %a{href: books_path(category_id: category.id)}= category.title
     %li

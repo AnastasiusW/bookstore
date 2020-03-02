@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Author, type: :model do
-  subject { build(:author) }
+  before { build(:author) }
 
   context 'with check associations' do
-    it { expect(subject).to have_many(:books) }
+    it { should have_many(:books) }
   end
 
-  %i[firstname lastname].each do |field|
-    it { expect(subject).to validate_presence_of(field) }
+  %w[firstname lastname].each do |field|
+    it { should validate_presence_of(field) }
   end
 end

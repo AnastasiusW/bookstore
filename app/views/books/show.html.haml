@@ -15,13 +15,13 @@
                     %a.img-link{href: "#"}
                     %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
         .col-sm-6
-            %h1.mt-res-0= @book.title
-            %p.lead.small= @book.authors_names
+            %h1.mt-res-0= @presenter_book.book.title
+            %p.lead.small= @presenter_book.book.authors_names
             .row
                 .col-xs-12.col-md-4
-                    %p.h1.in-gold-500.mt-10#price= number_to_currency(@book.price,unit: '€')
+                    %p.h1.in-gold-500.mt-10#price= number_to_currency(@presenter_book.book.price,unit: '€')
                 = render partial: 'books/show/add_to_cart_form'
-            = render partial: 'books/show/book_info'
+            = render partial: 'books/show/book_info', locals: {book: @presenter_book.book}
     .mb-80
         %h3 Write a Review
         %p.general-info-text Score

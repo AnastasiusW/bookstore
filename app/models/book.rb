@@ -1,7 +1,4 @@
 class Book < ApplicationRecord
-  DEFAULT_ORDER = 'created_at DESC'.freeze
-  BOOKS_PER_PAGE = 12
-  DESCRIPTION_LIMIT = 250
   LATEST_BOOK_COUNT = 3
 
   belongs_to :category

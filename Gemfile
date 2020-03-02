@@ -22,7 +22,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'seedbank', '~> 0.5.0'
 gem 'ffaker', '~> 2.13'
 gem 'draper', '~> 3.1'
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

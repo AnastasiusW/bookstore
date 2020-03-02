@@ -2,23 +2,56 @@ require 'rails_helper'
 
 RSpec.describe 'Catalogs', type: :feature, js: true do
   before do
-    create_list(:category, 4)
+    @catalog_page = Catalog.new
   end
 
-  context 'with categories' do
-    let(:book) { create(:book, category_id: Category.all.sample.id) }
+  context 'with categories filter' do
+    let!(:all_category) { create_list(:category, 4) }
+    let(:book) { create(:book, category_id: all_category.sample.id) }
+
 
     it 'shows books only from choosen category' do
       visit(books_path)
-      find('.filter-link', text: book.category.title, match: :first).click
+      @catalog_page.category_title_link(text:book.category.title).first.click
       expect(page).to have_content(book.title)
-    end
+  end
+end
+
+context 'when sort logic' do
+  let(:count_book) { 5 }
+  let(:sorting_list) {Queries::Books::SortOrder::SORTING_LIST}
+  let(:sort_list_for_database) {
+    {
+      newest: 'created_at DESC',
+      popular: 'created_at DESC',
+      by_price_asc: 'price ASC',
+      by_price_desc: 'price DESC',
+      by_title_asc: 'title ASC',
+      by_title_desc: 'title DESC'
+    }
+  }
+
+  before do
+    create_list(:book,count_book)
+    stub_const('BooksController::BOOKS_PER_PAGE', count_book)
+    visit(books_path)
   end
 
-  context 'with view more button', skip_before: true do
+  it 'sorting book' do
+    sorting_list.each do |sort_key, sort_value|
+      @catalog_page.sort_id.first.click
+      click_link(sort_value, match: :first)
+      database_books = Book.order(sort_list_for_database[sort_key]).map(&:title)
+      catalog_books = @catalog_page.title_books.map(&:text)
+      expect(catalog_books).to eq(database_books)
+    end
+  end
+end
+
+  context 'with view more button' do
     it 'shows more books' do
       create_list(:book, 2)
-      stub_const('Book::BOOKS_PER_PAGE', 1)
+      stub_const('BooksController::BOOKS_PER_PAGE', 1)
       visit(books_path)
       expect(page).to have_selector('.title', count: 1)
       click_link(I18n.t('shop.view_more'))
@@ -27,7 +60,7 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
 
     it 'hides button when all books are shown' do
       create_list(:book, 2)
-      stub_const('Book::BOOKS_PER_PAGE', 1)
+      stub_const('BooksController::BOOKS_PER_PAGE', 1)
       visit(books_path)
 
       expect(page).to have_content(I18n.t('shop.view_more'))
@@ -40,8 +73,8 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
     it 'render book info page' do
       create(:book)
       visit(books_path)
-      link = find('a.thumb-hover-link', match: :first)['href']
-      find('.fa-eye', match: :first).click
+      link = @catalog_page.link_books.first['href']
+      @catalog_page.book_eye.first.click
       expect(page).to have_current_path(link)
     end
   end

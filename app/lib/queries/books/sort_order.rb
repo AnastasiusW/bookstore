@@ -17,12 +17,12 @@ module Queries
       end
 
       def call
-        @params[:collection_filtered].yield_self(&method(:sort))
+       sort
       end
 
-      def sort(collection)
-        sort_order = SortOrder::SORTING_LIST.keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : SortOrder::DEFAULT_ORDER
-        collection.public_send(sort_order)
+      def sort
+        sort_order = SORTING_LIST.keys.include?(@params[:sort_param]&.to_sym) ? @params[:sort_param] : DEFAULT_ORDER
+        @params[:collection].public_send(sort_order)
       end
     end
   end

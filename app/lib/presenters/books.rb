@@ -15,17 +15,22 @@ module Presenters
 
     def selected_order
       sort_order_nil?
-      Queries::Books::SortOrder::SORTING_LIST[@order_param&.to_sym]
+      Queries::Books::SortOrder::SORTING_LIST[@sort_order&.to_sym]
     end
 
     def books_sorting_list
       Queries::Books::SortOrder::SORTING_LIST
     end
 
+    def count_of_book
+      Book.count
+    end
+
+
     private
 
     def sort_order_nil?
-      return @order_param = Queries::Books::SortOrder::DEFAULT_ORDER if @order_param.nil?
+      return  @sort_order = Queries::Books::SortOrder::DEFAULT_ORDER if  @sort_order.nil?
     end
   end
 end

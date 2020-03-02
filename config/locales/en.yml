@@ -33,6 +33,7 @@ en:
     description: "Description"
     read_more: "Read More"
     read_less: "Read Less"
+    sort_title:  "Sort by"
 
 
   sorting:
