@@ -5,6 +5,7 @@ RSpec.describe 'Books', type: :feature, js: true do
   context 'with description' do
     it 'show full description' do
       visit(book_path(book))
+      first('.in-gold-500').hover
       click_link(I18n.t('book.read_more'))
       expect(page).to have_content(book.description)
     end
