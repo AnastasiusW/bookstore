@@ -26,11 +26,10 @@ module Presenters
       Book.count
     end
 
-
     private
 
     def sort_order_nil?
-      return  @sort_order = Queries::Books::SortOrder::DEFAULT_ORDER if  @sort_order.nil?
+      return @sort_order = Queries::Books::SortOrder::DEFAULT_ORDER if @sort_order.nil?
     end
   end
 end

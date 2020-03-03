@@ -17,6 +17,10 @@ RSpec.describe BooksController, type: :controller do
     it 'assigns @books' do
       get :show, params: { id: book.id }
       expect(assigns(:book)).to be_present
+    end
+
+    it 'assigns to be a Books' do
+      get :show, params: { id: book.id }
       expect(assigns(:book)).to be_a(Book)
     end
   end

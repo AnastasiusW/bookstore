@@ -17,7 +17,7 @@ module Queries
       end
 
       def call
-       sort
+        sort
       end
 
       def sort

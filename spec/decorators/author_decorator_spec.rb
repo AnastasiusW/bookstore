@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe AuthorDecorator do
   subject(:decorator) { described_class.new(author) }
 

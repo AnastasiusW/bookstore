@@ -1,52 +1,47 @@
-require 'rails_helper'
-
 RSpec.describe 'Catalogs', type: :feature, js: true do
-  before do
-    @catalog_page = Catalog.new
-  end
+  let!(:catalog_page) { Catalog.new }
 
   context 'with categories filter' do
     let!(:all_category) { create_list(:category, 4) }
     let(:book) { create(:book, category_id: all_category.sample.id) }
 
-
     it 'shows books only from choosen category' do
       visit(books_path)
-      @catalog_page.category_title_link(text:book.category.title).first.click
+      catalog_page.category_title_link(text: book.category.title).first.click
       expect(page).to have_content(book.title)
-  end
-end
-
-context 'when sort logic' do
-  let(:count_book) { 5 }
-  let(:sorting_list) {Queries::Books::SortOrder::SORTING_LIST}
-  let(:sort_list_for_database) {
-    {
-      newest: 'created_at DESC',
-      popular: 'created_at DESC',
-      by_price_asc: 'price ASC',
-      by_price_desc: 'price DESC',
-      by_title_asc: 'title ASC',
-      by_title_desc: 'title DESC'
-    }
-  }
-
-  before do
-    create_list(:book,count_book)
-    stub_const('BooksController::BOOKS_PER_PAGE', count_book)
-    visit(books_path)
-  end
-
-  it 'sorting book' do
-    sorting_list.each do |sort_key, sort_value|
-      @catalog_page.sort_id.first.click
-      click_link(sort_value, match: :first)
-      database_books = Book.order(sort_list_for_database[sort_key]).map(&:title)
-      catalog_books = @catalog_page.title_books.map(&:text)
-      expect(catalog_books).to eq(database_books)
     end
   end
-end
+
+  context 'when sort logic' do
+    let(:count_book) { 5 }
+    let(:sorting_list) { Queries::Books::SortOrder::SORTING_LIST }
+    let(:sort_list_for_database) do
+      {
+        newest: 'created_at DESC',
+        popular: 'created_at DESC',
+        by_price_asc: 'price ASC',
+        by_price_desc: 'price DESC',
+        by_title_asc: 'title ASC',
+        by_title_desc: 'title DESC'
+      }
+    end
+
+    before do
+      create_list(:book, count_book)
+      stub_const('BooksController::BOOKS_PER_PAGE', count_book)
+      visit(books_path)
+    end
+
+    it 'sorting book' do
+      sorting_list.each do |sort_key, sort_value|
+        catalog_page.sort_id.first.click
+        click_link(sort_value, match: :first)
+        database_books = Book.order(sort_list_for_database[sort_key]).map(&:title)
+        catalog_books = catalog_page.title_books.map(&:text)
+        expect(catalog_books).to eq(database_books)
+      end
+    end
+  end
 
   context 'with view more button' do
     it 'shows more books' do
@@ -73,8 +68,8 @@ end
     it 'render book info page' do
       create(:book)
       visit(books_path)
-      link = @catalog_page.link_books.first['href']
-      @catalog_page.book_eye.first.click
+      link = catalog_page.link_books.first['href']
+      catalog_page.book_eye.first.click
       expect(page).to have_current_path(link)
     end
   end

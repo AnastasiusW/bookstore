@@ -21,7 +21,7 @@ Style/Documentation:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 140
+  Max: 120
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -31,10 +31,9 @@ Metrics/BlockLength:
   ExcludedMethods: ['describe','context']
 
 RSpec/MultipleExpectations:
-  Max: 3
-
-RSpec/NamedSubject:
-  Enabled: false
+  Max: 1
+  Exclude:
+  - 'spec/features/*'
 
 RSpec/ExampleLength:
   Max: 7
