@@ -22,5 +22,13 @@ RSpec.describe 'Books', type: :feature, js: true do
       expect(@book_page.id_quantity.value).to eq("2")
 
     end
+
+    it 'show case when decrement count book' do
+      visit(book_path(book))
+      @book_page.minus.click
+      expect(@book_page.id_quantity.value).to eq("1")
+
+    end
   end
+
 end

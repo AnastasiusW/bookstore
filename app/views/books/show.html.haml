@@ -21,7 +21,7 @@
                 .col-xs-12.col-md-4
                     %p.h1.in-gold-500.mt-10#price= number_to_currency(@presenter_book.book.price,unit: '€')
                 = render partial: 'books/show/add_to_cart_form'
-            = render partial: 'books/show/book_info', locals: {book: @presenter_book.book}
+            = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
     .mb-80
         %h3 Write a Review
         %p.general-info-text Score

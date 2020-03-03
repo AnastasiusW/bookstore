@@ -14,8 +14,5 @@ module Presenters
             @book.description
         end
 
-
-
-
     end
 end
