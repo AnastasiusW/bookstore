@@ -8,7 +8,6 @@ RSpec.describe 'Books', type: :feature, js: true do
 
   context 'with description' do
     it 'show full description' do
-
       first('.in-gold-500').hover
       click_link(I18n.t('book.read_more'))
       expect(page).to have_content(book.description)

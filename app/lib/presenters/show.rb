@@ -1,5 +1,4 @@
 module Presenters
-
   class Show
     DESCRIPTION_LIMIT = 250
     attr_reader :book
@@ -15,5 +14,4 @@ module Presenters
       @book.description
     end
   end
-
 end
