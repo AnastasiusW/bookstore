@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @latest_books = BookDecorator.decorate_collection(Book.latest)
+    @presenter = Presenters::Home.new
   end
 end

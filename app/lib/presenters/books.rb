@@ -14,7 +14,7 @@ module Presenters
     end
 
     def selected_order
-      sort_order_nil?
+      prepare_sort_order
       Queries::Books::SortOrder::SORTING_LIST[@sort_order&.to_sym]
     end
 
@@ -28,7 +28,7 @@ module Presenters
 
     private
 
-    def sort_order_nil?
+    def prepare_sort_order
       return @sort_order = Queries::Books::SortOrder::DEFAULT_ORDER if @sort_order.nil?
     end
   end

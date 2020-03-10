@@ -1,19 +1,23 @@
 RSpec.describe 'Catalogs', type: :feature, js: true do
   let!(:catalog_page) { Catalog.new }
 
+
   context 'with categories filter' do
     let!(:all_category) { create_list(:category, 4) }
     let(:book) { create(:book, category_id: all_category.sample.id) }
 
-    it 'shows books only from choosen category' do
+    before do
       visit(books_path)
+    end
+
+    it 'shows books only from choosen category' do
       catalog_page.category_title_link(text: book.category.title).first.click
       expect(page).to have_content(book.title)
     end
   end
 
   context 'when sort logic' do
-    let(:count_book) { 5 }
+    let!(:count_book) { 5 }
     let(:sorting_list) { Queries::Books::SortOrder::SORTING_LIST }
     let(:sort_list_for_database) do
       {
@@ -44,20 +48,19 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
   end
 
   context 'with view more button' do
-    it 'shows more books' do
+    before do
       create_list(:book, 2)
       stub_const('BooksController::BOOKS_PER_PAGE', 1)
       visit(books_path)
+    end
+    it 'shows more books' do
+
       expect(page).to have_selector('.title', count: 1)
       click_link(I18n.t('shop.view_more'))
       expect(page).to have_selector('.title', count: 2)
     end
 
     it 'hides button when all books are shown' do
-      create_list(:book, 2)
-      stub_const('BooksController::BOOKS_PER_PAGE', 1)
-      visit(books_path)
-
       expect(page).to have_content(I18n.t('shop.view_more'))
       click_link(I18n.t('shop.view_more'))
       expect(page).not_to have_content(I18n.t('shop.view_more'))
@@ -65,9 +68,12 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
   end
 
   context 'when click on eye icon' do
-    it 'render book info page' do
+    before do
       create(:book)
       visit(books_path)
+    end
+
+    it 'render book info page' do
       link = catalog_page.link_books.first['href']
       catalog_page.book_eye.first.click
       expect(page).to have_current_path(link)

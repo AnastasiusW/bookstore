@@ -1,5 +1,5 @@
 %main.container
-    =link_to back_path,class: 'general-back-link' do
+    =link_to :back,class: 'general-back-link' do
         %i.fa.fa-long-arrow-left.mr-15
             = t('book.back_to_result')
     .row
@@ -23,8 +23,8 @@
                 = render partial: 'books/show/add_to_cart_form'
             = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
     .mb-80
-        %h3 Write a Review
-        %p.general-info-text Score
+        %h3= t(' review_block.write_a_review')
+        %p.general-info-text= t('review_block.score')
         .mb-15
             %i.fa.fa-star.rate-empty
             %i.fa.fa-star.rate-empty
@@ -35,13 +35,13 @@
             .col-md-8
                 .mb-40
                     .form-group
-                        %label.control-label.input-label.in-grey-600{for: "title"} Title
+                        %label.control-label.input-label.in-grey-600{for: "title"}= t('review_block.title')
                         %input#title.form-control{name:"title", type: "text"}
                     .form-group
                         %label.control-label.input-label.in-grey-600{for: "review"} Review
                         %textarea#review.form-control{name:"review", type: "text"}
                 .text-right
-                    %button.btn.disabled.mb-20 Post
+                    %button.btn.disabled.mb-20= t('review_block.post')
     .mb-80
         %h3.in-gold-500.mb-25 Reviews (3)
         .general-message-wrap.divider-lg
@@ -49,30 +49,30 @@
                 %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
                 .ml-70
                     %div
-                        .general-message-date.hidden-xs 11/11/16
+                        .general-message-date.hidden-xs= t('review_block.date')
                         .max-240
-                            .general-message-verified Verified Reviewer
-                            .general-message-name Rita J. Lewis
+                            .general-message-verified= t('review_block.label_verify')
+                            .general-message-name= t('review_block.some_name')
                 .mb-15
                     %i.fa.fa-star.rate-star
                     %i.fa.fa-star.rate-star
                     %i.fa.fa-star.rate-star
                     %i.fa.fa-star.rate-star
                     %i.fa.fa-star.rate-star
-                %p Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.
+                %p= t('review_block.some_2')
         .general-message-wrap.divider-lg
             .clearfix
                 %span.img-circle.logo-size.inlide-block.pull-left.logo-empty M
                 .ml-70
                     %div
-                        .general-message-date.hidden-xs 11/11/16
+                        .general-message-date.hidden-xs= t('review_block.date')
                         .max-240
-                            .general-message-verified.pull-right Verified Reviewer
-                            .general-message-name May J. Novoa
+                            .general-message-verified.pull-right= t('review_block.label_verify')
+                            .general-message-name= t('review_block.some_name')
                     .mb-15
                         %i.fa.fa-star.rate-star
                         %i.fa.fa-star.rate-star
                         %i.fa.fa-star.rate-star
                         %i.fa.fa-star.rate-star
                         %i.fa.fa-star.rate-star.rate-empty
-                    %p If ‘Get a better job’ had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.
+                    %p= t('review_block.some_1')

@@ -4,6 +4,10 @@ RSpec.describe BooksController, type: :controller do
       get :index
       expect(response).to render_template :index
     end
+    it 'assigns to be a Presenter::Books' do
+      get :index
+      expect(assigns(:presenter)).to be_a(Presenters::Books)
+    end
   end
 
   describe 'GET #show' do

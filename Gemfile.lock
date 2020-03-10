@@ -108,7 +108,6 @@ GEM
     concurrent-ruby (1.1.5)
     content_disposition (1.0.0)
     crass (1.0.6)
-    database_cleaner (1.7.0)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -427,7 +426,6 @@ DEPENDENCIES
   byebug
   capybara (~> 3.30)
   capybara-screenshot (~> 1.0, >= 1.0.24)
-  database_cleaner (~> 1.7)
   devise (~> 4.7, >= 4.7.1)
   draper (~> 3.1)
   factory_bot_rails (~> 5.1, >= 5.1.1)

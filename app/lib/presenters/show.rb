@@ -1,5 +1,6 @@
 module Presenters
-  class SingleBook
+
+  class Show
     DESCRIPTION_LIMIT = 250
     attr_reader :book
     def initialize(current_book:)
@@ -14,4 +15,5 @@ module Presenters
       @book.description
     end
   end
+
 end

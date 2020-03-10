@@ -44,3 +44,18 @@ en:
     title_desc: 'Title: Z-A'
     popular_book: 'Popular first'
 
+  review_block:
+    write_a_review: Write a Review
+    score: Score
+    title: Title
+    review: Rewiew
+    reviews: Reviews
+    some_1: 'If Get a better job had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.'
+    label_verify: Verified Reviewer
+    some_name: Rita J. Lewis
+    some_2: 'Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.'
+    date: '11/11/16'
+    post: 'Post'
+
+  cart_block:
+    add_to_cart: Add to Cart

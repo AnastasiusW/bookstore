@@ -1,13 +1,13 @@
 %main.container
   #slider.carousel.slide{'data-ride': "carousel"}
     %ol.carousel-indicators
-      - @latest_books.each_with_index do |_book, index|
+      - @presenter.latest_books.each_with_index do |_book, index|
         -if index.zero?
           %li.active{'data-target': "#slider", 'data-slide-to': "#{index}"}
         -else
           %li{'data-target': "#slider", 'data-slide-to': "#{index}"}
     .carousel-inner{role: "listbox"}
-      = render partial: 'carusel', collection: @latest_books, :as => :last_books
+      = render partial: 'carusel', collection: @presenter.latest_books, :as => :last_books
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only= t('home.previous')
