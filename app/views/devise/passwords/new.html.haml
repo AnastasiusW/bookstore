@@ -1,0 +1,19 @@
+%main.container.general-main-wrap
+  .text-center
+    %h1.mb-30= t('authorization.forgot_password')
+    %p.general-password-text= t('authorization.we_send')
+
+  .general-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render 'devise/shared/error_messages', resource: resource
+      .form-group.mb-25
+        = f.email_field(:email,
+                        autofocus: true,
+                        autocomplete: 'email',
+                        class: 'form-control',
+                        required: true,
+                        placeholder: t('authorization.enter_email'))
+      = f.submit t('authorization.button_email'), class: 'btn btn-default mb-20 center-block'
+
+      .text-center
+        = link_to t('authorization.cancel'), new_user_session_path, class: 'in-gold-500 mb-2'
