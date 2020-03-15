@@ -1,29 +1,29 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title= t('authorization.forgot_password')
+    %h3.general-login-title= t('authentication.forgot_password')
   .general-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
       = render 'devise/shared/error_messages', resource: resource
       = f.hidden_field :reset_password_token
 
       .form-group.mb-30
-        = f.label :password, t('authorization.type_new_password')
+        = f.label :password, t('authentication.type_new_password')
         = f.password_field(:password,
                           class: 'form-control',
                           id: 'new_password',
                           required: true,
-                          placeholder: t('authorization.type_new_password'))
+                          placeholder: t('authentication.type_new_password'))
 
       .form-group.mb-40
-        = f.label :password_confirmation, t('authorization.confirm_password')
+        = f.label :password_confirmation, t('authentication.confirm_password')
         = f.password_field(:password_confirmation,
                           class: 'form-control',
                           id: 'confirm_password',
                           required: true,
-                          placeholder: t('authorization.confirm_password'))
+                          placeholder: t('authentication.confirm_password'))
 
       .text-center
-        = f.submit t('authorization.change'), class: 'btn btn-default mb-10'
+        = f.submit t('authentication.change'), class: 'btn btn-default mb-10'
 
 
 

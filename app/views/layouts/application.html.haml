@@ -11,6 +11,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
+    - if notice
+      %p.alert.alert-success#flash_success_id= notice
+    - if alert
+      %p.alert.alert-danger#flash_fail_id= alert
     = render partial:'layouts/header'
     = yield
     = render partial:'layouts/footer'

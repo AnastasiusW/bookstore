@@ -12,9 +12,9 @@
             -  @presenter_header.categories.each do |category|
                 %li
                     %a{href: books_path(category_id: category.id)}= category.title
-        - if user_signed_in?
+        -   if user_signed_in?
             %li.dropdown
-                %a.dropdown-toggle{href: "", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+                %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
                     = current_user.email
                 %ul.dropdown-menu
                     %li

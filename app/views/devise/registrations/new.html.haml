@@ -1,36 +1,36 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title= t('authorization.sign_up')
+    %h3.general-login-title= t('authentication.sign_up')
     = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
       %i.fa.fa-facebook-official
-    %p.general-login-text=t ('authorization.or')
+    %p.general-login-text=t ('authentication.or')
   .general-form
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.mb-30
-        = f.label :email, t('authorization.email'), class: 'control-label input-label'
+        = f.label :email, t('authentication.email'), class: 'control-label input-label'
         = f.email_field(:email,
                       autofocus:true,
                       autocomplete: 'email',
                       class: 'form-control',
                       required: true,
-                      placeholder: t('authorization.email'))
+                      placeholder: t('authentication.email'))
       .form-group.mb-30
-        = f.label :password, t('authorization.password'), class: 'control-label input-label'
+        = f.label :password, t('authentication.password'), class: 'control-label input-label'
         = f.password_field(:password,
                           autocomplete: 'password',
                           class: 'form-control',
                           required: true,
-                          placeholder: t('authorization.password'))
+                          placeholder: t('authentication.password'))
       .form-group.mb-30
-        = f.label :password_confirmation, t('authorization.confirm_password'), class: 'control-label input-label'
+        = f.label :password_confirmation, t('authentication.confirm_password'), class: 'control-label input-label'
         = f.password_field(:password_confirmation,
                           autocomplete: 'password_confirmation',
                           class: 'form-control',
                           required: true,
-                          placeholder: t('authorization.confirm_password'))
+                          placeholder: t('authentication.confirm_password'))
       .text-center
-        = f.submit t('authorization.sign_up'), class: 'btn btn-default mb-20'
+        = f.submit t('authentication.sign_up'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
-    = link_to t('default.login'), new_user_session_path, class: 'in-gold-500'
+    = link_to t('authentication.login'), new_user_session_path, class: 'in-gold-500'
 

@@ -62,7 +62,8 @@ en:
 
   cart_block:
     add_to_cart: Add to Cart
-  authorization:
+
+  authentication:
     login: Log in
     sign_up: Sign up
     or: or
@@ -80,7 +81,13 @@ en:
     label_password: Type a new Password
     confirm_password: Confirm Password
     change: Change
+    logout: Log Out
 
+  test_error:
+    email_error: Email has already been taken
+    password_error: Password is too short
+    password_confirmation_error: Password confirmation doesn't match Password
+    invalid_sign_in: Invalid Email or password.
 
 
 

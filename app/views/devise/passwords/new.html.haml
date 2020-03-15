@@ -1,7 +1,7 @@
 %main.container.general-main-wrap
   .text-center
-    %h1.mb-30= t('authorization.forgot_password')
-    %p.general-password-text= t('authorization.we_send')
+    %h1.mb-30= t('authentication.forgot_password')
+    %p.general-password-text= t('authentication.we_send')
 
   .general-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
@@ -12,8 +12,8 @@
                         autocomplete: 'email',
                         class: 'form-control',
                         required: true,
-                        placeholder: t('authorization.enter_email'))
-      = f.submit t('authorization.button_email'), class: 'btn btn-default mb-20 center-block'
+                        placeholder: t('authentication.enter_email'))
+      = f.submit t('authentication.button_email'), class: 'btn btn-default mb-20 center-block'
 
       .text-center
-        = link_to t('authorization.cancel'), new_user_session_path, class: 'in-gold-500 mb-2'
+        = link_to t('authentication.cancel'), new_user_session_path, class: 'in-gold-500 mb-2'

@@ -1,36 +1,36 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title= t('authorization.login')
+    %h3.general-login-title= t('authentication.login')
     = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
       %i.fa.fa-facebook-official
-    %p.general-login-text=t ('authorization.or')
+    %p.general-login-text=t ('authentication.or')
   .general-form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.mb-30
-        = f.label :email, t('authorization.email'), class: 'control-label input-label'
+        = f.label :email, t('authentication.email'), class: 'control-label input-label'
         = f.email_field(:email,
                       autofocus:true,
                       autocomplete: 'email',
                       class: 'form-control',
                       required: true,
-                      placeholder: t('authorization.email'))
+                      placeholder: t('authentication.email'))
       .form-group.mb-30
-        = f.label :password, t('authorization.password'), class: 'control-label input-label'
+        = f.label :password, t('authentication.password'), class: 'control-label input-label'
         = f.password_field(:password,
                           autocomplete: 'password',
                           class: 'form-control',
                           required: true,
-                          placeholder: t('authorization.password'))
-        = link_to t('authorization.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+                          placeholder: t('authentication.password'))
+        = link_to t('authentication.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
       - if devise_mapping.rememberable?
         .form-group.checkbox.text-center.mb-30
           %label.checkbox-label
             = f.check_box :remember_me, { class: 'checkbox-input', hidden: 'true', id: 'remember_me' }, 'true', 'false'
             %span.checkbox-icon
               %i.fa.fa-check
-            %span.checkbox-text= t('authorization.remember')
+            %span.checkbox-text= t('authentication.remember')
       .text-center
-        = f.submit t('authorization.login'), class: 'btn btn-default mb-20'
+        = f.submit t('authentication.login'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
-    = link_to t('authorization.have_account'), new_user_session_path, class: 'in-gold-500'
+    = link_to t('authentication.have_account'), new_user_session_path, class: 'in-gold-500'
