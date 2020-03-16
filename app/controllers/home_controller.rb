@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @presenter = Presenters::Home.new
+  end
 end

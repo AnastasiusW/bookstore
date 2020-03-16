@@ -19,6 +19,10 @@ gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'javascript', '~> 0.1.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'seedbank', '~> 0.5.0'
+gem 'ffaker', '~> 2.13'
+gem 'draper', '~> 3.1'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -53,6 +57,7 @@ group :development, :test do
   gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
   gem 'site_prism', '~> 3.4', '>= 3.4.1'
   gem 'pry-byebug'
+  gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '~> 0.79.0'
@@ -70,9 +75,11 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner', '~> 1.7'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'shoulda-matchers', '~> 4.2'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+  gem 'simplecov', require: false
 end
 
 

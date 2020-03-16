@@ -18,5 +18,44 @@ en:
     greeting: "Welcome to our amazing Bookstore!"
     greeting_description: "We pore through hundreds of new books each month and select the five best we can find to share with our members."
 
+  shop:
+    catalog: "Catalog"
+    filter_by: "Filter by category"
+    sort_by: "Sort by"
+    view_more: 'View More'
+    all: "All"
+
+  book:
+    back_to_result: "Back to results"
+    publication_year: "Year of publication"
+    dimensions: "Dimensions"
+    materials: "Materials"
+    description: "Description"
+    read_more: "Read More"
+    read_less: "Read Less"
+    sort_title:  "Sort by"
 
 
+  sorting:
+    newest_first: 'Newest first'
+    price_asc: 'Price: low to high'
+    price_desc: 'Price: high to low'
+    title_asc: 'Title: A-Z'
+    title_desc: 'Title: Z-A'
+    popular_book: 'Popular first'
+
+  review_block:
+    write_a_review: Write a Review
+    score: Score
+    title: Title
+    review: Rewiew
+    reviews: Reviews
+    some_1: 'If Get a better job had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.'
+    label_verify: Verified Reviewer
+    some_name: Rita J. Lewis
+    some_2: 'Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.'
+    date: '11/11/16'
+    post: 'Post'
+
+  cart_block:
+    add_to_cart: Add to Cart

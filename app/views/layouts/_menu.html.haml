@@ -1,0 +1,17 @@
+%ul.nav.navbar-nav
+    %li
+        %a{href: root_path}= t('default.homepage')
+    %li.dropdown
+        %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('default.shop')
+        %ul.dropdown-menu
+            %li
+                %a{href: books_path}= t('shop.all')
+            %li
+            -  @presenter_header.categories.each do |category|
+                %li
+                    %a{href: books_path(category_id: category.id)}= category.title
+            %li.divider{role: "separator"}
+            %li
+                %a{href: "#"} Log out
+    %li
+        %a{href: "#"} My account

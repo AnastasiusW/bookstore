@@ -1,0 +1,15 @@
+
+.item{ class: ('active' if last_books_counter.zero?) }
+    .row
+        .col-sm-5
+            .general-img-wrap
+                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+        .col-sm-7
+        .mb-60
+            %h1= last_books.title
+            %p.lead= last_books.description
+            %p.lead.small= last_books.authors_names
+            .general-align
+        %button.disabled.btn=t('home.buy_now')
+
+
