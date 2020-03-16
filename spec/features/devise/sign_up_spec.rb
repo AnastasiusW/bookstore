@@ -13,8 +13,7 @@ context 'when try sign up valid data' do
     it 'when sign up new user' do
       sign_up_page.sign_up(valid_email, valid_password, valid_password)
       expect(sign_up_page).to have_current_path(root_path)
-      expect(home_page).to have_content(valid_email)
-      expect(home_page.flash_success_message).to have_content(I18n.t('devise.registrations. signed_up_but_unconfirmed'))
+      expect(home_page.flash_success_message).to have_content(I18n.t('devise.registrations.signed_up_but_unconfirmed'))
     end
   end
 

@@ -44,12 +44,10 @@ end
     context 'when click facebook icon ' do
 
         it 'when click icon and login success' do
-
             sign_in_page.valid_data_facebook
             sign_in_page.facebook_icon.click
             expect(home_page).to have_content(I18n.t('devise.omniauth_callbacks.success', kind: 'Facebook'))
             expect(home_page).to have_current_path(root_path)
-
         end
     end
 
