@@ -10,8 +10,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(book_params[:id]).decorate
-    @presenter_book = Presenters::Show.new(current_book: @book)
+    book = Book.find(book_params[:id]).decorate
+    @presenter_book = Presenters::Show.new(current_book: book)
   end
 
   private
