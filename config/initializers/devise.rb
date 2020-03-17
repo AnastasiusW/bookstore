@@ -263,8 +263,6 @@ Devise.setup do |config|
   config.omniauth :facebook,
                   Rails.application.credentials.config[:facebook][:app_id],
                   Rails.application.credentials.config[:facebook][:app_secret]
-
-
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
