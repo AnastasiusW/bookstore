@@ -33,7 +33,10 @@ Metrics/BlockLength:
 RSpec/MultipleExpectations:
   Max: 1
   Exclude:
-  - 'spec/features/*'
+  - 'spec/features/**/*'
 
 RSpec/ExampleLength:
   Max: 7
+
+Style/ClassAndModuleChildren:
+  Enabled: false
