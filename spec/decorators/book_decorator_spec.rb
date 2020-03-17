@@ -3,8 +3,8 @@ RSpec.describe BookDecorator do
 
   let(:authors) do
     [
-      create(:author, firstname: 'Fenimore', lastname: 'Cooper'),
-      create(:author, firstname: 'Victor ', lastname: 'Hugo')
+      create(:author, first_name: 'Fenimore', last_name: 'Cooper'),
+      create(:author, first_name: 'Victor ', last_name: 'Hugo')
     ]
   end
 
