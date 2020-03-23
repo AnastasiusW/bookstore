@@ -22,6 +22,12 @@ gem 'pundit', '~> 2.1'
 gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'seedbank', '~> 0.5.0'
 gem 'shrine', '~> 3.2', '>= 3.2.1'
+gem 'ffaker', '~> 2.13'
+gem 'draper', '~> 3.1'
+gem 'virtus'
+gem 'simple_form', '~> 5.0', '>= 5.0.2'
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'

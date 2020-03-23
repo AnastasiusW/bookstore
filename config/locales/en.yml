@@ -12,6 +12,7 @@ en:
     sign_up: Sign up
 
 
+
   home:
     previous: "Previous"
     next: "Next"
@@ -98,3 +99,7 @@ en:
     password_error: Password is too short
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
+
+  form_settings:
+    billing: Billing Address
+    shipping: Shipping Address
