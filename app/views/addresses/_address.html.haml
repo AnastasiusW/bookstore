@@ -1,0 +1,11 @@
+= simple_form_for(address, url: addresses_path) do |form|
+    = form.input :first_name, placeholder: t('form_settings.first_name'), required: true
+    = form.input :last_name, placeholder: t('form_settings.last_name'), required: true
+    = form.input :country, placeholder: t('form_settings.country'), include_blank: false
+    = form.input :city, placeholder: t('form_settings.city'), required: true
+    = form.input :address, placeholder: t('form_settings.address'), required: true
+    = form.input :zip, placeholder: t('form_settings.zip'), required: true
+    = form.input :phone, placeholder: t('form_settings.phone'), required: true
+    = form.hidden_field :type_address, value: type_address
+    .text-center.general-text-align
+        = form.submit t('form_settings.button_save'), class: 'btn'

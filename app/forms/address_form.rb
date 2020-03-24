@@ -21,6 +21,7 @@ class AddressForm
   attribute :zip, Integer
   attribute :country, String
   attribute :phone, String
+  attribute  :type_address, String
 
   validates :first_name, :last_name, :address, :city, :zip, :country, :phone, presence: true
   validates :first_name, :last_name, length: { maximum: LENGTH_COMMON }, format: { with: VALIDATE_NAME}
@@ -29,4 +30,17 @@ class AddressForm
   validates :address, length: { maximum: LENGTH_COMMON }, format: { with: VALIDATE_ADDRESS}
   validates :zip, length: { maximum: LENGTH_ZIP }, format: { with: VALIDATE_ZIP }
   validates :phone, length: { maximum: LENGTH_PHONE }, format: { with: VALIDATE_PHONE }
+
+  def save(current_instance)
+    return false unless valid?
+    create_or_update(current_instance)
+  end
+
+  def create_or_update(current_instance)
+    if type_address == 'billing_address'
+      puts type_address
+    end
+
+  end
+
 end

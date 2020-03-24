@@ -26,6 +26,7 @@ gem 'ffaker', '~> 2.13'
 gem 'draper', '~> 3.1'
 gem 'virtus'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
+gem 'country_select', '~> 4.0'
 
 
 

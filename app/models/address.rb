@@ -1,3 +1,3 @@
-class Address < ApplicationRecord::Base
+class Address < ApplicationRecord
     belongs_to :addressable, polymorphic: true
 end

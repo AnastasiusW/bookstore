@@ -103,3 +103,21 @@ en:
   form_settings:
     billing: Billing Address
     shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: Phone
+    button_save: Save
+
+  notification:
+    success:
+      address:
+        update: "%{type} address was updated successfully!"
+
+
+    fail:
+      address:
+          update: "%{type} address was not updated successfully!"
