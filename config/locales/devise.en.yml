@@ -6,6 +6,8 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      resend_title: "Resend confirmation instructions"
+      resend_button: Resend confirmation instructions"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -19,14 +21,31 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        welcome: "Welcome"
+        confirm_account: "You can confirm your account email through the link below:"
+        button: "Confirm my account"
       reset_password_instructions:
         subject: "Reset password instructions"
+        hello: "Hello"
+        request: "Someone has requested a link to change your password. You can do this through the link below."
+        button: "Change my password"
+        ignore: "If you didn't request this, please ignore this email."
+        confirm: "Your password won't change until you access the link above and create a new one."
       unlock_instructions:
         subject: "Unlock instructions"
+        hello: "Hello"
+        account_message: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        click_link: "Click the link below to unlock your account:"
+        button: "Unlock my account"
       email_changed:
         subject: "Email Changed"
+        hello: "Hello"
+        notification: "We're contacting you to notify you that your email is being changed to"
+        contacting: "We're contacting you to notify you that your email has been changed to"
       password_change:
         subject: "Password Changed"
+        hello: "Hello"
+        contact_you: "We're contacting you to notify you that your password has been changed."
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -53,6 +72,8 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      resend_title: "Resend unlock instructions"
+      resend_button: "Resend unlock instructions"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

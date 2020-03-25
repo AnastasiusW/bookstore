@@ -82,6 +82,16 @@ en:
     confirm_password: Confirm Password
     change: Change
     logout: Log Out
+    edit: Edit
+    waiting_confirmation: "Currently waiting confirmation for:"
+    leave_blank: "(leave blank if you don't want to change it)"
+    characters: "characters minimum"
+    we_need: "(we need your current password to confirm your changes)"
+    update: "Update"
+    cancel_account: Cancel my account
+    back_link: "Back"
+    button_to: "Cancel my account"
+    unhappy: "Unhappy?"
 
   test_error:
     email_error: Email has already been taken
