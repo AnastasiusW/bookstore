@@ -1,3 +1,6 @@
 class UsersController < ApplicationController
-    def edit;end
+    before_action :authenticate_user!
+    def edit
+        @presenter = Presenters::Address.new(current_user: current_user)
+    end
 end

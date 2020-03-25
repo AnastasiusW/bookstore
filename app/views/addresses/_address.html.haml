@@ -1,11 +1,12 @@
-= simple_form_for(address, url: addresses_path) do |form|
-    = form.input :first_name, placeholder: t('form_settings.first_name'), required: true
-    = form.input :last_name, placeholder: t('form_settings.last_name'), required: true
+= simple_form_for(address, url: addresses_path, method: method_type,
+defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }, validate: true}) do |form|
+    = form.input :first_name, placeholder: t('form_settings.first_name')
+    = form.input :last_name, placeholder: t('form_settings.last_name')
     = form.input :country, placeholder: t('form_settings.country'), include_blank: false
-    = form.input :city, placeholder: t('form_settings.city'), required: true
-    = form.input :address, placeholder: t('form_settings.address'), required: true
-    = form.input :zip, placeholder: t('form_settings.zip'), required: true
-    = form.input :phone, placeholder: t('form_settings.phone'), required: true
-    = form.hidden_field :type_address, value: type_address
+    = form.input :city, placeholder: t('form_settings.city')
+    = form.input :address, placeholder: t('form_settings.address')
+    = form.input :zip, placeholder: t('form_settings.zip')
+    = form.input :phone, placeholder: t('form_settings.phone')
+    = form.hidden_field :type, value: type
     .text-center.general-text-align
-        = form.submit t('form_settings.button_save'), class: 'btn'
+        = form.submit t('form_settings.button_save'), class: 'btn',id: "save-#{type}"

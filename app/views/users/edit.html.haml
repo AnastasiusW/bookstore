@@ -14,13 +14,13 @@
               %h3.general-subtitle.mt-0= t('form_settings.billing')
             .col-md-5.col-md-offset-1
               %h3.general-subtitle.mt-0= t('form_settings.shipping')
-        .row
-          .col-md-5.mb-40
-            .visible-xs.visible-sm
-              %h3.general-subtitle.mt-0= t('form_settings.billing')
-            = render 'addresses/address', address: AddressForm.new, type_address: :billing_address
+      .row
+        .col-md-5.mb-40
+          .visible-xs.visible-sm
+            %h3.general-subtitle.mt-0= t('form_settings.billing')
+          = render 'addresses/address', address: @presenter.billing, type: :billing_address, method_type: @presenter.method_billing_address
 
-          .col-md-5.mb-40
-            .visible-xs.visible-sm
-              %h3.general-subtitle.mt-0= t('form_settings.shipping')
-            = render 'addresses/address', address: AddressForm.new, type_address: :shipping_address
+        .col-md-5.col-md-offset-1.mb-25
+          .visible-xs.visible-sm
+            %h3.general-subtitle.mt-0= t('form_settings.shipping')
+          = render 'addresses/address', address: @presenter.shipping, type: :shipping_address, method_type: @presenter.method_shipping_address

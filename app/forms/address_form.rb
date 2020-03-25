@@ -5,7 +5,6 @@ class AddressForm
   VALIDATE_NAME = /\A[a-zA-Z]*\z/.freeze
   VALIDATE_CITY = /\A[a-zA-Z]*\z/.freeze
   VALIDATE_COUNTRY = /\A[a-zA-Z]*\z/.freeze
-
   VALIDATE_ADDRESS = /\A[a-zA-Z0-9 \-\,]*\z/.freeze
   VALIDATE_ZIP = /\A[0-9\-]*\z/.freeze
   VALIDATE_PHONE = /\A\+[0-9]*\z/.freeze
@@ -21,7 +20,7 @@ class AddressForm
   attribute :zip, Integer
   attribute :country, String
   attribute :phone, String
-  attribute  :type_address, String
+  attribute  :type, String
 
   validates :first_name, :last_name, :address, :city, :zip, :country, :phone, presence: true
   validates :first_name, :last_name, length: { maximum: LENGTH_COMMON }, format: { with: VALIDATE_NAME}
@@ -37,10 +36,33 @@ class AddressForm
   end
 
   def create_or_update(current_instance)
-    if type_address == 'billing_address'
-      puts type_address
+    case type
+    when 'billing_address' then processing_billing_address(current_instance)
+    when 'shipping_address' then processing_shipping_address(current_instance)
     end
-
   end
 
+  def processing_billing_address(current_instance)
+   return  current_instance.billing_address.update_attributes(set_attributes) if current_instance.billing_address
+   current_instance.create_billing_address(set_attributes)
+  end
+
+  def processing_shipping_address(current_instance)
+    return  current_instance.shipping_address.update_attributes(set_attributes) if current_instance.shipping_address
+    current_instance.create_shipping_address(set_attributes)
+   end
+
+
+  private
+  def set_attributes
+    {
+    first_name: first_name,
+    last_name: last_name,
+    country: country,
+    city: city,
+    address: address,
+    zip: zip,
+    phone: phone
+  }
+  end
 end

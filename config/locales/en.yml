@@ -109,7 +109,7 @@ en:
     country: Country
     city: City
     zip: Zip
-    phone: Phone
+    phone: 'Phone +355 66 123 4567'
     button_save: Save
 
   notification:
