@@ -5,17 +5,12 @@ AllCops:
     - 'db/**/*'
     - 'tmp/*'
     - 'storage/*'
-    - 'config/**/*'
-    - 'bin/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'
-    - 'Gemfile'
-    - 'app/assets/*'
     - 'public/*'
-    - 'app/javascript/*'
-    - 'spec/spec_helper.rb'
-    - 'spec/rails_helper.rb'
     - 'coverage/*'
+    - bin/bundle
+    - config/initializers/devise.rb
 
 Style/Documentation:
   Enabled: false
@@ -33,7 +28,10 @@ Metrics/BlockLength:
 RSpec/MultipleExpectations:
   Max: 1
   Exclude:
-  - 'spec/features/*'
+  - 'spec/features/**/*'
 
 RSpec/ExampleLength:
   Max: 7
+
+Style/ClassAndModuleChildren:
+  Enabled: false

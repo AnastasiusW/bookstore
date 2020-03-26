@@ -3,7 +3,7 @@ RSpec.describe Author, type: :model do
     it { is_expected.to have_many(:books) }
   end
 
-  %w[firstname lastname].each do |field|
+  %w[first_name last_name].each do |field|
     it { is_expected.to validate_presence_of(field) }
   end
 end

@@ -8,6 +8,9 @@ en:
     logout: "Log Out"
     contact_us_email: "bookstore@shop.com"
     contact_us_phone: "(555)-555-5555"
+    login: Log in
+    sign_up: Sign up
+
 
   home:
     previous: "Previous"
@@ -59,3 +62,39 @@ en:
 
   cart_block:
     add_to_cart: Add to Cart
+
+  authentication:
+    login: Log in
+    sign_up: Sign up
+    or: or
+    email: Enter Email
+    password: Password
+    confirm_password: Confirm Password
+    remember: Remember me
+    have_account: "Don’t have an Account?"
+    forgot_password: Forgot password?
+    we_send: "We'll email you instructions on how to reset it"
+    enter_email: Enter Email
+    button_email: Email Instructions
+    cancel: Cancel
+    type_new_password: Set new password
+    label_password: Type a new Password
+    confirm_password: Confirm Password
+    change: Change
+    logout: Log Out
+    edit: Edit
+    waiting_confirmation: "Currently waiting confirmation for:"
+    leave_blank: "(leave blank if you don't want to change it)"
+    characters: "characters minimum"
+    we_need: "(we need your current password to confirm your changes)"
+    update: "Update"
+    cancel_account: Cancel my account
+    back_link: "Back"
+    button_to: "Cancel my account"
+    unhappy: "Unhappy?"
+
+  test_error:
+    email_error: Email has already been taken
+    password_error: Password is too short
+    password_confirmation_error: Password confirmation doesn't match Password
+    invalid_sign_in: Invalid Email or password.
