@@ -5,21 +5,12 @@ AllCops:
     - 'db/**/*'
     - 'tmp/*'
     - 'storage/*'
-    - 'config/credentials/*'
-    - 'config/initializers/*'
-    - 'config/webpack/*'
-    - 'config/locales/*'
-    - 'config/*'
-    - 'bin/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'
-    - 'Gemfile'
-    - 'app/assets/*'
     - 'public/*'
-    - 'app/javascript/*'
-    - 'spec/spec_helper.rb'
-    - 'spec/rails_helper.rb'
     - 'coverage/*'
+    - bin/bundle
+    - config/initializers/devise.rb
 
 Style/Documentation:
   Enabled: false
