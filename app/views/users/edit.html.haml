@@ -24,3 +24,9 @@
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('form_settings.shipping')
           = render 'addresses/address', address: @presenter.shipping, type: :shipping_address, method_type: @presenter.method_shipping_address
+    #privacy.tab-pane.fade{role: "tabpanel"}
+      .row.mb-60
+        = render 'users/email_partial'
+        = render 'users/password_partial'
+        = render 'users/remove_account'
+

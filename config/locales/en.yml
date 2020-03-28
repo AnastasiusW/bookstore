@@ -111,13 +111,29 @@ en:
     zip: Zip
     phone: 'Phone +355 66 123 4567'
     button_save: Save
+    email_edit: Email
+    email_button: Save
+    email_placeholder: Enter Email
+    password_edit: Password
+    password_old: Old Password
+    password_new: New Password
+    password_confirm: Confirm Password
+    password_button: Save
+    remove_account: Remove Account
+    remove_button: Please Remove My Account
+    agree_rule: I understand that all data will be lost
+
 
   notification:
     success:
       address:
         update: "%{type} address was updated successfully!"
+      settings:
+        update: 'Account was updated. Confirm mail'
 
 
     fail:
       address:
           update: "%{type} address was not updated successfully!"
+
+

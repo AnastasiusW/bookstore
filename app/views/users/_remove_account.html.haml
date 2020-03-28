@@ -1,0 +1,11 @@
+.col-sm-12
+    %p.in-gold-500.font-18.mb-25= t('form_settings.remove_account')
+    = simple_form_for(current_user, url: user_path, method: :delete) do |f|
+        .general-settings-btn
+            = f.button :submit, t('form_settings.remove_button'), class: 'btn mb-20', disabled: true, id: 'destroy_button'
+        .form-group.checkbox.general-settings-checkbox
+            %label.checkbox-label
+                %input.checkbox-input{type: "checkbox", hidden: "true", id: 'agree_checkbox'}
+                %span.checkbox-icon
+                    %i.fa.fa-check
+                %span.checkbox-text= t('form_settings.agree_rule')
