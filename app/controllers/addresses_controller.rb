@@ -2,7 +2,6 @@ class AddressesController < ApplicationController
 
     def create
         address_form = AddressForm.new(address_params)
-
         if address_form.save(current_user)
             flash[:notice] = t('notification.success.address.update', type: address_params[:type])
         else
@@ -13,9 +12,7 @@ class AddressesController < ApplicationController
 
 
     def update
-
         address_form = AddressForm.new(address_params)
-
         if address_form.save(current_user)
             flash[:notice] = t('notification.success.address.update', type: address_params[:type])
         else
