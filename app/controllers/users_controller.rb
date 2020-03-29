@@ -7,9 +7,12 @@ class UsersController < ApplicationController
 
     def update
         if  user_params[:current_password].present? ? current_user.update_with_password(user_params) : current_user.update(user_params)
-          redirect_to edit_user_path, notice: I18n.t('notification.success.settings.update')
+         # redirect_to edit_user_path, notice: I18n.t('notification.success.settings.update')
+         flash[:notice] = I18n.t('notification.success.settings.update')
+         redirect_to root_path
         else
-            render :edit
+           flash[:alert] = current_user.errors.full_messages.to_sentence
+           redirect_to edit_user_path(current_user)
         end
     end
 

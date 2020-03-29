@@ -3,7 +3,7 @@ class AddressForm
   include Virtus
 
   VALIDATE_NAME = /\A[a-zA-Z]*\z/.freeze
-  VALIDATE_CITY = /\A[a-zA-Z]*\z/.freeze
+  VALIDATE_CITY = /\A[a-zA-Z\s*]*\z/.freeze
   VALIDATE_COUNTRY = /\A[a-zA-Z]*\z/.freeze
   VALIDATE_ADDRESS = /\A[a-zA-Z0-9 \-\,]*\z/.freeze
   VALIDATE_ZIP = /\A[0-9\-]*\z/.freeze
