@@ -70,12 +70,6 @@ class AddressPrivacyPrism < SitePrism::Page
     button_save_password.click
   end
 
-
-
-
-
-
-
     def flash_success_message
       flash_success.text
     end
@@ -83,10 +77,5 @@ class AddressPrivacyPrism < SitePrism::Page
     def flash_fail_message
       flash_fail.text
     end
-
-
-
-
-
 
   end

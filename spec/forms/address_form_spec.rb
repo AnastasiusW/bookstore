@@ -14,7 +14,7 @@ RSpec.describe AddressForm, type: :model do
     context 'when input valid data' do
 
         let(:name_input) { 'Nastya' }
-        let(:city_input) { 'Dneptr' }
+        let(:city_input) { 'Dnepr' }
         let(:country_input) { 'UA' }
         let(:address_input) { 'Polya' }
         let(:zip_input) { '49000' }

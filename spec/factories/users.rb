@@ -11,4 +11,5 @@ FactoryBot.define do
       create(:address, type: ShippingAddress.name, addressable_type: User.name,addressable_id: user.id)
     end
   end
+
 end
