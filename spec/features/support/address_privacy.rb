@@ -31,6 +31,9 @@ class AddressPrivacyPrism < SitePrism::Page
 
   element :flash_success, '#flash_success_id'
   element :flash_fail, '#flash_fail_id'
+  elements :delete_account, '.checkbox-icon'
+  element :button_destroy, '#destroy_button'
+
 
 
   def fill_billing_form(filling_address)
@@ -55,20 +58,19 @@ class AddressPrivacyPrism < SitePrism::Page
     button_shipping.click
   end
 
-
   def change_email(new_email)
     input_email_change.set(new_email)
     button_save_email.click
   end
 
   def change_password(current_password, new_password)
-
     password_current_field.set(current_password)
-
     password_new_field.set(new_password)
     password_confirm_field.set(new_password)
     button_save_password.click
   end
+
+
 
 
 

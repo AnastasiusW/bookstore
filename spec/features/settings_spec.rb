@@ -79,6 +79,24 @@ describe 'Settings', type: :feature do
             expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.settings.password_update'))
 
             end
+        end
     end
+
+    describe 'when delete Account' do
+
+        context 'when user want delete account' do
+            before do
+                click_link(I18n.t('form_settings.privacy_tab'))
+            end
+            it 'click checkbox destroy' do
+                settings_page.delete_account.first.click
+                settings_page.button_destroy.click
+                expect(settings_page).to have_current_path(root_path)
+                expect(home_page.flash_success_message).to have_content( I18n.t('devise.registrations.destroyed'))
+                expect(User.count).to eq(0)
+            end
+        end
     end
+
+
 end
