@@ -24,37 +24,33 @@ class AddressPrivacyPrism < SitePrism::Page
 
   element :button_save_password, '#savePassword'
 
-
-
-  element :input_email_change,"input[name='user[email]']"
-  element :button_save_email,'#saveEmail'
+  element :input_email_change, "input[name='user[email]']"
+  element :button_save_email, '#saveEmail'
 
   element :flash_success, '#flash_success_id'
   element :flash_fail, '#flash_fail_id'
   elements :delete_account, '.checkbox-icon'
   element :button_destroy, '#destroy_button'
 
-
-
-  def fill_billing_form(filling_address)
-    billing_first_name.set(filling_address.first_name)
-    billing_last_name.set(filling_address.last_name)
-    billing_country_name.set(filling_address.country)
-    billing_city_name.set(filling_address.city)
-    billing_address_name.set(filling_address.address)
-    billing_zip_name.set(filling_address.zip)
-    billing_phone_name.set(filling_address.phone)
+  def fill_billing_form(address)
+    billing_first_name.set(address.first_name)
+    billing_last_name.set(address.last_name)
+    billing_country_name.set(address.country)
+    billing_city_name.set(address.city)
+    billing_address_name.set(address.address)
+    billing_zip_name.set(address.zip)
+    billing_phone_name.set(address.phone)
     button_billing.click
   end
 
-  def fill_shipping_form(filling_address)
-    shipping_first_name.set(filling_address.first_name)
-    shipping_last_name.set(filling_address.last_name)
-    shipping_country_name.set(filling_address.country)
-    shipping_city_name.set(filling_address.city)
-    shipping_address_name.set(filling_address.address)
-    shipping_zip_name.set(filling_address.zip)
-    shipping_phone_name.set(filling_address.phone)
+  def fill_shipping_form(address)
+    shipping_first_name.set(address.first_name)
+    shipping_last_name.set(address.last_name)
+    shipping_country_name.set(address.country)
+    shipping_city_name.set(address.city)
+    shipping_address_name.set(address.address)
+    shipping_zip_name.set(address.zip)
+    shipping_phone_name.set(address.phone)
     button_shipping.click
   end
 
@@ -70,12 +66,11 @@ class AddressPrivacyPrism < SitePrism::Page
     button_save_password.click
   end
 
-    def flash_success_message
-      flash_success.text
-    end
-
-    def flash_fail_message
-      flash_fail.text
-    end
-
+  def flash_success_message
+    flash_success.text
   end
+
+  def flash_fail_message
+    flash_fail.text
+  end
+end

@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook]
-  has_one :billing_address, class_name:"BillingAddress", as: :addressable, dependent: :destroy
-  has_one :shipping_address, class_name:"ShippingAddress", as: :addressable, dependent: :destroy
+  has_one :billing_address, class_name: 'BillingAddress', as: :addressable, dependent: :destroy
+  has_one :shipping_address, class_name: 'ShippingAddress', as: :addressable, dependent: :destroy
 
   # rubocop:disable Lint/AssignmentInCondition
   def self.new_with_session(params, session)
