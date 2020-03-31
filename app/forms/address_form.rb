@@ -1,6 +1,6 @@
 class AddressForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   VALIDATE_NAME = /\A[a-zA-Z]*\z/.freeze
   VALIDATE_CITY = /\A[a-zA-Z\s*]*\z/.freeze
