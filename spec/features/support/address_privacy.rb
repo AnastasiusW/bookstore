@@ -8,7 +8,6 @@ class AddressPrivacyPrism < SitePrism::Page
   element :billing_zip_name, "input[name='billing_address[zip]']"
   element :billing_phone_name, "input[name='billing_address[phone]']"
   element :button_billing, '#save-billing_address'
-
   element :shipping_first_name, "input[name='shipping_address[first_name]']"
   element :shipping_last_name, "input[name='shipping_address[last_name]']"
   element :shipping_country_name, "select[name='shipping_address[country]']"
@@ -17,16 +16,12 @@ class AddressPrivacyPrism < SitePrism::Page
   element :shipping_zip_name, "input[name='shipping_address[zip]']"
   element :shipping_phone_name, "input[name='shipping_address[phone]']"
   element :button_shipping, '#save-shipping_address'
-
   element :password_current_field, "input[name='user[current_password]']"
   element :password_new_field, "input[name='user[password]']"
   element :password_confirm_field, "input[name='user[password_confirmation]']"
-
   element :button_save_password, '#savePassword'
-
   element :input_email_change, "input[name='user[email]']"
   element :button_save_email, '#saveEmail'
-
   element :flash_success, '#flash_success_id'
   element :flash_fail, '#flash_fail_id'
   elements :delete_account, '.checkbox-icon'

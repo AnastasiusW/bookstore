@@ -1,6 +1,5 @@
 describe 'Settings', type: :feature do
   let(:user) { create(:user, :with_addresses) }
-
   let(:settings_page) { AddressPrivacyPrism.new }
   let(:home_page) { HomePage.new }
 
@@ -62,7 +61,6 @@ describe 'Settings', type: :feature do
 
     context 'when updating Password' do
       let(:new_password) { FFaker::Internet.password }
-
       let(:invalid_password) { '1' }
       let(:invalid_password_confirmation) { '2' }
 
