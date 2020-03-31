@@ -6,6 +6,10 @@ ruby '2.6.3'
 gem 'aasm', '~> 5.0', '>= 5.0.6'
 gem 'activeadmin', '~> 2.6'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+<<<<<<< HEAD
+=======
+gem 'country_select', '~> 4.0'
+>>>>>>> After global fix rubocop1
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'draper', '~> 3.1'
 gem 'ffaker', '~> 2.13'
@@ -22,13 +26,14 @@ gem 'pundit', '~> 2.1'
 gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'seedbank', '~> 0.5.0'
 gem 'shrine', '~> 3.2', '>= 3.2.1'
+<<<<<<< HEAD
 gem 'ffaker', '~> 2.13'
 gem 'draper', '~> 3.1'
 gem 'virtus'
+=======
+>>>>>>> After global fix rubocop1
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
-gem 'country_select', '~> 4.0'
-
-
+gem 'virtus'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
