@@ -11,10 +11,7 @@ AllCops:
     - 'coverage/*'
     - bin/bundle
     - config/initializers/devise.rb
-<<<<<<< HEAD
-=======
     - config/initializers/simple_form.rb
->>>>>>> After global fix rubocop1
 
 Style/Documentation:
   Enabled: false
