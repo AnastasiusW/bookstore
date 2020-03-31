@@ -11,8 +11,6 @@ en:
     login: Log in
     sign_up: Sign up
 
-
-
   home:
     previous: "Previous"
     next: "Next"
@@ -125,7 +123,6 @@ en:
     privacy_tab: Privacy
     address_tab: Address
 
-
   notification:
     success:
       address:
@@ -133,12 +130,8 @@ en:
       settings:
         update: 'Account was updated. If you changed the email you need to confirm by mail'
 
-
-
     fail:
       address:
           update: "%{type}  was not updated successfully!"
       settings:
         password_update: "Password is too short (minimum is 6 characters) and Current password is invalid"
-
-
