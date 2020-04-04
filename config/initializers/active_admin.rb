@@ -4,7 +4,11 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
+<<<<<<< HEAD
   config.site_title = 'Bookstore'
+=======
+  config.site_title = "Bookstore"
+>>>>>>> Install active_admin
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
