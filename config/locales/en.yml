@@ -140,3 +140,7 @@ en:
           error_one: "First name is invalid"
       settings:
         password_update: "Password is too short (minimum is 6 characters) and Current password is invalid"
+
+  admin:
+    authors:
+      confirmations: 'Are you sure you want to delete these item? They are associated with %{quantity} of books.'
