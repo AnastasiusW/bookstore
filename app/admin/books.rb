@@ -19,12 +19,31 @@ ActiveAdmin.register Book do
     actions
   end
 
+  index do
+    selectable_column
+    id_column
+    column :category
+    column :title
+    column :authors do |book|
+       book.authors_names
+    end
+    column :description do |book|
+      truncate(book.description, length: Presenters::Show::DESCRIPTION_LIMIT)
+    end
+    column :price do |book|
+      number_to_currency(book.price, unit: '€')
+    end
+    actions
+  end
+
   show do
     attributes_table do
       row :title
       row :description
       row :category
-      row :authors, &:authors_names
+      row :authors do |book|
+        book.authors_names
+     end
       row :price
       row :quantity
       row :width
