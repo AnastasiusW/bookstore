@@ -17,11 +17,11 @@ RSpec.describe Book, type: :model do
     end
 
     %w[width height depth].each do |field|
-      it { is_expected.to validate_numericality_of(field).is_greater_than(0) }
+      it { is_expected.to validate_numericality_of(field).is_greater_than_or_equal_to(1) }
     end
 
     it 'is valid with correct price' do
-      expect(current_book).to validate_numericality_of(:price).is_greater_than(0)
+      expect(current_book).to validate_numericality_of(:price).is_greater_than_or_equal_to(5)
     end
   end
 end
