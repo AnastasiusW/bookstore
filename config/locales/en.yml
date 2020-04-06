@@ -144,3 +144,9 @@ en:
   admin:
     authors:
       confirmations: 'Are you sure you want to delete these item? They are associated with %{quantity} of books.'
+      view: view
+      edit: edit
+    categories:
+      confirmations: 'Are you sure you want to delete these item? They are associated with %{quantity} of books.'
+      view: view
+      edit: edit
