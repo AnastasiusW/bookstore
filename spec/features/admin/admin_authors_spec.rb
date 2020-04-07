@@ -5,6 +5,7 @@ RSpec.describe 'Admin Authors' do
     let(:admin_authors_page) {AdminAuthorsPrism.new }
     let(:new_first_name) {FFaker::Name.first_name}
     let(:new_last_name) {FFaker::Name.last_name}
+    let(:new_biography) { FFaker::Lorem.paragraph}
     let(:author_new) {build(:author)}
 
     before do
@@ -28,8 +29,8 @@ RSpec.describe 'Admin Authors' do
 
       it 'when admin  edit the author' do
         click_link('Edit', match: :first)
-        expect(admin_authors_page).to have_current_path(edit_admin_author_path(Author.last))
-        admin_authors_page.edit_form( new_first_name, new_last_name)
+        expect(admin_authors_page).to have_current_path(edit_admin_author_path(author.id))
+        admin_authors_page.edit_form( new_first_name, new_last_name,new_biography)
 
         expect(admin_authors_page).to have_content(new_first_name)
         expect(admin_authors_page).to have_content(new_last_name)
