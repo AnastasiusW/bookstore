@@ -139,9 +139,11 @@ en:
   admin:
     authors:
       confirmations: 'Are you sure you want to delete these item? They are associated with %{quantity} of books.'
-      view: view
-      edit: edit
+      view: View
+      edit: Edit
     categories:
       confirmations: 'Are you sure you want to delete these item? They are associated with %{quantity} of books.'
-      view: view
-      edit: edit
+      view: View
+      edit: Edit
+    test:
+      destroy: "%{item} was successfully destroyed."
