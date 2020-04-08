@@ -26,7 +26,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/BlockLength:
   Max: 40
-  ExcludedMethods: ['describe','context']
+  ExcludedMethods: ['describe','context','ActiveAdmin.register']
 
 RSpec/MultipleExpectations:
   Max: 1
@@ -44,3 +44,11 @@ Metrics/AbcSize:
   Exclude:
   - 'spec/features/**/*'
   - 'app/controllers/user_addresses_controller.rb'
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/admin/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/features/**/*'
