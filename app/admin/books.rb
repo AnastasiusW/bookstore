@@ -1,22 +1,15 @@
 ActiveAdmin.register Book do
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-
   permit_params :title, :description, :price, :quantity,
-                 :width, :height, :depth, :year, :material, :category_id, author_ids: []
+                :width, :height, :depth, :year, :material, :category_id, author_ids: []
 
   decorate_with BookDecorator
-
 
   index do
     selectable_column
     id_column
     column :category
     column :title
-    column :authors do |book|
-       book.authors_names
-    end
+    column :authors, &:authors_names
     column :description do |book|
       truncate(book.description, length: Presenters::Show::DESCRIPTION_LIMIT)
     end
@@ -31,9 +24,7 @@ ActiveAdmin.register Book do
       row :title
       row :description
       row :category
-      row :authors do |book|
-        book.authors_names
-     end
+      row :authors, &:authors_names
       row :price
       row :quantity
       row :width
@@ -45,7 +36,6 @@ ActiveAdmin.register Book do
       row :updated_at
     end
   end
-
 
   form do |f|
     f.inputs do
@@ -62,6 +52,4 @@ ActiveAdmin.register Book do
     end
     f.actions
   end
-
-
 end
