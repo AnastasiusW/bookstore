@@ -47,7 +47,7 @@ describe 'Settings', type: :feature do
 
   describe 'when choose Privacy tab' do
     before do
-      click_link(I18n.t('form_settings.privacy_tab'))
+      click_link(I18n.t('settings_form.privacy_tab'))
     end
 
     context 'when updating Email' do
@@ -80,7 +80,7 @@ describe 'Settings', type: :feature do
   describe 'when delete Account' do
     context 'when user want delete account' do
       before do
-        click_link(I18n.t('form_settings.privacy_tab'))
+        click_link(I18n.t('settings_form.privacy_tab'))
       end
 
       it 'click checkbox destroy' do

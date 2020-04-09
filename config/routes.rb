@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :books
-  resources :addresses, only: %i[create update]
+  resources :user_addresses, only: %i[create update]
+  #resources :addresses, only: %i[create update]
   resources :users, only: %i[update edit destroy show]
+
+
 end

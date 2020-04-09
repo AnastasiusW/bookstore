@@ -38,34 +38,20 @@ class AddressForm
 
   def create_or_update(current_instance)
     case type
-    when 'billing_address' then processing_billing_address(current_instance)
-    when 'shipping_address' then processing_shipping_address(current_instance)
+    when 'billing_address' then process_billing_address(current_instance)
+    when 'shipping_address' then process_shipping_address(current_instance)
     end
   end
 
-  def processing_billing_address(current_instance)
-    return current_instance.billing_address.update_attributes(set_attributes) if current_instance.billing_address
+  def process_billing_address(current_instance)
+    return current_instance.billing_address.update_attributes(self.attributes.except(:type)) if current_instance.billing_address
 
-    current_instance.create_billing_address(set_attributes)
+    current_instance.create_billing_address(self.attributes.except(:type))
   end
 
-  def processing_shipping_address(current_instance)
-    return current_instance.shipping_address.update_attributes(set_attributes) if current_instance.shipping_address
+  def process_shipping_address(current_instance)
+    return current_instance.shipping_address.update_attributes(self.attributes.except(:type)) if current_instance.shipping_address
 
-    current_instance.create_shipping_address(set_attributes)
-  end
-
-  private
-
-  def set_attributes
-    {
-      first_name: first_name,
-      last_name: last_name,
-      country: country,
-      city: city,
-      address: address,
-      zip: zip,
-      phone: phone
-    }
+    current_instance.create_shipping_address(self.attributes.except(:type))
   end
 end

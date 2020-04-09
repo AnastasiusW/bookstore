@@ -98,9 +98,11 @@ en:
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
 
-  form_settings:
+  settings_form:
     billing: Billing Address
     shipping: Shipping Address
+    privacy_tab: Privacy
+    address_tab: Address
     first_name: First Name
     last_name: Last Name
     address: Address
@@ -108,20 +110,22 @@ en:
     city: City
     zip: Zip
     phone: 'Phone +355661234567'
-    button_save: Save
-    email_edit: Email
-    email_button: Save
-    email_placeholder: Enter Email
-    password_edit: Password
-    password_old: Old Password
-    password_new: New Password
-    password_confirm: Confirm Password
-    password_button: Save
-    remove_account: Remove Account
-    remove_button: Please Remove My Account
-    agree_rule: I understand that all data will be lost
-    privacy_tab: Privacy
-    address_tab: Address
+    buttons:
+      button_save: Save
+      email_button: Save
+      password_button: Save
+      remove_button: Please Remove My Account
+      agree_rule: I understand that all data will be lost
+    email:
+      email_edit: Email
+      email_placeholder: Enter Email
+    password:
+      password_edit: Password
+      password_old: Old Password
+      password_new: New Password
+      password_confirm: Confirm Password
+    account:
+      remove_account: Remove Account
 
   notification:
     success:

@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    updata_info = Services::Users::UpdateService.new(current_user: current_user, user_params: user_params)
-    choose_strategy(updata_info)
+    service = Services::Users::Update.new(current_user: current_user, user_params: user_params)
+    process_user(service)
   end
 
   def destroy
@@ -20,8 +20,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
   end
 
-  def choose_strategy(updata_info)
-    if updata_info.update_success?
+  def process_user(service)
+    if service.success?
       flash[:notice] = I18n.t('notification.success.settings.update')
       redirect_to root_path
     else
