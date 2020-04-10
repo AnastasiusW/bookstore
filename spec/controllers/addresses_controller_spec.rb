@@ -1,4 +1,4 @@
-RSpec.describe AddressesController, type: :controller do
+RSpec.describe UserAddressesController, type: :controller do
   let(:user) { create(:user, :with_addresses) }
 
   before do

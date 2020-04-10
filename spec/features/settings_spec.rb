@@ -11,8 +11,16 @@ describe 'Settings', type: :feature do
 
   describe 'when choose Address tab' do
     let(:valid_address_data) { build(:address) }
+    let(:invalid_address_data) {build(:address,
+                                      first_name:'11',
+                                      last_name:'11',
+                                      city:'11',
+                                      country: '11',
+                                      address:'',
+                                      zip: 'aa',
+                                       phone: 'aa')}
 
-    context 'when billing address ' do
+    context 'when user already have billing address ' do
       it 'when billiing address already exists' do
         expect(settings_page.billing_first_name.value).to eq(user.billing_address.first_name)
         expect(settings_page.billing_last_name.value).to eq(user.billing_address.last_name)
@@ -23,9 +31,35 @@ describe 'Settings', type: :feature do
       end
 
       it 'when updates users billing data with valid data  ' do
-        settings_page.fill_billing_form(valid_address_data)
+        settings_page.fill_in_billing_address_form(valid_address_data)
         expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'billing_address'))
       end
+
+      it 'when updates users billing data with invalid data  ' do
+        settings_page.fill_in_billing_address_form(invalid_address_data)
+        expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
+      end
+    end
+    context 'when user have not billing address' do
+      let(:user) { create(:user) }
+      let(:empty_field) { '' }
+
+        it 'when billiing address not exists' do
+          expect(settings_page.billing_first_name.value).to eq(empty_field)
+          expect(settings_page.billing_last_name.value).to eq(empty_field)
+          expect(settings_page.billing_city_name.value).to eq(empty_field)
+          expect(settings_page.billing_phone_name.value).to eq(empty_field)
+        end
+
+        it 'when create new billing address with valid date' do
+          settings_page.fill_in_billing_address_form(valid_address_data)
+          expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'billing_address'))
+        end
+
+        it 'when create new billing address with invalid date' do
+          settings_page.fill_in_billing_address_form(invalid_address_data)
+          expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
+        end
     end
 
     context 'when shipping address ' do
@@ -38,10 +72,37 @@ describe 'Settings', type: :feature do
         expect(settings_page.shipping_phone_name.value).to eq(user.shipping_address.phone)
       end
 
-      it 'when updates users billing data with valid data  ' do
-        settings_page.fill_shipping_form(valid_address_data)
+      it 'when updates users shipping data with valid data  ' do
+        settings_page.fill_in_shipping_address_form(valid_address_data)
         expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'shipping_address'))
       end
+
+      it 'when updates users shipping data with invalid data  ' do
+        settings_page.fill_in_shipping_address_form(invalid_address_data)
+        expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
+      end
+    end
+
+    context 'when user have not shipping address' do
+      let(:user) { create(:user) }
+      let(:empty_field) { '' }
+
+      it 'when shippiing address not exists' do
+        expect(settings_page.shipping_first_name.value).to eq(empty_field)
+        expect(settings_page.shipping_last_name.value).to eq(empty_field)
+        expect(settings_page.shipping_city_name.value).to eq(empty_field)
+        expect(settings_page.shipping_phone_name.value).to eq(empty_field)
+      end
+      it 'when create new shipping address with valid date  ' do
+        settings_page.fill_in_shipping_address_form(valid_address_data)
+        expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'shipping_address'))
+      end
+
+      it 'when create new shipping data with invalid data  ' do
+        settings_page.fill_in_shipping_address_form(invalid_address_data)
+        expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
+      end
+
     end
   end
 

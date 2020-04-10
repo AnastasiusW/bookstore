@@ -27,7 +27,7 @@ class AddressPrivacyPrism < SitePrism::Page
   elements :delete_account, '.checkbox-icon'
   element :button_destroy, '#destroy_button'
 
-  def fill_billing_form(address)
+  def fill_in_billing_address_form(address)
     billing_first_name.set(address.first_name)
     billing_last_name.set(address.last_name)
     billing_country_name.set(address.country)
@@ -38,7 +38,7 @@ class AddressPrivacyPrism < SitePrism::Page
     button_billing.click
   end
 
-  def fill_shipping_form(address)
+  def fill_in_shipping_address_form(address)
     shipping_first_name.set(address.first_name)
     shipping_last_name.set(address.last_name)
     shipping_country_name.set(address.country)
