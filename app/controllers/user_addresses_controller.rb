@@ -1,5 +1,4 @@
 class UserAddressesController < ApplicationController
-
   def create
     process_address
   end

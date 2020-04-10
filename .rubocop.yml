@@ -43,3 +43,4 @@ Style/ClassAndModuleChildren:
 Metrics/AbcSize:
   Exclude:
   - 'spec/features/**/*'
+  - 'app/controllers/user_addresses_controller.rb'

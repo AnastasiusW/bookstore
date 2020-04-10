@@ -44,14 +44,26 @@ class AddressForm
   end
 
   def process_billing_address(current_instance)
-    return current_instance.billing_address.update_attributes(self.attributes.except(:type)) if current_instance.billing_address
-
-    current_instance.create_billing_address(self.attributes.except(:type))
+    if billing_address_exists?(current_instance)
+      current_instance.billing_address.update_attributes(attributes.except(:type))
+    else
+      current_instance.create_billing_address(attributes.except(:type))
+    end
   end
 
   def process_shipping_address(current_instance)
-    return current_instance.shipping_address.update_attributes(self.attributes.except(:type)) if current_instance.shipping_address
+    if shipping_address_exists?(current_instance)
+      current_instance.shipping_address.update_attributes(attributes.except(:type))
+    else
+      current_instance.create_shipping_address(attributes.except(:type))
+    end
+  end
 
-    current_instance.create_shipping_address(self.attributes.except(:type))
+  def billing_address_exists?(current_instance)
+    current_instance.billing_address
+  end
+
+  def shipping_address_exists?(current_instance)
+    current_instance.shipping_address
   end
 end

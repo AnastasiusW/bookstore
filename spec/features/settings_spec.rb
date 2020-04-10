@@ -11,14 +11,16 @@ describe 'Settings', type: :feature do
 
   describe 'when choose Address tab' do
     let(:valid_address_data) { build(:address) }
-    let(:invalid_address_data) {build(:address,
-                                      first_name:'11',
-                                      last_name:'11',
-                                      city:'11',
-                                      country: '11',
-                                      address:'',
-                                      zip: 'aa',
-                                       phone: 'aa')}
+    let(:invalid_address_data) do
+      build(:address,
+            first_name: '11',
+            last_name: '11',
+            city: '11',
+            country: '11',
+            address: '',
+            zip: 'aa',
+            phone: 'aa')
+    end
 
     context 'when user already have billing address ' do
       it 'when billiing address already exists' do
@@ -40,26 +42,27 @@ describe 'Settings', type: :feature do
         expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
       end
     end
+
     context 'when user have not billing address' do
       let(:user) { create(:user) }
       let(:empty_field) { '' }
 
-        it 'when billiing address not exists' do
-          expect(settings_page.billing_first_name.value).to eq(empty_field)
-          expect(settings_page.billing_last_name.value).to eq(empty_field)
-          expect(settings_page.billing_city_name.value).to eq(empty_field)
-          expect(settings_page.billing_phone_name.value).to eq(empty_field)
-        end
+      it 'when billiing address not exists' do
+        expect(settings_page.billing_first_name.value).to eq(empty_field)
+        expect(settings_page.billing_last_name.value).to eq(empty_field)
+        expect(settings_page.billing_city_name.value).to eq(empty_field)
+        expect(settings_page.billing_phone_name.value).to eq(empty_field)
+      end
 
-        it 'when create new billing address with valid date' do
-          settings_page.fill_in_billing_address_form(valid_address_data)
-          expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'billing_address'))
-        end
+      it 'when create new billing address with valid date' do
+        settings_page.fill_in_billing_address_form(valid_address_data)
+        expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'billing_address'))
+      end
 
-        it 'when create new billing address with invalid date' do
-          settings_page.fill_in_billing_address_form(invalid_address_data)
-          expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
-        end
+      it 'when create new billing address with invalid date' do
+        settings_page.fill_in_billing_address_form(invalid_address_data)
+        expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
+      end
     end
 
     context 'when shipping address ' do
@@ -93,6 +96,7 @@ describe 'Settings', type: :feature do
         expect(settings_page.shipping_city_name.value).to eq(empty_field)
         expect(settings_page.shipping_phone_name.value).to eq(empty_field)
       end
+
       it 'when create new shipping address with valid date  ' do
         settings_page.fill_in_shipping_address_form(valid_address_data)
         expect(settings_page.flash_success_message).to have_content(I18n.t('notification.success.address.update', type: 'shipping_address'))
@@ -102,7 +106,6 @@ describe 'Settings', type: :feature do
         settings_page.fill_in_shipping_address_form(invalid_address_data)
         expect(settings_page.flash_fail_message).to have_content(I18n.t('notification.fail.address.error_one'))
       end
-
     end
   end
 
