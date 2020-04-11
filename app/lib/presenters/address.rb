@@ -13,15 +13,11 @@ module Presenters
     end
 
     def method_billing_address
-      return :patch if @current_user.billing_address
-
-      :post
+      @current_user.billing_address ? :patch : :post
     end
 
     def method_shipping_address
-      return :patch if @current_user.shipping_address
-
-      :post
+      @current_user.shipping_address ? :patch : :post
     end
   end
 end
