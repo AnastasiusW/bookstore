@@ -43,12 +43,7 @@ Style/ClassAndModuleChildren:
 Metrics/AbcSize:
   Exclude:
   - 'spec/features/**/*'
-<<<<<<< HEAD
   - 'app/controllers/user_addresses_controller.rb'
-<<<<<<< HEAD
-=======
-=======
->>>>>>> After fix rubocop1
 
 RSpec/DescribeClass:
   Exclude:
@@ -57,7 +52,3 @@ RSpec/DescribeClass:
 Metrics/MethodLength:
   Exclude:
     - 'spec/features/**/*'
-<<<<<<< HEAD
->>>>>>> After fix rubocop1
-=======
->>>>>>> After fix rubocop1
