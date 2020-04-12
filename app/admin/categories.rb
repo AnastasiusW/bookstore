@@ -1,6 +1,5 @@
 ActiveAdmin.register Category do
   permit_params :title
-  # config.remove_action_item(:destroy)
 
   index do
     selectable_column

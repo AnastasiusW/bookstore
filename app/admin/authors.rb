@@ -1,8 +1,6 @@
 ActiveAdmin.register Author do
-  # actions :all, except: :destroy
   permit_params :first_name, :last_name, :biography
   remove_filter :authors_books
-  # config.remove_action_item(:destroy)
 
   index do
     selectable_column

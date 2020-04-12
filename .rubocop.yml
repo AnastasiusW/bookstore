@@ -53,4 +53,3 @@ RSpec/DescribeClass:
 Metrics/MethodLength:
   Exclude:
     - 'spec/features/**/*'
-
