@@ -51,7 +51,11 @@ describe 'Settings', type: :feature do
         expect(settings_page.billing_first_name.value).to eq(empty_field)
         expect(settings_page.billing_last_name.value).to eq(empty_field)
         expect(settings_page.billing_city_name.value).to eq(empty_field)
+        expect(settings_page.billing_country_name.value).to eq('AF')
+        expect(settings_page.billing_address_name.value).to eq(empty_field)
+        expect(settings_page.billing_zip_name.value).to eq(empty_field)
         expect(settings_page.billing_phone_name.value).to eq(empty_field)
+
       end
 
       it 'when create new billing address with valid date' do
@@ -94,6 +98,9 @@ describe 'Settings', type: :feature do
         expect(settings_page.shipping_first_name.value).to eq(empty_field)
         expect(settings_page.shipping_last_name.value).to eq(empty_field)
         expect(settings_page.shipping_city_name.value).to eq(empty_field)
+        expect(settings_page.shipping_country_name.value).to eq('AF')
+        expect(settings_page.shipping_address_name.value).to eq(empty_field)
+        expect(settings_page.shipping_zip_name.value).to eq(empty_field)
         expect(settings_page.shipping_phone_name.value).to eq(empty_field)
       end
 

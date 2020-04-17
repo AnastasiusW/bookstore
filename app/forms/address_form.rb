@@ -30,40 +30,51 @@ class AddressForm
   validates :zip, length: { maximum: LENGTH_ZIP }, format: { with: VALIDATE_ZIP }
   validates :phone, length: { maximum: LENGTH_PHONE }, format: { with: VALIDATE_PHONE }
 
-  def save(current_instance)
+  def initialize(params:, current_instance:)
+    super(params)
+    @current_instance = current_instance
+  end
+
+  def save
     return false unless valid?
 
-    create_or_update(current_instance)
+    create_or_update
   end
 
-  def create_or_update(current_instance)
+  private
+
+  def create_or_update
     case type
-    when 'billing_address' then process_billing_address(current_instance)
-    when 'shipping_address' then process_shipping_address(current_instance)
+    when 'billing_address' then process_billing_address
+    when 'shipping_address' then process_shipping_address
     end
   end
 
-  def process_billing_address(current_instance)
-    if billing_address_exists?(current_instance)
-      current_instance.billing_address.update_attributes(attributes.except(:type))
+  def process_billing_address
+    if billing_address_exists?
+      @current_instance.billing_address.update_attributes(address_attrs)
     else
-      current_instance.create_billing_address(attributes.except(:type))
+      @current_instance.create_billing_address(address_attrs)
     end
   end
 
-  def process_shipping_address(current_instance)
-    if shipping_address_exists?(current_instance)
-      current_instance.shipping_address.update_attributes(attributes.except(:type))
+  def process_shipping_address
+    if shipping_address_exists?
+      @current_instance.shipping_address.update_attributes(address_attrs)
     else
-      current_instance.create_shipping_address(attributes.except(:type))
+      @current_instance.create_shipping_address(address_attrs)
     end
   end
 
-  def billing_address_exists?(current_instance)
-    current_instance.billing_address
+  def billing_address_exists?
+    @current_instance.billing_address
   end
 
-  def shipping_address_exists?(current_instance)
-    current_instance.shipping_address
+  def shipping_address_exists?
+    @current_instance.shipping_address
+  end
+
+  def address_attrs
+    attributes.except(:type)
   end
 end
