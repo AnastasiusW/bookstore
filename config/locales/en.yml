@@ -133,6 +133,8 @@ en:
         update: "%{type} was updated successfully!"
       settings:
         update: 'Account was updated. If you changed the email you need to confirm by mail'
+      reviews:
+        create: 'Thanks for Review. It will be published as soon as Admin will approve it'
 
     fail:
       address:

@@ -23,25 +23,7 @@
                 = render partial: 'books/show/add_to_cart_form'
             = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
     .mb-80
-        %h3= t(' review_block.write_a_review')
-        %p.general-info-text= t('review_block.score')
-        .mb-15
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-        %form.row
-            .col-md-8
-                .mb-40
-                    .form-group
-                        %label.control-label.input-label.in-grey-600{for: "title"}= t('review_block.title')
-                        %input#title.form-control{name:"title", type: "text"}
-                    .form-group
-                        %label.control-label.input-label.in-grey-600{for: "review"} Review
-                        %textarea#review.form-control{name:"review", type: "text"}
-                .text-right
-                    %button.btn.disabled.mb-20= t('review_block.post')
+        = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
         %h3.in-gold-500.mb-25 Reviews (3)
         .general-message-wrap.divider-lg
