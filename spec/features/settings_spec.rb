@@ -55,7 +55,6 @@ describe 'Settings', type: :feature do
         expect(settings_page.billing_address_name.value).to eq(empty_field)
         expect(settings_page.billing_zip_name.value).to eq(empty_field)
         expect(settings_page.billing_phone_name.value).to eq(empty_field)
-
       end
 
       it 'when create new billing address with valid date' do

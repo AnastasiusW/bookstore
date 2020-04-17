@@ -33,6 +33,7 @@ RSpec/MultipleExpectations:
   Exclude:
   - 'spec/features/**/*'
   - 'spec/controllers/**/*'
+  - 'spec/forms/address_form_spec.rb'
 
 RSpec/ExampleLength:
   Max: 7

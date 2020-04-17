@@ -1,5 +1,6 @@
 class UserAddressesController < ApplicationController
   before_action :authenticate_user!
+
   def create
     process_address
   end
@@ -23,7 +24,7 @@ class UserAddressesController < ApplicationController
   end
 
   def process_address
-    address_form = AddressForm.new(params:address_params, current_instance: current_user)
+    address_form = AddressForm.new(params: address_params, current_instance: current_user)
     if address_form.save
       flash[:notice] = t('notification.success.address.update', type: address_params[:type])
     else
