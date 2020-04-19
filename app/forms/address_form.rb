@@ -52,7 +52,7 @@ class AddressForm
 
   def process_billing_address
     if billing_address_exists?
-      @current_instance.billing_address.update_attributes(address_attrs)
+      @current_instance.billing_address.update(address_attrs)
     else
       @current_instance.create_billing_address(address_attrs)
     end
@@ -60,7 +60,7 @@ class AddressForm
 
   def process_shipping_address
     if shipping_address_exists?
-      @current_instance.shipping_address.update_attributes(address_attrs)
+      @current_instance.shipping_address.update(address_attrs)
     else
       @current_instance.create_shipping_address(address_attrs)
     end
