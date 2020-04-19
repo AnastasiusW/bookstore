@@ -11,7 +11,7 @@ ActiveAdmin.register Book do
     column :title
     column :authors, &:authors_names
     column :description do |book|
-      truncate(book.description, length: Presenters::Show::DESCRIPTION_LIMIT)
+      truncate(book.description, length: Presenters::Books::Show::DESCRIPTION_LIMIT)
     end
     column :price do |book|
       number_to_currency(book.price, unit: '€')

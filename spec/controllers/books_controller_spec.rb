@@ -7,7 +7,7 @@ RSpec.describe BooksController, type: :controller do
 
     it 'assigns to be a Presenter::Books' do
       get :index
-      expect(assigns(:presenter)).to be_a(Presenters::Books)
+      expect(assigns(:presenter)).to be_a(Presenters::Books::Index)
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe BooksController, type: :controller do
 
     it 'assigns  to be a Presenter::Show' do
       get :show, params: { id: book.id }
-      expect(assigns(:presenter_book)).to be_a(Presenters::Show)
+      expect(assigns(:presenter_book)).to be_a(Presenters::Books::Show)
     end
   end
 end
