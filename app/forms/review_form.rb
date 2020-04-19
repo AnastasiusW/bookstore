@@ -22,10 +22,7 @@ class ReviewForm
 
     def save
         return false unless valid?
-
-        binding.pry
-        return true
-       # Review.create(attributes)
+        Review.create(attributes)
     end
 
 end

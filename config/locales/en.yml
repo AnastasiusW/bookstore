@@ -51,7 +51,7 @@ en:
     score: Score
     title: Title
     review: Rewiew
-    reviews: Reviews
+    reviews: "Reviews (%{count})"
     some_1: 'If Get a better job had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.'
     label_verify: Verified Reviewer
     some_name: Rita J. Lewis

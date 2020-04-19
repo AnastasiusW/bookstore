@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   def show
     book = Book.find(book_params[:id]).decorate
     @presenter_book = Presenters::Books::Show.new(current_book: book)
+    @presenter_review = Presenters::Review.new(current_book: book)
   end
 
   private

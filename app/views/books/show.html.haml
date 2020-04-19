@@ -25,7 +25,8 @@
     .mb-80
         = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
-        %h3.in-gold-500.mb-25 Reviews (3)
+        = render parial: 'book/show/reviews', locals: {presenter_review: @presenter_review}
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: presenter_review.count_review)
         .general-message-wrap.divider-lg
             .clearfix
                 %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
