@@ -4,7 +4,7 @@ MATERIALS = ['Faux leather', 'Paperback', 'Fabric binding', 'Glossy paper'].free
 FactoryBot.define do
   factory :book do
     title { FFaker::Book.unique.title }
-    description { FFaker::Book.description(rand(7..10)) }
+    description { FFaker::Book.description(rand(10..15)) }
     price { rand(5.0..500.00) }
     quantity { rand(0..10) }
     width { rand(DIMENSION).floor(2) }

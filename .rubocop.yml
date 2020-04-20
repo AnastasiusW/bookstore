@@ -11,12 +11,15 @@ AllCops:
     - 'coverage/*'
     - bin/bundle
     - config/initializers/devise.rb
+    - config/initializers/simple_form.rb
 
 Style/Documentation:
   Enabled: false
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'spec/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -29,9 +32,16 @@ RSpec/MultipleExpectations:
   Max: 1
   Exclude:
   - 'spec/features/**/*'
+  - 'spec/controllers/**/*'
+  - 'spec/forms/address_form_spec.rb'
 
 RSpec/ExampleLength:
   Max: 7
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+  - 'spec/features/**/*'
+  - 'app/controllers/user_addresses_controller.rb'

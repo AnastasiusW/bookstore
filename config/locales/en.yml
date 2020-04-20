@@ -11,7 +11,6 @@ en:
     login: Log in
     sign_up: Sign up
 
-
   home:
     previous: "Previous"
     next: "Next"
@@ -98,3 +97,46 @@ en:
     password_error: Password is too short
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
+
+  settings_form:
+    billing: Billing Address
+    shipping: Shipping Address
+    privacy_tab: Privacy
+    address_tab: Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: 'Phone +355661234567'
+    buttons:
+      button_save: Save
+      email_button: Save
+      password_button: Save
+      remove_button: Please Remove My Account
+      agree_rule: I understand that all data will be lost
+    email:
+      email_edit: Email
+      email_placeholder: Enter Email
+    password:
+      password_edit: Password
+      password_old: Old Password
+      password_new: New Password
+      password_confirm: Confirm Password
+    account:
+      remove_account: Remove Account
+
+  notification:
+    success:
+      address:
+        update: "%{type} was updated successfully!"
+      settings:
+        update: 'Account was updated. If you changed the email you need to confirm by mail'
+
+    fail:
+      address:
+          update: "%{type}  was not updated successfully!"
+          error_one: "First name is invalid"
+      settings:
+        password_update: "Password is too short (minimum is 6 characters) and Current password is invalid"
