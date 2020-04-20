@@ -25,37 +25,5 @@
     .mb-80
         = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
-        = render parial: 'book/show/reviews', locals: {presenter_review: @presenter_review}
-        %h3.in-gold-500.mb-25= t('review_block.reviews', count: presenter_review.count_review)
-        .general-message-wrap.divider-lg
-            .clearfix
-                %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-                .ml-70
-                    %div
-                        .general-message-date.hidden-xs= t('review_block.date')
-                        .max-240
-                            .general-message-verified= t('review_block.label_verify')
-                            .general-message-name= t('review_block.some_name')
-                .mb-15
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                %p= t('review_block.some_2')
-        .general-message-wrap.divider-lg
-            .clearfix
-                %span.img-circle.logo-size.inlide-block.pull-left.logo-empty M
-                .ml-70
-                    %div
-                        .general-message-date.hidden-xs= t('review_block.date')
-                        .max-240
-                            .general-message-verified.pull-right= t('review_block.label_verify')
-                            .general-message-name= t('review_block.some_name')
-                    .mb-15
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star.rate-empty
-                    %p= t('review_block.some_1')
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_review.count_review)
+        = render partial: 'books/show/reviews', collection: @presenter_review.reviews, :as => :presenter_review

@@ -3,6 +3,7 @@ module Presenters
       RATING_COUNT = 5
       def initialize(current_book:)
         @book = current_book
+
       end
 
       def count_review
@@ -10,7 +11,7 @@ module Presenters
       end
 
       def reviews
-        @book.reviews.all
+        ReviewDecorator.decorate_collection(@book.reviews.all)
       end
 
       def display_stars

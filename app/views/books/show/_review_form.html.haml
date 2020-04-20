@@ -1,4 +1,4 @@
-%h3= t('review_block.write_a_review',count:presenter_review.count_review)
+
 .row
     .col-md-8
         = simple_form_for(presenter_book.book.reviews.build, url: reviews_path, method: :post,
