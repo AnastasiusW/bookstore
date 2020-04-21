@@ -6,12 +6,13 @@ module Presenters
 
       end
 
-      def count_review
+      def count_reviews
         @book.reviews.count
       end
 
       def reviews
-        ReviewDecorator.decorate_collection(@book.reviews.all)
+
+        ReviewDecorator.decorate_collection(@book.reviews.approved.all)
       end
 
       def display_stars

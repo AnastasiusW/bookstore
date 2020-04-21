@@ -93,6 +93,7 @@ en:
     password_error: Password is too short
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
+    review_errors: Title is invalid, Comment is invalid
 
   settings_form:
     billing: Billing Address

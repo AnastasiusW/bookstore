@@ -23,7 +23,8 @@
                 = render partial: 'books/show/add_to_cart_form'
             = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
     .mb-80
-        = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
+        - if user_signed_in?
+            = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
-        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_review.count_review)
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_review.count_reviews)
         = render partial: 'books/show/reviews', collection: @presenter_review.reviews, :as => :presenter_review
