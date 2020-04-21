@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+    before_action :authenticate_user!
 def create
     review_form = ReviewForm.new(review_params)
     if review_form.save

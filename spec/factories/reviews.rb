@@ -3,5 +3,7 @@ FactoryBot.define do
       title { FFaker::Lorem.word }
       comment { FFaker::Lorem.paragraph }
       rating { rand(1..5) }
+      user
+      book
     end
   end

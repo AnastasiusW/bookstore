@@ -155,4 +155,7 @@ en:
       approved: Approved
       rejected: Rejected
       show: show
+      status:
+        approved: "Status changed to approved!"
+        rejected: "Status changed to rejected!"
 
