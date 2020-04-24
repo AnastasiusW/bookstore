@@ -1,5 +1,5 @@
 FactoryBot.define do
-    factory :order do
-        user { create(:user) }
-    end
+  factory :order do
+    user { create(:user) }
+  end
 end

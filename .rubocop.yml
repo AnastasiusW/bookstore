@@ -34,6 +34,7 @@ RSpec/MultipleExpectations:
   - 'spec/features/**/*'
   - 'spec/controllers/**/*'
   - 'spec/forms/address_form_spec.rb'
+  - 'spec/forms/review_form_spec.rb'
 
 RSpec/ExampleLength:
   Max: 7
@@ -53,3 +54,7 @@ RSpec/DescribeClass:
 Metrics/MethodLength:
   Exclude:
     - 'spec/features/**/*'
+
+RSpec/NestedGroups:
+  Exclude:
+    - 'spec/features/admin/admin_order_spec.rb'

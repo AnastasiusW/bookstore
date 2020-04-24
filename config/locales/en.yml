@@ -139,6 +139,10 @@ en:
           error_one: "First name is invalid"
       settings:
         password_update: "Password is too short (minimum is 6 characters) and Current password is invalid"
+      reviews:
+        tests:
+          fails: "Title can't be blank, Comment can't be blank, Rating can't be blank, Rating is not a number"
+
 
   admin:
     authors:
