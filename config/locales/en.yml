@@ -163,8 +163,8 @@ en:
       status:
         in_delivery: In delivery
         delivered: Delivered
-        cancel: Cancel
-      fail : Cannot find record!
+        canceled: Cancel
+      fail : Cannot change state!
       success: Status was changed!
 
 

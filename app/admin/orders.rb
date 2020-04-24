@@ -25,39 +25,40 @@ ActiveAdmin.register Order do
       end
 
       action_item :cancel, only: :show do
-        link_to t('admin.orders.status.cancel'), cancel_admin_order_path, method: :put
+        link_to t('admin.orders.status.canceled'), canceled_admin_order_path, method: :put
       end
 
       member_action :in_delivery, method: :put do
         #order = Order.in_queue.where(id: params[:id])
-        if Order.find(params[:id]).in_queue?
-            order = Order.in_queue.find(params[:id])
+        order = Order.find(params[:id])
+        if order.in_queue?
             order.in_delivery!
             flash[:notice] = I18n.t('admin.orders.success')
-            redirect_to admin_order_path(order)
         else
             flash[:alert] = I18n.t('admin.orders.fail')
         end
-        redirect_to admin_orders_path
+        redirect_to admin_order_path(order)
       end
 
       member_action :delivered, method: :put do
        # order = Order.in_delivery.where(id: params[:id])
-        if Order.find(params[:id]).in_delivery?
-            order = Order.in_delivery.find(params[:id])
+      # order = Order.find(params[:id]).in_delivery?
+      order = Order.find(params[:id])
+        if order.in_delivery?
+           # order = Order.in_delivery.find(params[:id])
             order.delivered!
             flash[:notice] = I18n.t('admin.orders.success')
-            redirect_to admin_order_path(order)
         else
             flash[:alert] = I18n.t('admin.orders.fail')
         end
-        redirect_to admin_orders_path
+        redirect_to admin_order_path(order)
+
       end
 
-      member_action :cancel, method: :put do
+      member_action :canceled, method: :put do
         order = Order.find(params[:id])
         order.canceled!
-        redirect_to admin_order_path(order)
+        redirect_to admin_order_path(order), notice: I18n.t('admin.orders.success')
       end
 
 
