@@ -5,9 +5,7 @@ class UserDecorator < Draper::Decorator
             email.first.capitalize
     end
 
-    def full_name
-        email
-    end
+
 
 
 

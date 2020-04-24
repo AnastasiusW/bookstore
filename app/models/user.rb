@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one :billing_address, class_name: 'BillingAddress', as: :addressable, dependent: :destroy
   has_one :shipping_address, class_name: 'ShippingAddress', as: :addressable, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   # rubocop:disable Lint/AssignmentInCondition
   def self.new_with_session(params, session)

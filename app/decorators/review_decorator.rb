@@ -3,23 +3,25 @@ class ReviewDecorator < Draper::Decorator
     decorates_association :user
 
     def rating
-        @object.rating
+        review.rating
     end
 
     def empty_stars
-        ReviewForm::MAX_RATING - @object.rating
+        ReviewForm::MAX_RATING - review.rating
     end
 
     def name
         user.name_to_avatar
     end
 
-    def date_comment
-        @object.created_at.to_date
+    def verify_review
+        review.user.orders.exists?(status: :delivered)
     end
 
-    def name_author
-        user.full_name
+    def date_comment
+        review.created_at.to_date
     end
+
+
 
 end

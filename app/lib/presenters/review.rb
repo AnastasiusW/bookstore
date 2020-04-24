@@ -11,13 +11,14 @@ module Presenters
       end
 
       def reviews
-
         ReviewDecorator.decorate_collection(@book.reviews.approved.all)
       end
 
       def display_stars
        ReviewForm::MAX_RATING
       end
+
+
 
     end
   end

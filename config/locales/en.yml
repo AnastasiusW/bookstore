@@ -158,4 +158,13 @@ en:
       status:
         approved: "Status changed to approved!"
         rejected: "Status changed to rejected!"
+    orders:
+      change_states: Change states
+      status:
+        in_delivery: In delivery
+        delivered: Delivered
+        cancel: Cancel
+      fail : Cannot find record!
+      success: Status was changed!
+
 

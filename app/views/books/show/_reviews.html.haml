@@ -1,16 +1,17 @@
 .general-message-wrap.divider-lg
     .clearfix
         %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
-            = presenter_review.name
+            = review.name
         .ml-70
             %div
-                .general-message-date.hidden-xs= presenter_review.date_comment
+                .general-message-date.hidden-xs= review.date_comment
                 .max-240
-                    .general-message-verified.pull-right= t('review_block.label_verify')
-                    .general-message-name= presenter_review.title
+                    - if review.verify_review
+                        .general-message-verified.pull-right= t('review_block.label_verify')
+                    .general-message-name= review.title
             .mb-15
-                - presenter_review.rating.times do
+                - review.rating.times do
                     %i.fa.fa-star.rate-star
-                - presenter_review.empty_stars.times do
+                - review.empty_stars.times do
                     %i.fa.fa-star.rate-star.rate-empty
-            %p= presenter_review.comment
+            %p= review.comment
