@@ -46,6 +46,7 @@ Metrics/AbcSize:
   Exclude:
   - 'spec/features/**/*'
   - 'app/controllers/user_addresses_controller.rb'
+  - 'app/controllers/reviews_controller.rb'
 
 RSpec/DescribeClass:
   Exclude:
