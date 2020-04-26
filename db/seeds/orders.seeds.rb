@@ -1,6 +1,6 @@
-2.times  do
+1.times  do
     Order.create! do |order|
-        order.status = 2
-        order.user_id = User.all.sample.id
+        order.status = 4
+        order.user_id = 3
     end
 end
