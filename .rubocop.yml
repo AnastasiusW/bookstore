@@ -59,7 +59,3 @@ Metrics/MethodLength:
 RSpec/NestedGroups:
   Exclude:
     - 'spec/features/admin/admin_order_spec.rb'
-
-Layout/TrailingWhitespace:
-  Enabled: false
-

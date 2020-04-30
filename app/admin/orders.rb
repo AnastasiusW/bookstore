@@ -25,8 +25,9 @@ ActiveAdmin.register Order do
   end
 
   form do |f|
-    f.input :status, input_html: { disabled: true }, label: 'Current state'
-    f.input :active_admin_requested_event, label: 'Change state', as: :select, collection: f.object.aasm.events(permitted: true).map(&:name)
+    f.input :status, input_html: { disabled: true }, label: I18n.t('admin.orders.label.one')
+    f.input :active_admin_requested_event, label: I18n.t('admin.orders.label.two'), as: :select,
+                                           collection: f.object.aasm.events(permitted: true).map(&:name)
     f.actions
   end
 end

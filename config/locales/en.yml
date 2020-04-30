@@ -172,6 +172,9 @@ en:
         view: View
         edit: Edit
       errors: "Forbidden event %{event} requested on instance %{order}"
+      label:
+        one: Current state
+        two: Change state
 
   pundit:
     errors:
