@@ -1,4 +1,4 @@
-RSpec.describe 'Admin authors' do
+RSpec.describe 'Dashboard' do
   let!(:admin_user) { create(:admin_user) }
 
   before do

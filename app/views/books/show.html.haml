@@ -26,5 +26,5 @@
         - if user_signed_in?
             = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
-        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_review.count_reviews)
-        = render partial: 'books/show/reviews', collection: @presenter_review.reviews, :as => :review
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_book.count_reviews)
+        = render partial: 'books/show/reviews', collection: @presenter_book.reviews, :as => :review

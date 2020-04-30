@@ -163,12 +163,17 @@ en:
         approved: "Status changed to approved!"
         rejected: "Status changed to rejected!"
     orders:
-      change_states: Change states
       status:
         in_delivery: In delivery
         delivered: Delivered
         canceled: Cancel
-      fail : Cannot change state!
       success: Status was changed!
+      buttons:
+        view: View
+        edit: Edit
+      errors: "Forbidden event %{event} requested on instance %{order}"
 
-
+  pundit:
+    errors:
+      user:
+        warning: You are not authorized to perform this action.

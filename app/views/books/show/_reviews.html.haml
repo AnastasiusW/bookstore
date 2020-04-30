@@ -6,7 +6,7 @@
             %div
                 .general-message-date.hidden-xs= review.date_comment
                 .max-240
-                    - if review.verify_review
+                    - if review.verified_review?
                         .general-message-verified.pull-right= t('review_block.label_verify')
                     .general-message-name= review.title
             .mb-15

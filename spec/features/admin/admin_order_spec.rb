@@ -12,33 +12,29 @@ RSpec.describe 'Admin order' do
       visit admin_orders_path
     end
 
-    it 'when admin click on Change States button' do
-      click_link(I18n.t('admin.orders.change_states'), match: :first)
-
+    it 'when admin click on View button' do
+      click_link(I18n.t('admin.orders.buttons.view'), match: :first)
       expect(page).to have_current_path(admin_order_path(order))
+    end
+
+    it 'when admin click on Edit button' do
+      click_link(I18n.t('admin.orders.buttons.edit'), match: :first)
+      expect(page).to have_current_path(edit_admin_order_path(order))
     end
   end
 
   describe 'when admin change states of order' do
     before do
-      visit admin_order_path(order)
+      visit edit_admin_order_path(order)
     end
 
     context 'when change state to in_delivery with success' do
       let(:order) { create(:order, status: :in_queue) }
 
       it 'when admin change state order from in_queue to in_delivery with success' do
-        click_link(I18n.t('admin.orders.status.in_delivery'))
+        select 'in_delivery', from: 'order_active_admin_requested_event'
+        find_by_id('order_submit_action').click
         expect(page).to have_content(I18n.t('admin.orders.success'))
-      end
-    end
-
-    context 'when change state to in_delivery with fails' do
-      let(:order) { create(:order, status: :in_progress) }
-
-      it 'when admin change state order from in_progress to in_delivery with fail' do
-        click_link(I18n.t('admin.orders.status.in_delivery'))
-        expect(page).to have_content(I18n.t('admin.orders.fail'))
       end
     end
 
@@ -46,17 +42,9 @@ RSpec.describe 'Admin order' do
       let(:order) { create(:order, status:  :in_delivery) }
 
       it 'when admin change state order from in_delivery to delivered with success' do
-        click_link(I18n.t('admin.orders.status.delivered'))
+        select 'delivered', from: 'order_active_admin_requested_event'
+        find_by_id('order_submit_action').click
         expect(page).to have_content(I18n.t('admin.orders.success'))
-      end
-    end
-
-    context 'when change state to delivered with fails' do
-      let(:order) { create(:order, status: :in_progress) }
-
-      it 'when admin change state order from in_progress to delivered with fail' do
-        click_link(I18n.t('admin.orders.status.delivered'))
-        expect(page).to have_content(I18n.t('admin.orders.fail'))
       end
     end
 
@@ -64,8 +52,9 @@ RSpec.describe 'Admin order' do
       context 'when state in_progress' do
         let(:order) { create(:order, status: :in_progress) }
 
-        it 'when admin change state order from in_progress to delivered with success' do
-          click_link(I18n.t('admin.orders.status.canceled'))
+        it 'when admin change state order from in_progress to canceled with success' do
+          select 'canceled', from: 'order_active_admin_requested_event'
+          find_by_id('order_submit_action').click
           expect(page).to have_content(I18n.t('admin.orders.success'))
         end
       end
@@ -73,8 +62,9 @@ RSpec.describe 'Admin order' do
       context 'when state in_queue' do
         let(:order) { create(:order, status: :in_queue) }
 
-        it 'when admin change state order from in_progress to delivered with success' do
-          click_link(I18n.t('admin.orders.status.canceled'))
+        it 'when admin change state order from in_queue to canceled with success' do
+          select 'canceled', from: 'order_active_admin_requested_event'
+          find_by_id('order_submit_action').click
           expect(page).to have_content(I18n.t('admin.orders.success'))
         end
       end
@@ -82,8 +72,9 @@ RSpec.describe 'Admin order' do
       context 'when state in_delivery' do
         let(:order) { create(:order, status: :in_delivery) }
 
-        it 'when admin change state order from in_progress to delivered with success' do
-          click_link(I18n.t('admin.orders.status.canceled'))
+        it 'when admin change state order from in_delivery to canceled with success' do
+          select 'canceled', from: 'order_active_admin_requested_event'
+          find_by_id('order_submit_action').click
           expect(page).to have_content(I18n.t('admin.orders.success'))
         end
       end
@@ -91,8 +82,9 @@ RSpec.describe 'Admin order' do
       context 'when state delivered' do
         let(:order) { create(:order, status: :delivered) }
 
-        it 'when admin change state order from in_progress to delivered with success' do
-          click_link(I18n.t('admin.orders.status.canceled'))
+        it 'when admin change state order from delivered to canceled with success' do
+          select 'canceled', from: 'order_active_admin_requested_event'
+          find_by_id('order_submit_action').click
           expect(page).to have_content(I18n.t('admin.orders.success'))
         end
       end

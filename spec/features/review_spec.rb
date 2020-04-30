@@ -42,25 +42,29 @@ RSpec.describe 'Review', type: :feature do
     it { expect(review_page).not_to have_content('review_page.review_button') }
   end
 
-  context 'when review has 3 status' do
-    let!(:review) { create(:review, book: book, user: user) }
+  context 'when users can see pending reviews' do
+    let!(:review) { create(:review, book: book, user: user, status: :pending) }
 
-    it 'when users can see unprocessed reviews' do
-      review.unprocessed!
+    it 'when users can see pending reviews' do
       visit(book_path(book))
       expect(review_page).not_to have_content(review.comment)
     end
+  end
+
+  context 'when users can see approved reviews' do
+    let!(:review) { create(:review, book: book, user: user, status: :approved) }
 
     it 'when users can see approved reviews' do
-      review.approved!
       visit(book_path(book))
       expect(review_page).to have_content(review.comment)
     end
+  end
+
+  context 'when users can see approved reviews' do
+    let!(:review) { create(:review, book: book, user: user, status: :rejected) }
 
     it 'when users can see rejected reviews' do
-      review.rejected!
       visit(book_path(book))
-
       expect(review_page).not_to have_content(review.comment)
     end
   end

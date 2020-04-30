@@ -17,7 +17,7 @@ RSpec.describe ReviewPolicy do
   context 'with guest' do
     let(:user) { nil }
 
-    it { is_expected.not_to permit_action(:create) }
+    it { is_expected.to forbid_action(:create) }
     it { is_expected.to forbid_action(:destroy) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:edit) }

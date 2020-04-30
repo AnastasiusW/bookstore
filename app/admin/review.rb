@@ -1,7 +1,7 @@
 ActiveAdmin.register Review do
   permit_params :title, :comment, :rating, :status
 
-  scope :unprocessed, default: true
+  scope :pending, default: true
   scope :approved
   scope :rejected
   index do

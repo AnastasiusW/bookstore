@@ -14,7 +14,7 @@ class ReviewDecorator < Draper::Decorator
     user.name_to_avatar
   end
 
-  def verify_review
+  def verified_review?
     review.user.orders.exists?(status: :delivered)
   end
 

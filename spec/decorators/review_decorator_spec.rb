@@ -17,9 +17,9 @@ RSpec.describe ReviewDecorator do
     expect(decorator.name).to eq('N')
   end
 
-  it 'when check verify_review' do
+  it 'when check verified_review?' do
     create(:order, user: user, status: :delivered)
-    expect(decorator.verify_review).to eq(true)
+    expect(decorator.verified_review?).to eq(true)
   end
 
   it 'when check date_comment' do
