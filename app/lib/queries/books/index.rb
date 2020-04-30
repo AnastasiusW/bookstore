@@ -12,7 +12,7 @@ module Queries
       def category_filter
         return Book.all unless @params[:category_id].present?
 
-        Book.category_filter(@params[:category_id])
+        Category.find_by(id: @params[:category_id]).books
       end
     end
   end
