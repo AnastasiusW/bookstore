@@ -1,12 +1,12 @@
 RSpec.describe 'Catalogs', type: :feature, js: true do
-  let!(:catalog_page) { Catalog.new }
+  let(:catalog_page) { CatalogPage.new }
 
   context 'with categories filter' do
     let!(:all_category) { create_list(:category, 4) }
     let(:book) { create(:book, category_id: all_category.sample.id) }
 
     before do
-      visit(books_path)
+      catalog_page.load
     end
 
     it 'shows books only from choosen category' do

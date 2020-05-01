@@ -1,4 +1,5 @@
-class Catalog < SitePrism::Page
+class CatalogPage < SitePrism::Page
+  set_url '/books'
   elements  :category_title_link, '.filter-link'
   elements  :sort_id, '#sort_id'
   elements  :title_books, '.title'
