@@ -1,12 +1,15 @@
 ActiveAdmin.register Book do
   permit_params :title, :description, :price, :quantity,
-                :width, :height, :depth, :year, :material, :category_id, author_ids: []
+                :width, :height, :depth, :year, :material, :category_id, author_ids: [],
+                book_images_attributes: %i[id book_id image _destroy]
+
 
   decorate_with BookDecorator
 
   index do
     selectable_column
     id_column
+    column I18n.t('admin.books.image'), &:admin_image
     column :category
     column :title
     column :authors, &:authors_names
@@ -34,10 +37,11 @@ ActiveAdmin.register Book do
       row :material
       row :created_at
       row :updated_at
+      row I18n.t('admin.books.image'), &:admin_image
     end
   end
 
-  form do |f|
+  form(html: { multipart: true }) do |f|
     f.inputs do
       f.input :title
       f.input :category
@@ -49,6 +53,11 @@ ActiveAdmin.register Book do
       f.input :height
       f.input :width
       f.input :depth
+      f.inputs I18n.t('admin.books.upload') do
+        f.has_many :book_images, allow_destroy: true do |img|
+          img.input :image, as: :file, hint: f.object.book_images.present? ? image_tag("#{img.object.image.admin_img.url}") : content_tag(:span, I18n.t('admin.books.not_exist'))
+        end
+      end
     end
     f.actions
   end
