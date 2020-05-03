@@ -1,0 +1,8 @@
+.mb-20
+  = image_tag(presenter_book.decorate_book.main_avatar, class: 'img-responsive')
+- if presenter_book.decorate_book.images_exists?
+  .images.clearfix
+    - presenter_book.all_images.each do |img|
+      %a.img-link
+        = image_tag(img.image.small_img.url, class: 'img-responsive')
+

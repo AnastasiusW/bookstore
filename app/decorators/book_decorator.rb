@@ -15,13 +15,20 @@ class BookDecorator < Draper::Decorator
   end
 
   def admin_image
-
-  return  h.image_tag(DEFAULT_IMAGE,class: 'admin-cover-book') if exist_images?
-  h.image_tag(book_images.first.image.admin_img.url)
-
+    return  h.image_tag(DEFAULT_IMAGE,class: 'admin-cover-book') unless images_exists?
+    h.image_tag(book_images.first.image.admin_img.url)
   end
 
-  def exist_images?
-    book_images.empty?
+  def medium_image
+    images_exists? ? book_images.first.image.medium_img.url : DEFAULT_IMAGE
   end
+
+  def main_avatar
+    images_exists? ? book_images.first.image.large_img.url : DEFAULT_IMAGE
+  end
+
+  def images_exists?
+    book_images.any?
+  end
+
 end
