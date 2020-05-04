@@ -1,8 +1,7 @@
 ActiveAdmin.register Book do
   permit_params :title, :description, :price, :quantity,
-                :width, :height, :depth, :year, :material, :category_id, author_ids: [],
-                book_images_attributes: %i[id book_id image _destroy]
-
+                :width, :height, :depth, :year, :material,
+                :category_id, author_ids: [], book_images_attributes: %i[id book_id image _destroy]
 
   decorate_with BookDecorator
 
@@ -55,7 +54,9 @@ ActiveAdmin.register Book do
       f.input :depth
       f.inputs I18n.t('admin.books.upload') do
         f.has_many :book_images, allow_destroy: true do |img|
-          img.input :image, as: :file, hint: f.object.book_images.present? ? image_tag("#{img.object.image.admin_img.url}") : content_tag(:span, I18n.t('admin.books.not_exist'))
+          img.input :image,
+                    as: :file,
+                    hint: f.object.book_images.present? ? image_tag(img.object.image.admin_img.url.to_s) : content_tag(:span, I18n.t('admin.books.not_exist'))
         end
       end
     end

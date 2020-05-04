@@ -3,7 +3,7 @@ module Presenters
     class Show
       DESCRIPTION_LIMIT = 250
       RATING_COUNT = 5
-      DEFAULT_IMAGE = 'book-cover.png'
+      DEFAULT_IMAGE = 'book-cover.png'.freeze
       attr_reader :book
 
       def initialize(current_book:)
@@ -37,7 +37,6 @@ module Presenters
       def all_images
         BookDecorator.decorate_collection(@book.book_images.all)
       end
-
     end
   end
 end

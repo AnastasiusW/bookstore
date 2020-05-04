@@ -9,8 +9,6 @@ class Book < ApplicationRecord
   has_many :book_images, dependent: :destroy
   accepts_nested_attributes_for :book_images, allow_destroy: true
 
-
-
   validates :title, :description, :price, :year, :quantity, presence: true
   validates :price, numericality: { greater_than_or_equal_to: MIN_PRICE }
   validates :height, :width, :depth, numericality: { greater_than_or_equal_to: MIN_DIMENTION }

@@ -1,10 +1,9 @@
 class BookDecorator < Draper::Decorator
-
   decorates_association :authors
 
   delegate_all
 
-  DEFAULT_IMAGE = 'book-cover.png'
+  DEFAULT_IMAGE = 'book-cover.png'.freeze
 
   def authors_names
     authors.map(&:full_name).join(', ')
@@ -15,7 +14,8 @@ class BookDecorator < Draper::Decorator
   end
 
   def admin_image
-    return  h.image_tag(DEFAULT_IMAGE,class: 'admin-cover-book') unless images_exists?
+    return h.image_tag(DEFAULT_IMAGE, class: 'admin-cover-book') unless images_exists?
+
     h.image_tag(book_images.first.image.admin_img.url)
   end
 
@@ -30,5 +30,4 @@ class BookDecorator < Draper::Decorator
   def images_exists?
     book_images.any?
   end
-
 end
