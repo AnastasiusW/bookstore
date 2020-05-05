@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
     }
     config.storage = :fog
     config.fog_directory = Rails.application.credentials.config[:aws][:s3_bucket_name]
-    config.cache_dir = "#{Rails.root}/tmp/uploads"
+
   else
     config.storage = :file
   end
