@@ -1,5 +1,4 @@
 CarrierWave.configure do |config|
-  if Rails.env.production?
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',
@@ -9,8 +8,5 @@ CarrierWave.configure do |config|
     }
     config.storage = :fog
     config.fog_directory = Rails.application.credentials.config[:aws][:s3_bucket_name]
-
-  else
-    config.storage = :file
-  end
+    config.fog_public = false
 end
