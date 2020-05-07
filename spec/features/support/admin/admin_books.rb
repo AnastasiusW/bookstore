@@ -8,6 +8,8 @@ class AdminBooksPrism < SitePrism::Page
   element :book_depth, "input[name='book[depth]']"
   element :book_material, "input[name='book[material]']"
 
+  TEST_FILE_NAME = "#{Rails.root}/spec/features/support/images/test.jpg".freeze
+
   def fill_form(book_new, book_exist)
     book_title.set(book_new.title)
     select(book_exist.category.title, from: 'book_category_id')
@@ -19,6 +21,8 @@ class AdminBooksPrism < SitePrism::Page
     book_height.set(book_new.height)
     book_depth.set(book_new.depth)
     book_material.set(book_new.material)
+    click_on(I18n.t('admin.books.image_add'))
+    attach_file TEST_FILE_NAME
     first('input[type=submit]').click
   end
 end
