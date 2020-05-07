@@ -7,6 +7,10 @@ CarrierWave.configure do |config|
     region: Rails.application.credentials.config[:aws][:region]
   }
   config.storage = :fog
-  config.fog_directory = Rails.application.credentials.config[:aws][:s3_bucket_name]
+  config.fog_directory = if Rails.env.test?
+                           Rails.application.credentials.config[:aws][:s3_bucket_name_test]
+                         else
+                           Rails.application.credentials.config[:aws][:s3_bucket_name]
+                         end
   config.fog_public = false
 end
