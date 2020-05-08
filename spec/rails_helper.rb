@@ -33,7 +33,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  config.after do
+  config.after(:all) do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/test"]) if Rails.env.test?
   end
 end
