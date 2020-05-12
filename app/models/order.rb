@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   attr_accessor :active_admin_requested_event
 
   belongs_to :user, optional: true
+  has_many :line_items, dependent: destroy
 
   enum status: {
     in_progress: 1,
