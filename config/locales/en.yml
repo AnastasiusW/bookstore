@@ -51,12 +51,8 @@ en:
     score: Score
     title: Title
     review: Rewiew
-    reviews: Reviews
-    some_1: 'If Get a better job had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.'
+    reviews: "Reviews (%{count})"
     label_verify: Verified Reviewer
-    some_name: Rita J. Lewis
-    some_2: 'Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.'
-    date: '11/11/16'
     post: 'Post'
 
   cart_block:
@@ -97,6 +93,7 @@ en:
     password_error: Password is too short
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
+    review_errors: Title is invalid, Comment is invalid
 
   settings_form:
     billing: Billing Address
@@ -133,6 +130,8 @@ en:
         update: "%{type} was updated successfully!"
       settings:
         update: 'Account was updated. If you changed the email you need to confirm by mail'
+      reviews:
+        create: 'Thanks for Review. It will be published as soon as Admin will approve it'
 
     fail:
       address:
@@ -140,6 +139,10 @@ en:
           error_one: "First name is invalid"
       settings:
         password_update: "Password is too short (minimum is 6 characters) and Current password is invalid"
+      reviews:
+        tests:
+          fails: "Title can't be blank, Comment can't be blank, Rating can't be blank, Rating is not a number"
+
 
   admin:
     authors:
@@ -152,3 +155,28 @@ en:
       edit: Edit
     test:
       destroy: "%{item} was successfully destroyed."
+    reviews:
+      approved: Approved
+      rejected: Rejected
+      show: show
+      status:
+        approved: "Status changed to approved!"
+        rejected: "Status changed to rejected!"
+    orders:
+      status:
+        in_delivery: In delivery
+        delivered: Delivered
+        canceled: Cancel
+      success: Status was changed!
+      buttons:
+        view: View
+        edit: Edit
+      errors: "Forbidden event %{event} requested on instance %{order}"
+      label:
+        one: Current state
+        two: Change state
+
+  pundit:
+    errors:
+      user:
+        warning: You are not authorized to perform this action.

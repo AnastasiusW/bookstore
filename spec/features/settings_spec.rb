@@ -13,23 +13,23 @@ describe 'Settings', type: :feature do
     let(:valid_address_data) { build(:address) }
     let(:invalid_address_data) do
       build(:address,
-            first_name: '11',
-            last_name: '11',
-            city: '11',
-            country: '11',
+            first_name: FFaker::Random.rand(0..9),
+            last_name: FFaker::Random.rand(0..9),
+            city: FFaker::Random.rand(0..9),
+            country: FFaker::Random.rand(0..9),
             address: '',
-            zip: 'aa',
-            phone: 'aa')
+            zip: FFaker::Lorem.word,
+            phone: FFaker::Lorem.word)
     end
 
     context 'when user already have billing address ' do
       it 'when billiing address already exists' do
-        expect(settings_page.billing_first_name.value).to eq(user.billing_address.first_name)
-        expect(settings_page.billing_last_name.value).to eq(user.billing_address.last_name)
-        expect(settings_page.billing_country_name.value).to eq(user.billing_address.country)
-        expect(settings_page.billing_city_name.value).to eq(user.billing_address.city)
-        expect(settings_page.billing_zip_name.value.to_i).to eq(user.billing_address.zip)
-        expect(settings_page.billing_phone_name.value).to eq(user.billing_address.phone)
+        expect(settings_page.billing_address_section.billing_first_name.value).to eq(user.billing_address.first_name)
+        expect(settings_page.billing_address_section.billing_last_name.value).to eq(user.billing_address.last_name)
+        expect(settings_page.billing_address_section.billing_country_name.value).to eq(user.billing_address.country)
+        expect(settings_page.billing_address_section.billing_city_name.value).to eq(user.billing_address.city)
+        expect(settings_page.billing_address_section.billing_zip_name.value.to_i).to eq(user.billing_address.zip)
+        expect(settings_page.billing_address_section.billing_phone_name.value).to eq(user.billing_address.phone)
       end
 
       it 'when updates users billing data with valid data  ' do
@@ -48,13 +48,13 @@ describe 'Settings', type: :feature do
       let(:empty_field) { '' }
 
       it 'when billiing address not exists' do
-        expect(settings_page.billing_first_name.value).to eq(empty_field)
-        expect(settings_page.billing_last_name.value).to eq(empty_field)
-        expect(settings_page.billing_city_name.value).to eq(empty_field)
-        expect(settings_page.billing_country_name.value).to eq('AF')
-        expect(settings_page.billing_address_name.value).to eq(empty_field)
-        expect(settings_page.billing_zip_name.value).to eq(empty_field)
-        expect(settings_page.billing_phone_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_first_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_last_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_city_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_country_name.value).to eq('AF')
+        expect(settings_page.billing_address_section.billing_address_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_zip_name.value).to eq(empty_field)
+        expect(settings_page.billing_address_section.billing_phone_name.value).to eq(empty_field)
       end
 
       it 'when create new billing address with valid date' do
@@ -70,12 +70,12 @@ describe 'Settings', type: :feature do
 
     context 'when shipping address ' do
       it 'when shipping address already exists' do
-        expect(settings_page.shipping_first_name.value).to eq(user.shipping_address.first_name)
-        expect(settings_page.shipping_last_name.value).to eq(user.shipping_address.last_name)
-        expect(settings_page.shipping_country_name.value).to eq(user.shipping_address.country)
-        expect(settings_page.shipping_city_name.value).to eq(user.shipping_address.city)
-        expect(settings_page.shipping_zip_name.value.to_i).to eq(user.shipping_address.zip)
-        expect(settings_page.shipping_phone_name.value).to eq(user.shipping_address.phone)
+        expect(settings_page.shipping_address_section.shipping_first_name.value).to eq(user.shipping_address.first_name)
+        expect(settings_page.shipping_address_section.shipping_last_name.value).to eq(user.shipping_address.last_name)
+        expect(settings_page.shipping_address_section.shipping_country_name.value).to eq(user.shipping_address.country)
+        expect(settings_page.shipping_address_section.shipping_city_name.value).to eq(user.shipping_address.city)
+        expect(settings_page.shipping_address_section.shipping_zip_name.value.to_i).to eq(user.shipping_address.zip)
+        expect(settings_page.shipping_address_section.shipping_phone_name.value).to eq(user.shipping_address.phone)
       end
 
       it 'when updates users shipping data with valid data  ' do
@@ -94,13 +94,13 @@ describe 'Settings', type: :feature do
       let(:empty_field) { '' }
 
       it 'when shippiing address not exists' do
-        expect(settings_page.shipping_first_name.value).to eq(empty_field)
-        expect(settings_page.shipping_last_name.value).to eq(empty_field)
-        expect(settings_page.shipping_city_name.value).to eq(empty_field)
-        expect(settings_page.shipping_country_name.value).to eq('AF')
-        expect(settings_page.shipping_address_name.value).to eq(empty_field)
-        expect(settings_page.shipping_zip_name.value).to eq(empty_field)
-        expect(settings_page.shipping_phone_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_first_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_last_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_city_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_country_name.value).to eq('AF')
+        expect(settings_page.shipping_address_section.shipping_address_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_zip_name.value).to eq(empty_field)
+        expect(settings_page.shipping_address_section.shipping_phone_name.value).to eq(empty_field)
       end
 
       it 'when create new shipping address with valid date  ' do
@@ -154,8 +154,8 @@ describe 'Settings', type: :feature do
       end
 
       it 'click checkbox destroy' do
-        settings_page.delete_account.first.click
-        settings_page.button_destroy.click
+        settings_page.account_detail.delete_account.first.click
+        settings_page.account_detail.button_destroy.click
         expect(settings_page).to have_current_path(root_path)
         expect(home_page.flash_success_message).to have_content(I18n.t('devise.registrations.destroyed'))
         expect(User.count).to eq(0)

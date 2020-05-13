@@ -3,16 +3,7 @@ RSpec.describe AddressForm, type: :model do
   let!(:user) { create(:user) }
 
   context 'when presence validations' do
-    let(:address_params) do
-      {
-        first_name: 'Nastya',
-        last_name: 'Dnepr',
-        country: 'UA',
-        address: 'Polya',
-        zip: '49000',
-        phone: '+380977777777'
-      }
-    end
+    let(:address_params) { attributes_for(:address, city: 'Dnepr') }
 
     it { expect(address_form).to validate_presence_of(:first_name) }
     it { expect(address_form).to validate_presence_of(:last_name) }
@@ -24,16 +15,7 @@ RSpec.describe AddressForm, type: :model do
   end
 
   context 'when input valid data' do
-    let!(:address_params) do
-      {
-        first_name: 'Nastya',
-        last_name: 'Dnepr',
-        country: 'UA',
-        address: 'Polya',
-        zip: '49000',
-        phone: '+380977777777'
-      }
-    end
+    let(:address_params) { attributes_for(:address, city: 'Dnepr') }
 
     it 'when user input valid data' do
       address_params.each do |key, value|
@@ -44,14 +26,14 @@ RSpec.describe AddressForm, type: :model do
 
   context 'when input invalid data' do
     let!(:address_params) do
-      {
-        first_name: '11111',
-        last_name: '1111',
-        country: '11',
-        address: '',
-        zip: 'aaaa',
-        phone: 'aaaa'
-      }
+      attributes_for(:address,
+                     first_name: FFaker::Random.rand(0..9),
+                     last_name: FFaker::Random.rand(0..9),
+                     city: '',
+                     country: FFaker::Random.rand(0..9),
+                     address: '',
+                     zip: FFaker::Lorem.word,
+                     phone: FFaker::Lorem.word)
     end
 
     it 'when user input invalid data' do

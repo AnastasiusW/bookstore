@@ -23,56 +23,8 @@
                 = render partial: 'books/show/add_to_cart_form'
             = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
     .mb-80
-        %h3= t(' review_block.write_a_review')
-        %p.general-info-text= t('review_block.score')
-        .mb-15
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-            %i.fa.fa-star.rate-empty
-        %form.row
-            .col-md-8
-                .mb-40
-                    .form-group
-                        %label.control-label.input-label.in-grey-600{for: "title"}= t('review_block.title')
-                        %input#title.form-control{name:"title", type: "text"}
-                    .form-group
-                        %label.control-label.input-label.in-grey-600{for: "review"} Review
-                        %textarea#review.form-control{name:"review", type: "text"}
-                .text-right
-                    %button.btn.disabled.mb-20= t('review_block.post')
+        - if user_signed_in?
+            = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
     .mb-80
-        %h3.in-gold-500.mb-25 Reviews (3)
-        .general-message-wrap.divider-lg
-            .clearfix
-                %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-                .ml-70
-                    %div
-                        .general-message-date.hidden-xs= t('review_block.date')
-                        .max-240
-                            .general-message-verified= t('review_block.label_verify')
-                            .general-message-name= t('review_block.some_name')
-                .mb-15
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                    %i.fa.fa-star.rate-star
-                %p= t('review_block.some_2')
-        .general-message-wrap.divider-lg
-            .clearfix
-                %span.img-circle.logo-size.inlide-block.pull-left.logo-empty M
-                .ml-70
-                    %div
-                        .general-message-date.hidden-xs= t('review_block.date')
-                        .max-240
-                            .general-message-verified.pull-right= t('review_block.label_verify')
-                            .general-message-name= t('review_block.some_name')
-                    .mb-15
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star
-                        %i.fa.fa-star.rate-star.rate-empty
-                    %p= t('review_block.some_1')
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_book.count_reviews)
+        = render partial: 'books/show/reviews', collection: @presenter_book.reviews, :as => :review

@@ -19,7 +19,7 @@ RSpec.describe BooksController, type: :controller do
       expect(response).to render_template :show
     end
 
-    it 'assigns  to be a Presenter::Show' do
+    it 'assigns  to be a Presenter::Books::Show' do
       get :show, params: { id: book.id }
       expect(assigns(:presenter_book)).to be_a(Presenters::Books::Show)
     end

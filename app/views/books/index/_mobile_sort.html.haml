@@ -5,4 +5,3 @@
   - book_list.each do |sort_index, sort_name|
     %li
       = link_to sort_name, books_path(category_id: params[:category_id], sort_by: sort_index)
-

@@ -16,6 +16,7 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'site_prism/all_there'
+require 'pundit/matchers'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }

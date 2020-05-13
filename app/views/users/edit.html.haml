@@ -17,17 +17,17 @@
             .col-md-5.col-md-offset-1
               %h3.general-subtitle.mt-0= t('settings_form.shipping')
       .row
-        .col-md-5.mb-40
+        .col-md-5.mb-40#billing_address_form
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('settings_form.billing')
           = render 'addresses/address', address: @presenter.billing, type: :billing_address, method_type: @presenter.method_billing_address
 
-        .col-md-5.col-md-offset-1.mb-25
+        .col-md-5.col-md-offset-1.mb-25#shipping_address_form
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('settings_form.shipping')
           = render 'addresses/address', address: @presenter.shipping, type: :shipping_address, method_type: @presenter.method_shipping_address
     #privacy.tab-pane.fade{role: "tabpanel"}
-      .row.mb-60
+      .row.mb-60#details_section
         = render 'users/email_partial'
         = render 'users/password_partial'
         = render 'users/remove_account'

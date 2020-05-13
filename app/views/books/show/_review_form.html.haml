@@ -1,0 +1,19 @@
+.row
+    .col-md-8
+        = simple_form_for(presenter_book.book.reviews.build, url: reviews_path, method: :post,
+        defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' } }) do |f|
+            %p.general-info-text= t('review_block.score')
+            .mb-15
+                - for i in (ReviewForm::MIN_RATING..ReviewForm::MAX_RATING)
+                    %i.fa.fa-star.rate-empty{id: "rating_id_#{i}", "data-value":i}
+                .mb-40
+                    = f.label :title, label: t('review_block.title'),class: 'control-label input-label in-grey-600'
+                    = f.input :title, label: false
+                    = f.label :comment, t('review_block.review'),class: 'control-label input-label in-grey-600'
+                    = f.input :comment, label:false
+                    = f.hidden_field :book_id, value: presenter_book.book.id
+                    = f.hidden_field :user_id, value: current_user.id
+                    = f.hidden_field :rating, value: 1, id: 'reviewRatingValue'
+                .text-right
+                    = f.submit t('review_block.post'), class: 'btn mb-20', id: 'saveReview'
+
