@@ -20,6 +20,7 @@ Metrics/LineLength:
   Max: 120
   Exclude:
     - 'spec/**/*'
+    - 'app/admin/books.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -59,3 +60,7 @@ Metrics/MethodLength:
 RSpec/NestedGroups:
   Exclude:
     - 'spec/features/admin/admin_order_spec.rb'
+
+Metrics/BlockNesting:
+  Exclude:
+    - 'config/initializers/carrierwave.rb'

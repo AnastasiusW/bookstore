@@ -2,11 +2,12 @@ class Book < ApplicationRecord
   LATEST_BOOK_COUNT = 3
   MIN_PRICE = 5
   MIN_DIMENTION = 1
-
   belongs_to :category
   has_many :authors_books, dependent: :destroy
   has_many :authors, through: :authors_books
   has_many :reviews, dependent: :destroy
+  has_many :book_images, dependent: :destroy
+  accepts_nested_attributes_for :book_images, allow_destroy: true
 
   validates :title, :description, :price, :year, :quantity, presence: true
   validates :price, numericality: { greater_than_or_equal_to: MIN_PRICE }

@@ -5,15 +5,8 @@
     .row
         .col-sm-6
             .product-gallery
-                .mb-20
-                    %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
-                .images.clearfix
-                    %a.img-link{href: "#"}
-                    %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-                    %a.img-link{href: "#"}
-                    %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-                    %a.img-link{href: "#"}
-                    %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
+                = render partial: 'books/show/images', locals: {presenter_book: @presenter_book}
+
         .col-sm-6
             %h1.mt-res-0= @presenter_book.book.title
             %p.lead.small= @presenter_book.book.authors_names

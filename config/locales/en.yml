@@ -175,6 +175,11 @@ en:
       label:
         one: Current state
         two: Change state
+    books:
+      image: Image
+      upload: Upload
+      not_exist: "Image not exist!"
+      image_add: Add New Book image
 
   pundit:
     errors:
