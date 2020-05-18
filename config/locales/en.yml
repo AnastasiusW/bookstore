@@ -57,6 +57,7 @@ en:
 
   cart_block:
     add_to_cart: Add to Cart
+    success: 'Book was added to cart!'
 
   authentication:
     login: Log in

@@ -5,4 +5,5 @@ class CatalogPage < SitePrism::Page
   elements  :title_books, '.title'
   elements  :link_books, 'a.thumb-hover-link'
   elements  :book_eye, '.fa-eye'
+  elements   :shopping_cart, '.fa-shopping-cart'
 end

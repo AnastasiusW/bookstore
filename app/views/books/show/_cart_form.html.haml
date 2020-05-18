@@ -1,0 +1,12 @@
+= form_with(url:line_items_path, method: :post,local: true) do |f|
+  = f. hidden_field :book_id, value: presenter_book.book.id
+  .col-xs-5.col-md-3
+    .input-group.general-position
+      %a.input-link{ id: "decrementQuantity", "data-price": presenter_book.book.price }
+        %i.fa.fa-minus.line-height-40
+      = f.text_field :quantity, value: '1', id: 'quantity_input', class: 'form-control quantity-input'
+      %a.input-link{ id: "incrementQuantity", "data-price": presenter_book.book.price }
+        %i.fa.fa-plus.line-height-40
+  .col-xs-7.col-md-5
+    = f.submit t('cart_block.add_to_cart'), class: 'btn btn-default pull-right general-position', id:'add_to_cart_button'
+

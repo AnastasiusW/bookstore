@@ -78,4 +78,17 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
       expect(page).to have_current_path(link)
     end
   end
+
+  context 'when click on shopping-cart icon' do
+    before do
+      create(:book)
+      visit(books_path)
+    end
+
+    it 'when cart icon click' do
+      expect(LineItem.count).to eq(0)
+      catalog_page.shopping_cart.first.click
+      expect(LineItem.count).to eq(1)
+    end
+  end
 end

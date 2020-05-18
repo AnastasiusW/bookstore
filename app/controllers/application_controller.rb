@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :header_display
   include Pundit
+  protect_from_forgery with: :exception
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :current_order
@@ -10,7 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    Order.find_by(id: session[:order_id]) || Order.create
+  #order = Order.find_by(id: session[:order_id]) || Order.create
+  order =  Services::Orders::ChooseOrder.new(session[:order_id],current_user).call
+  session[:order_id] = order.id
+  order
   end
 
   private
