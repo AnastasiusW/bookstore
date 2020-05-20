@@ -36,6 +36,7 @@ RSpec/MultipleExpectations:
   - 'spec/controllers/**/*'
   - 'spec/forms/address_form_spec.rb'
   - 'spec/forms/review_form_spec.rb'
+  - 'spec/services/**/*'
 
 RSpec/ExampleLength:
   Max: 7

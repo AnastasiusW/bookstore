@@ -17,5 +17,4 @@ class LineItemDecorator < Draper::Decorator
   def sub_price
     total_price
   end
-
 end

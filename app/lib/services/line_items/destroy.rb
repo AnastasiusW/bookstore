@@ -1,10 +1,9 @@
 module Services
   module LineItems
     class Destroy
-
       def initialize(allowed_params:)
         @current_order = allowed_params[:order_id]
-        @current_item = LineItem.find_by(id:allowed_params[:id],order_id: allowed_params[:order_id])
+        @current_item = LineItem.find_by(id: allowed_params[:id], order_id: allowed_params[:order_id])
       end
 
       def call

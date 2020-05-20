@@ -24,9 +24,9 @@ module Presenters
 
       def calculate_discount_for_current_order
         return 0 unless @current_order.coupon&.discount_amount
+
         @current_order.subtotal_price * @current_order.coupon.discount_amount / 100
       end
-
     end
   end
 end

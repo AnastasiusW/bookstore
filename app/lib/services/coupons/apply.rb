@@ -1,7 +1,6 @@
 module Services
   module Coupons
     class Apply
-
       def initialize(order:, params:)
         @current_order = order
         @code = params[:code]
@@ -20,9 +19,9 @@ module Services
 
       def apply_coupon_to_order(current_coupon)
         Order.update(coupon: current_coupon)
-        Coupon.find_by(id:current_coupon).update(active:false)
+        Coupon.find_by(id: current_coupon).update(active: false)
         Services::Orders::AmountCalculation.new(@current_order).call
       end
     end
-    end
   end
+end
