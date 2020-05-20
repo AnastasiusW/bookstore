@@ -58,6 +58,24 @@ en:
   cart_block:
     add_to_cart: Add to Cart
     success: 'Book was added to cart!'
+    title_cart: Cart
+    product: Product
+    price: Price
+    quantity: Quantity
+    subtotal: SubTotal
+    subtotal_title: 'Subtotal:'
+    coupon_title: 'Coupon:'
+    total_title: 'Order Total:'
+    order_summary: Order Summary
+    checkout_button: Checkout
+
+  coupon:
+    title: Enter Your Coupon Code
+    code_placeholder: Enter Your Coupon Code
+    button: Apply Coupon
+    applied: Coupon was successfully applied
+    not_applied: Coupon not found or has already been applied
+
 
   authentication:
     login: Log in

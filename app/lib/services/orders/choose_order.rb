@@ -12,6 +12,7 @@ module Services
         return @current_user ? user_have_order : order_without_user
       end
 
+      private
 
       def user_have_order
         return create_or_update_order_with_user unless find_order_by_user_id

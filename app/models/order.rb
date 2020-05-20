@@ -4,6 +4,7 @@ class Order < ApplicationRecord
 
   belongs_to :user, optional: true
   has_many :line_items, dependent: :destroy
+  has_one :coupon, dependent: :nullify
 
   enum status: {
     in_progress: 1,

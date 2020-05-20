@@ -1,4 +1,4 @@
-= form_with(url:line_items_path, method: :post,local: true) do |f|
+= form_with(url:order_line_items_path(current_order), method: :post,local: true) do |f|
   = f. hidden_field :book_id, value: presenter_book.book.id
   .col-xs-5.col-md-3
     .input-group.general-position

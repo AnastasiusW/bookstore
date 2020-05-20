@@ -1,8 +1,7 @@
 class LineItemsController < ApplicationController
 
   def index
-    Services::Orders::AmountCalculation.new(current_order).calculate_subtotal_order
-    binding.pry
+    @presenter = Presenters::LineItems::Index.new(current_order)
   end
 
 
@@ -12,10 +11,20 @@ class LineItemsController < ApplicationController
 
   end
 
+  def update
+     Services::LineItems::Update.new(allowed_params: line_items_params).call
+     redirect_to order_line_items_path(current_order)
+  end
+
+  def destroy
+    Services::LineItems::Destroy.new(allowed_params: line_items_params).call
+    redirect_to order_line_items_path(current_order)
+  end
+
   private
 
   def line_items_params
-    params.permit(:book_id, :quantity)
+    params.permit(:book_id, :quantity, :order_id, :id, :quantity_action)
   end
 
 end
