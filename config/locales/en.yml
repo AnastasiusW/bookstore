@@ -76,6 +76,9 @@ en:
     applied: Coupon was successfully applied
     not_applied: Coupon not found or has already been applied
 
+  line_item:
+    destroy_success: Item was success deleted
+
 
   authentication:
     login: Log in
