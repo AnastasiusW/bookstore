@@ -13,7 +13,7 @@ module Services
       private
 
       def recount_total_price_order
-        recount = recount_subtotal_price_order - calculate_discount
+        recount = recount_subtotal_price_order - calculate_discount - delivery_price
         @current_order.update(total_price: recount)
       end
 
@@ -30,6 +30,10 @@ module Services
         return 0 unless @current_order.coupon&.discount_amount
 
         @current_order.subtotal_price * @current_order.coupon.discount_amount / 100
+      end
+
+      def delivery_price
+        @current_order.delivery ? @current_order.delivery.price : 0
       end
     end
   end
