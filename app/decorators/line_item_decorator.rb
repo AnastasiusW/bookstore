@@ -5,5 +5,4 @@ class LineItemDecorator < Draper::Decorator
   def image
     book.medium_image
   end
-
 end

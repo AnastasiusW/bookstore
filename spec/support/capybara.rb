@@ -9,5 +9,5 @@ end
 Capybara.default_driver = :site_prism
 Capybara.javascript_driver = :site_prism
 
-#Capybara.ignore_hidden_elements = false
+# Capybara.ignore_hidden_elements = false
 Capybara.default_max_wait_time = 5

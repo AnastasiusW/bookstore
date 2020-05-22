@@ -4,11 +4,11 @@ class LineItemsController < ApplicationController
   end
 
   def create
-   if Services::LineItems::Create.new(order: current_order, allowed_params: line_items_params).call
-    flash[:notice] = I18n.t('cart_block.success')
-   else
-    flash[:alert] = I18n.t('cart_block.fail')
-   end
+    if Services::LineItems::Create.new(order: current_order, allowed_params: line_items_params).call
+      flash[:notice] = I18n.t('cart_block.success')
+    else
+      flash[:alert] = I18n.t('cart_block.fail')
+    end
   end
 
   def update

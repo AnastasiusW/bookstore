@@ -9,6 +9,7 @@ module Services
 
       def call
         return false unless Book.find_by(id: @book_id)
+
         create_or_update_item
         Services::Orders::AmountCalculation.new(@current_order).call
       end
