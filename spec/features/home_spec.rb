@@ -15,7 +15,7 @@ RSpec.describe 'Homes', type: :feature do
 
   it 'have latest books' do
     within '#slider' do
-      expect(page).to have_selector('.item', count: count_book)
+      expect(page).to have_selector('.item',visible:false, count: count_book)
     end
   end
 end

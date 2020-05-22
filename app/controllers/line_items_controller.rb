@@ -4,8 +4,11 @@ class LineItemsController < ApplicationController
   end
 
   def create
-    Services::LineItems::Create.new(order: current_order, allowed_params: line_items_params).call
+   if Services::LineItems::Create.new(order: current_order, allowed_params: line_items_params).call
     flash[:notice] = I18n.t('cart_block.success')
+   else
+    flash[:alert] = I18n.t('cart_block.fail')
+   end
   end
 
   def update
@@ -15,7 +18,7 @@ class LineItemsController < ApplicationController
 
   def destroy
     Services::LineItems::Destroy.new(allowed_params: line_items_params).call
-    flash[:notice] = I18n.t('line_item.destroy_succes')
+    flash[:notice] = I18n.t('line_item.destroy_success')
     redirect_to order_line_items_path(current_order)
   end
 

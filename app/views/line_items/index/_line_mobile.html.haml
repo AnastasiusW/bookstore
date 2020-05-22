@@ -1,6 +1,6 @@
 .visible-xs
   .general-cart-item.divider-lg-bottom
-    =button_to order_line_item_path(current_order,item), method: :delete, class: 'close.general-cart-close' do
+    =button_to order_line_item_path(current_order,item), method: :delete, class: 'close.general-cart-close', id: 'button_delete' + item.id.to_s do
       %span{'aria-hidden': "true"} &times;
     = link_to book_path(item.book.id) do
       .general-img-wrap-table

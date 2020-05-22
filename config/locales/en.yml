@@ -58,6 +58,7 @@ en:
   cart_block:
     add_to_cart: Add to Cart
     success: 'Book was added to cart!'
+    fail: 'Error when you add to cart!'
     title_cart: Cart
     product: Product
     price: Price
@@ -68,6 +69,7 @@ en:
     total_title: 'Order Total:'
     order_summary: Order Summary
     checkout_button: Checkout
+
 
   coupon:
     title: Enter Your Coupon Code

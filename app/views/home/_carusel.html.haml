@@ -10,4 +10,4 @@
         %p.lead= last_books.description
         %p.lead.small= last_books.authors_names
         .general-align
-          %button.disabled.btn=t('home.buy_now')
+          = link_to t('home.buy_now'), order_line_items_path(current_order,book_id:last_books.id,quantity:1),method: :post, class:'btn btn-primary'

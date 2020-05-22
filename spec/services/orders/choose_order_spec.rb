@@ -1,4 +1,4 @@
-RSpec.describe Services:: Orders::ChooseOrder do
+RSpec.describe Services::Orders::ChooseOrder do
   subject(:service) { described_class.new(order.id, user) }
 
   context 'when order_id and user is nill service create new Order' do

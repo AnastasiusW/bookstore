@@ -18,5 +18,5 @@
   %td
     %span.font-16.in-gold-500=number_to_currency(item.total_price,unit: '€')
   %td
-    =button_to order_line_item_path(current_order,item), method: :delete, class: 'close.general-cart-close' do
+    =button_to order_line_item_path(current_order,item), method: :delete, class: 'close.general-cart-close', id: 'button_delete' + item.id.to_s do
       %span{'aria-hidden': "true"} &times;

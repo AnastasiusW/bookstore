@@ -8,6 +8,7 @@ module Services
       end
 
       def call
+        return false unless Book.find_by(id: @book_id)
         create_or_update_item
         Services::Orders::AmountCalculation.new(@current_order).call
       end
@@ -34,11 +35,11 @@ module Services
       end
 
       def set_item_price
-        Book.find_by(id: @book_id).price
+        Book.find_by(id: @book_id)&.price || 0
       end
 
       def set_quantity
-        @quantity&.to_i
+        @quantity&.to_i || 1
       end
 
       def set_total_price

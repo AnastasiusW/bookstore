@@ -1,3 +1,3 @@
 class Delivery < ApplicationRecord
-  has_many :order, dependent: :nullify
+  has_many :orders, dependent: :nullify
 end
