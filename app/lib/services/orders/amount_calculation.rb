@@ -26,7 +26,7 @@ module Services
       end
 
       def calculate_discount
-        return 0 unless @current_order.coupon&.discount_amount
+        return 0 unless @current_order.coupon
 
         @current_order.subtotal_price * @current_order.coupon.discount_amount / 100
       end

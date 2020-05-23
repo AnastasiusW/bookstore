@@ -18,7 +18,7 @@ module Services
       end
 
       def apply_coupon_to_order(current_coupon)
-        Order.update(coupon: current_coupon)
+        @current_order.update(coupon: current_coupon)
         Coupon.find_by(id: current_coupon).update(active: false)
         Services::Orders::AmountCalculation.new(@current_order).call
       end
