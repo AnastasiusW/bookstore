@@ -12,22 +12,29 @@ module Services
         when 'decrement' then decrement_line_item
         when 'increment' then increment_line_item
         end
-        update_total_price_line_items
-        Services::Orders::AmountCalculation.new(@current_order).call
       end
 
       private
 
       def decrement_line_item
-        @current_item.decrement!(:quantity) if  @current_item.quantity > 1
+        return false unless @current_item.quantity > 1
+
+        @current_item.decrement!(:quantity)
+        recount_price
       end
 
       def increment_line_item
         @current_item.increment!(:quantity)
+        recount_price
       end
 
       def update_total_price_line_items
         @current_item.update(total_price: @current_item.item_price * @current_item.quantity)
+      end
+
+      def recount_price
+        update_total_price_line_items
+        Services::Orders::AmountCalculation.new(@current_order).call
       end
     end
   end

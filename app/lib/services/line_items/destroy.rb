@@ -11,6 +11,8 @@ module Services
       end
 
       def delete_current_line_item
+        return false unless @current_item
+
         @current_item.destroy
         Services::Orders::AmountCalculation.new(@current_order).call
       end

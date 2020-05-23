@@ -2,8 +2,7 @@ module Services
   module Orders
     class AmountCalculation
       def initialize(order_id)
-        @order_id = order_id
-        @current_order = Order.find_by(id: @order_id)
+        @current_order = Order.find_by(id: order_id)
       end
 
       def call
@@ -13,7 +12,7 @@ module Services
       private
 
       def recount_total_price_order
-        recount = recount_subtotal_price_order - calculate_discount - delivery_price
+        recount = recount_subtotal_price_order + delivery_price - calculate_discount
         @current_order.update(total_price: recount)
       end
 

@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    # order = Order.find_by(id: session[:order_id]) || Order.create
     order = Services::Orders::ChooseOrder.new(session[:order_id], current_user).call
     session[:order_id] = order.id
     order
