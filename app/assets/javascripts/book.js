@@ -6,7 +6,6 @@ $(document).ready(function(){
         input_count.value--;
         priceCalculator(price,input_count.value);
     }
-
   });
 
   $('#incrementQuantity').click(function(){
@@ -17,12 +16,8 @@ $(document).ready(function(){
 
   });
 
-
   function priceCalculator(price,input){
     var price_of_element = document.getElementById("price");
     var currency_unit = price_of_element.textContent.substring(0, 1);
     price_of_element.textContent = currency_unit + (price * input).toFixed(2);
-}
-
-});
-
+}});
