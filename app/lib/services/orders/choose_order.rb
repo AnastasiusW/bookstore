@@ -44,6 +44,7 @@ module Services
 
       def find_order_by_order_id
         return false unless @order_id
+
         Order.find_by(id: @order_id, status: :in_progress)
       end
 
