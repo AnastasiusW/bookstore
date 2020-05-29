@@ -7,7 +7,7 @@ RSpec.describe Services::Coupons::Apply do
   context 'when coupon is active ' do
     let(:coupon) { create(:coupon) }
 
-    it 'when apply coupon to order' do
+    it 'apply coupon to order' do
       service.call
       expect(order.coupon).to eq(coupon)
     end

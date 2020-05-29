@@ -1,6 +1,6 @@
 module Services
   module Orders
-    class AmountCalculation
+    class RecalculateAmount
       def initialize(order_id)
         @current_order = Order.find_by(id: order_id)
       end

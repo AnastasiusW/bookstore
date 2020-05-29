@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     order
   end
 
+  def pundit_user
+    CurrentContext.new(current_user, current_order)
+  end
+
   private
 
   def user_not_authorized

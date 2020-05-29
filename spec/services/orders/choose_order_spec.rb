@@ -1,44 +1,52 @@
 RSpec.describe Services::Orders::ChooseOrder do
   subject(:service) { described_class.new(order.id, user) }
 
-  context 'when order_id and user is nill service create new Order' do
+  context 'when order_id and user is nil' do
     let(:order) { build(:order, id: nil, user_id: nil) }
     let(:user) { nil }
 
-    it 'when order_id(session[:order_id] is nil and user_id(not sign or guest) is nill)' do
+    it 'creates new Order' do
       expect(Order.count).to eq(0)
       service.call
       expect(Order.count).to eq(1)
+      expect(Order.first.line_items.empty?).to eq true
     end
   end
 
-  context 'when  user is nill' do
-    let(:order) { create(:order, user_id: nil) }
+  context 'when  user is nil' do
+    let!(:order) { create(:order, user_id: nil) }
     let(:user) { nil }
 
-    it 'when order have not user_id' do
+    it 'return exist`s order without user, quantity of order do not changed' do
+      expect(Order.count).to eq(1)
       expect(service.call.user_id).to eq nil
       expect(Order.count).to eq(1)
+      expect(Order.find(order.id).line_items.empty?).to eq true
     end
   end
 
-  context 'when user is exist and sign in and order exist' do
-    let(:order) { create(:order, user_id: user.id) }
+  context 'when user exists and signed and order exists' do
+    let!(:order) { create(:order, user_id: user.id) }
     let(:user) { create(:user) }
 
-    it 'when order  have user_id' do
+    it 'return exist`s order with user, quantity of order do not changed' do
+      expect(Order.count).to eq(1)
       expect(service.call.user_id).to eq(order.user_id)
       expect(Order.count).to eq(1)
+      expect(Order.find(order.id).line_items.empty?).to eq true
     end
   end
 
-  context 'when order_id is nill and user_id exist' do
+  context 'when order_id is nil and user exists' do
     let(:order) { build(:order, user_id: user.id) }
     let(:user) { create(:user) }
 
-    it 'when create order with user_id' do
+    it 'create order with user' do
+      expect(Order.count).to eq(0)
       expect(service.call.user_id).to eq(order.user_id)
       expect(Order.count).to eq(1)
+      expect(Order.first.line_items.empty?).to eq true
+
     end
   end
 end

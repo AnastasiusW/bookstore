@@ -69,6 +69,8 @@ en:
     total_title: 'Order Total:'
     order_summary: Order Summary
     checkout_button: Checkout
+    item_success_update: Item quantity was changed!
+    item_fail_update: Item quantity was not changed!
 
 
   coupon:
@@ -209,3 +211,11 @@ en:
     errors:
       user:
         warning: You are not authorized to perform this action.
+
+
+  transaction:
+    fail:
+      coupon: There was a failure while recounting the coupon amount. Transaction rolled back!
+      create_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
+      update_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
+      destroy_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!

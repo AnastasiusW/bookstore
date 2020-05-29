@@ -1,5 +1,5 @@
 RSpec.describe ReviewPolicy do
-  subject { described_class.new(user, review) }
+  subject { described_class.new(CurrentContext.new(user,nil), review) }
 
   let!(:review) { create(:review) }
 

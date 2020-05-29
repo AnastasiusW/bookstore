@@ -5,4 +5,8 @@ RSpec.describe Order, type: :model do
     it { is_expected.to belong_to(:delivery).optional }
     it { is_expected.to have_one(:coupon) }
   end
+
+  context 'with check validates' do
+    it {is_expected.to validate_uniqueness_of(:number) }
+  end
 end

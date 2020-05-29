@@ -1,4 +1,4 @@
-RSpec.describe Services::Orders::AmountCalculation do
+RSpec.describe Services::Orders::RecalculateAmount do
   subject(:service) { described_class.new(order.id) }
 
   context 'when order have line_items, coupon and delivery price ' do

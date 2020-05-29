@@ -8,6 +8,7 @@ module Services
       end
 
       def call
+        return false unless validate_fields
         case @quantity_action
         when 'decrement' then decrement_line_item
         when 'increment' then increment_line_item
@@ -16,16 +17,29 @@ module Services
 
       private
 
+      def validate_fields
+        @quantity_action.present? && @current_order.present? &&  @current_item.present?
+      end
+
       def decrement_line_item
         return false unless @current_item.quantity > 1
+        ActiveRecord::Base.transaction do
+          @current_item.decrement!(:quantity)
+          recount_price
+        end
+        rescue ActiveRecord::RecordInvalid
+          flash[:alert] = I18n.t('transaction.fail.update_line_item')
 
-        @current_item.decrement!(:quantity)
-        recount_price
       end
 
       def increment_line_item
-        @current_item.increment!(:quantity)
-        recount_price
+        ActiveRecord::Base.transaction do
+          @current_item.increment!(:quantity)
+          recount_price
+        end
+        rescue ActiveRecord::RecordInvalid
+          flash[:alert] = I18n.t('transaction.fail.update_line_item')
+
       end
 
       def update_total_price_line_items
@@ -34,7 +48,7 @@ module Services
 
       def recount_price
         update_total_price_line_items
-        Services::Orders::AmountCalculation.new(@current_order).call
+        Services::Orders::RecalculateAmount.new(@current_order).call
       end
     end
   end

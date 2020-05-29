@@ -12,9 +12,12 @@ module Services
 
       def delete_current_line_item
         return false unless @current_item
-
-        @current_item.destroy
-        Services::Orders::AmountCalculation.new(@current_order).call
+        ActiveRecord::Base.transaction do
+         @current_item.destroy
+          Services::Orders::RecalculateAmount.new(@current_order).call
+        end
+        rescue ActiveRecord::RecordInvalid
+          flash[:alert] = I18n.t('transaction.fail.destroy_line_item')
       end
     end
   end

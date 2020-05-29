@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_one :coupon, dependent: :nullify
   belongs_to :delivery, optional: true
+  validates :number, uniqueness: true
 
   enum status: {
     in_progress: 1,
