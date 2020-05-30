@@ -6,10 +6,17 @@ module Services
       end
 
       def call
-        recount_total_price_order if @current_order.line_items.exists?
+        return recount_total_price_order if @current_order.line_items.exists?
+
+        reset_to_zero_price
       end
 
       private
+
+      def reset_to_zero_price
+        @current_order.update(total_price: 0)
+        @current_order.update(subtotal_price: 0)
+      end
 
       def recount_total_price_order
         recount = recount_subtotal_price_order + delivery_price - calculate_discount

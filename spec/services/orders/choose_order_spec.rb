@@ -17,7 +17,7 @@ RSpec.describe Services::Orders::ChooseOrder do
     let!(:order) { create(:order, user_id: nil) }
     let(:user) { nil }
 
-    it 'return exist`s order without user, quantity of order do not changed' do
+    it 'return existing order without user, quantity of order do not changed' do
       expect(Order.count).to eq(1)
       expect(service.call.user_id).to eq nil
       expect(Order.count).to eq(1)
@@ -29,7 +29,7 @@ RSpec.describe Services::Orders::ChooseOrder do
     let!(:order) { create(:order, user_id: user.id) }
     let(:user) { create(:user) }
 
-    it 'return exist`s order with user, quantity of order do not changed' do
+    it 'return existing order with user, quantity of order do not changed' do
       expect(Order.count).to eq(1)
       expect(service.call.user_id).to eq(order.user_id)
       expect(Order.count).to eq(1)
@@ -41,12 +41,11 @@ RSpec.describe Services::Orders::ChooseOrder do
     let(:order) { build(:order, user_id: user.id) }
     let(:user) { create(:user) }
 
-    it 'create order with user' do
+    it 'creates order with user_id' do
       expect(Order.count).to eq(0)
       expect(service.call.user_id).to eq(order.user_id)
       expect(Order.count).to eq(1)
       expect(Order.first.line_items.empty?).to eq true
-
     end
   end
 end

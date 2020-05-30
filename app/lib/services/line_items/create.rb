@@ -9,13 +9,13 @@ module Services
 
       def call
         return false unless Book.find_by(id: @book_id)
+
         ActiveRecord::Base.transaction do
           create_or_update_item
           Services::Orders::RecalculateAmount.new(@current_order).call
         end
-        rescue ActiveRecord::RecordInvalid
-          flash[:alert] = I18n.t('transaction.fail.create_line_item')
-
+      rescue ActiveRecord::RecordInvalid
+        flash[:alert] = I18n.t('transaction.fail.create_line_item')
       end
 
       private

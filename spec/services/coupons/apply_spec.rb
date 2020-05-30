@@ -7,7 +7,8 @@ RSpec.describe Services::Coupons::Apply do
   context 'when coupon is active ' do
     let(:coupon) { create(:coupon) }
 
-    it 'apply coupon to order' do
+    it 'coupon appled to order with success, becouse coupon has valid code and active' do
+      expect(order.coupon).to eq(nil)
       service.call
       expect(order.coupon).to eq(coupon)
     end
@@ -16,7 +17,8 @@ RSpec.describe Services::Coupons::Apply do
   context 'when coupon is not active ' do
     let(:coupon) { create(:coupon, active: false) }
 
-    it 'when can not apply coupon to order' do
+    it 'coupon not appled to order,becouse coupon not active' do
+      expect(order.coupon).to eq(nil)
       expect(service.call).to eq(false)
       expect(order.coupon).to eq(nil)
     end

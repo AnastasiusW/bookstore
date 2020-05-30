@@ -7,6 +7,6 @@ RSpec.describe Order, type: :model do
   end
 
   context 'with check validates' do
-    it {is_expected.to validate_uniqueness_of(:number) }
+    it { is_expected.to validate_uniqueness_of(:number) }
   end
 end

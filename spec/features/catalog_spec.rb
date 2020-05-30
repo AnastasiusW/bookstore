@@ -85,7 +85,7 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
       visit(books_path)
     end
 
-    it 'when cart icon click' do
+    it 'adds new line item to order' do
       expect(LineItem.count).to eq(0)
       catalog_page.shopping_cart.first.click
       expect(LineItem.count).to eq(1)

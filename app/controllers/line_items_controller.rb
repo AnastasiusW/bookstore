@@ -31,7 +31,7 @@ class LineItemsController < ApplicationController
   private
 
   def set_line_item
-    @line_item =  LineItem.find_by(id: line_items_params[:id], order_id: line_items_params[:order_id])
+    @line_item = LineItem.find_by(id: line_items_params[:id], order_id: line_items_params[:order_id])
     authorize @line_item
   end
 

@@ -1,8 +1,4 @@
 class LineItemPolicy < ApplicationPolicy
-
-
-
-
   def update?
     if user
       record.order.user ? record.order.user.id == user.id : record.order.id == foo.id
@@ -18,6 +14,4 @@ class LineItemPolicy < ApplicationPolicy
       record.order.id == foo.id
     end
   end
-
-
 end

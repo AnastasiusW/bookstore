@@ -5,6 +5,6 @@ RSpec.describe LineItem, type: :model do
   end
 
   context 'with check validates' do
-    it {validate_numericality_of(:quantity) }
+    it { validate_numericality_of(:quantity) }
   end
 end

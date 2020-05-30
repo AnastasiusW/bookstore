@@ -19,12 +19,12 @@ module Services
 
       def apply_coupon_to_order(current_coupon)
         ActiveRecord::Base.transaction do
-        @current_order.update(coupon: current_coupon)
-        Coupon.find_by(id: current_coupon).update(active: false)
-        Services::Orders::RecalculateAmount.new(@current_order).call
+          @current_order.update(coupon: current_coupon)
+          Coupon.find_by(id: current_coupon).update(active: false)
+          Services::Orders::RecalculateAmount.new(@current_order).call
         end
       rescue ActiveRecord::RecordInvalid
-
+        flash[:alert] = I18n.t('transaction.fail.coupon')
       end
     end
   end

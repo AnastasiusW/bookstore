@@ -26,7 +26,7 @@ RSpec.describe 'Books', type: :feature, js: true do
     end
   end
 
-  context 'with add book to cart botton' do
+  context 'with add book when click cart button' do
     it 'when increment count book' do
       expect(LineItem.count).to eq(0)
       book_page.plus.click

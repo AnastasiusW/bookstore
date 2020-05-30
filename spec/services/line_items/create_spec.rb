@@ -8,7 +8,7 @@ RSpec.describe Services::LineItems::Create do
     let(:book_quantity) { 5 }
     let(:params) { { book_id: book.id, quantity: book_quantity } }
 
-    it 'when create line_item' do
+    it 'creates new line_item' do
       expect(order.line_items.count).to eq(0)
       service.call
       expect(order.line_items.count).to eq(1)
@@ -21,9 +21,10 @@ RSpec.describe Services::LineItems::Create do
   context 'when update line_item' do
     let(:book_quantity) { 5 }
     let(:params) { { book_id: book.id, quantity: book_quantity } }
-    let(:current_item) { create(:line_item, book: book, order: order, quantity: 2) }
+    let!(:current_item) { create(:line_item, book: book, order: order, quantity: 2) }
 
-    it 'when update line_item' do
+    it 'updates existing line_item' do
+      expect(order.line_items.count).to eq(1)
       expect(current_item.quantity).to eq(2)
       service.call
       expect(order.line_items.count).to eq(1)

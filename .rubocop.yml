@@ -49,6 +49,7 @@ Metrics/AbcSize:
   - 'spec/features/**/*'
   - 'app/controllers/user_addresses_controller.rb'
   - 'app/controllers/reviews_controller.rb'
+  - 'app/policies/line_item_policy.rb'
 
 RSpec/DescribeClass:
   Exclude:
@@ -65,3 +66,8 @@ RSpec/NestedGroups:
 Metrics/BlockNesting:
   Exclude:
     - 'config/initializers/carrierwave.rb'
+
+RSpec/RepeatedExample:
+  Exclude:
+    - 'spec/controllers/line_items_controller_spec.rb'
+
