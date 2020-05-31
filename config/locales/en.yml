@@ -219,3 +219,27 @@ en:
       create_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
       update_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
       destroy_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
+
+  quick_registration:
+    returning _customer: Returning Customer
+    new_customer: New Customer
+    or: or
+    quick: Quick Register
+    title:
+      title_quick: You’ll be able to create password later
+      log_with_password: Log In with Password
+    label:
+      label_quick: Enter Email
+      label: Enter Email
+      password: Password
+    placeholder:
+      placeholder_quick: Enter Email
+      placeholder: Enter Email
+      password: Password
+    button:
+      continue_quick: Continue to Checkout
+      button_confirm: Log In with Password
+
+  checkout:
+    login:
+      success: Account was successfully created. Reset password instructions will be sent to your email
