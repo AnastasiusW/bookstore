@@ -1,25 +1,25 @@
 %main.container
-  %h1.general-title-margin Checkout
+  %h1.general-title-margin=t('checkout.titles.checkout')
   %ul.steps.list-inline
     %li.step.active
       %span.step-number 1
-      %span.step-text.hidden-xs Address
+      %span.step-text.hidden-xs=t('checkout.tabs.address')
     %li.step-divider
     %li.step
       %span.step-number 2
-      %span.step-text.hidden-xs Delivery
+      %span.step-text.hidden-xs=t('checkout.tabs.delivery')
     %li.step-divider
     %li.step
       %span.step-number 3
-      %span.step-text.hidden-xs Payment
+      %span.step-text.hidden-xs=t('checkout.tabs.payment')
     %li.step-divider
     %li.step
       %span.step-number 4
-      %span.step-text.hidden-xs Confirm
+      %span.step-text.hidden-xs=t('checkout.tabs.comfirm')
     %li.step-divider
     %li.step
       %span.step-number 5
-      %span.step-text.hidden-xs Complete
+      %span.step-text.hidden-xs=t('checkout.tabs.comfirm')
   %form.res-mb-100
     .hidden-xs.hidden-sm
       .row
