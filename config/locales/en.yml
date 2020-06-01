@@ -120,6 +120,7 @@ en:
     password_confirmation_error: Password confirmation doesn't match Password
     invalid_sign_in: Invalid Email or password.
     review_errors: Title is invalid, Comment is invalid
+    quick_registration: Email can't be blank
 
   settings_form:
     billing: Billing Address

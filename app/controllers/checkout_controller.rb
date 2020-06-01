@@ -15,5 +15,4 @@ class CheckoutController < ApplicationController
   def authenticate_user
     redirect_to new_quick_registration_path
   end
-
 end
