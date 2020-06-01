@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :coupons, only: :create
   resources :quick_registrations
+  resources :checkout
 end
