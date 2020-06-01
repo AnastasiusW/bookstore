@@ -6,7 +6,7 @@
         = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
           %i.fa.fa-facebook-official
         %p.general-login-text= t('quick_registration.or')
-      = form_for(@user, url:session_path(@user)) do |f|
+      = form_for(@user, url:session_path(@user), html: {id: :user_with_password }  ) do |f|
         .general-form
           .mb-40
             %p.mb-15= t('quick_registration.title.log_with_password')
@@ -19,7 +19,7 @@
               = f.label :password, t('quick_registration.label.password'), class: 'control-label input-label'
               = f.password_field :password, placeholder: t('quick_registration.placeholder.password'), class: 'form-control'
               = link_to t('authentication.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
-            = f.submit t('quick_registration.button.button_confirm'), class: 'btn disabled mb-20 '
+            = f.submit t('quick_registration.button.button_confirm'), class: 'btn disabled mb-20 ', id: 'button_user_with_password'
 
     .col-md-5.col-md-offset-1.mb-60
       .text-center
@@ -27,7 +27,7 @@
         = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
           %i.fa.fa-facebook-official
         %p.general-login-text= t('quick_registration.or')
-      = form_for(@user, url: quick_registrations_path,method: :post) do |f|
+      = form_for(@user, url: quick_registrations_path,method: :post,html: {id: :user_without_password }) do |f|
         .general-form
           .mb-40
             %p.mb-5= t('quick_registration.quick')
@@ -35,4 +35,4 @@
             .form-group.mb-30
               = f.label :email,t('quick_registration.label.label_quick'), class: 'control-label input-label'
               = f.email_field :email, placeholder: t('quick_registration.placeholder.placeholder_quick'), class: 'form-control'
-          = f.submit  t('quick_registration.button.continue_quick'), class: 'btn disabled mb-20'
+          = f.submit  t('quick_registration.button.continue_quick'), class: 'btn disabled mb-20', id: 'button_user_without_password'
