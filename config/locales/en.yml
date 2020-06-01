@@ -244,3 +244,11 @@ en:
   checkout:
     login:
       success: Account was successfully created. Reset password instructions will be sent to your email
+    titles:
+      checkout: Checkout
+    tabs:
+      address: Address
+      delivery: Delivery
+      payment: Payment
+      confirm: Confirm
+      complite: Complete
