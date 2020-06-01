@@ -3,7 +3,7 @@ RSpec.describe QuickRegistrationsController, type: :controller do
     context 'when user is exists' do
       let(:user) { create(:user) }
 
-      it ' user not is signed' do
+      it 'user not is signed' do
         get :new
         expect(response.status).to eq(200)
         expect(response).to render_template :new
@@ -22,7 +22,7 @@ RSpec.describe QuickRegistrationsController, type: :controller do
     context 'when guest input valid params' do
       let(:email) { FFaker::Internet.email }
 
-      it 'created  user with temporary password and redirect to checkout ' do
+      it 'created  user with temporary password and redirect to checkout' do
         expect(User.count).to eq(0)
         post :create, params: { user: { email: email } }
         expect(response.status).to eq(302)
@@ -31,7 +31,7 @@ RSpec.describe QuickRegistrationsController, type: :controller do
       end
 
       context 'whan guest input invalid params'
-      it 'do not create  user and redirect to registate controller again  ' do
+      it 'do not create  user and redirect to registate controller again' do
         expect(User.count).to eq(0)
         post :create, params: { user: { email: nil } }
         expect(response.status).to eq(302)
