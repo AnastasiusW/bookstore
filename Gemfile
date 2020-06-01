@@ -27,6 +27,7 @@ gem 'seedbank', '~> 0.5.0'
 gem 'shrine', '~> 3.2', '>= 3.2.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'virtus'
+gem 'wicked', '~> 1.3', '>= 1.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record
