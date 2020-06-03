@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_095349) do
+ActiveRecord::Schema.define(version: 2020_06_03_181241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_095349) do
     t.decimal "total_price", precision: 10, scale: 2, default: "0.0"
     t.string "number"
     t.bigint "delivery_id"
+    t.boolean "use_billing_address", default: false
     t.index ["delivery_id"], name: "index_orders_on_delivery_id"
     t.index ["number"], name: "index_orders_on_number", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
