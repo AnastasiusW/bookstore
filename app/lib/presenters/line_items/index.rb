@@ -27,6 +27,10 @@ module Presenters
 
         @current_order.subtotal_price * @current_order.coupon.discount_amount / 100
       end
+
+      def delivery_price
+        @current_order.delivery ? @current_order.delivery.price : 0
+      end
     end
   end
 end

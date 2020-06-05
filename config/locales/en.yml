@@ -246,9 +246,20 @@ en:
       success: Account was successfully created. Reset password instructions will be sent to your email
     titles:
       checkout: Checkout
+      billing_address: Billing Address
+      shipping_address: Shipping Address
+      require: all fields are required
     tabs:
       address: Address
       delivery: Delivery
       payment: Payment
       confirm: Confirm
       complite: Complete
+    order_summary:
+      title: Order Summary
+      item_order: "Item Total:"
+      order_item: "Order Total:"
+      delivery: "Delivery Total:"
+      coupon: "Coupon Total:"
+    buttons:
+      address_submit: Save and Continue
