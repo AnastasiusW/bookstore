@@ -1,0 +1,40 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin=t('checkout.titles.checkout')
+  = render 'checkout/progress'
+
+  %h3.general-subtitle Delivery
+    = simple_form_for(@checkout.current_order, url: wizard_path, method: :put) do |f|
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40=t('checkout.delivery.method')
+            %th
+              %span.in-grey-600=t('checkout.delivery.days')
+            %th
+              %span.in-grey-600=t('checkout.delivery.price')
+        %tbody
+          = render partial: 'checkout/show/delivery_info', collection: @checkout.presenter_order.delivery_methods, :as => :delivery, locals: {form:f}
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  %input.radio-input{type: "radio", hidden: "true"}
+                  %span.radio-icon
+                  %span.radio-text Delivery Next Day!
+            %td
+              %span 3 to 7 days
+            %td
+              %span.font-16.in-gold-500 €28.50
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  %input.radio-input{type: "radio", hidden: "true"}
+                  %span.radio-icon
+                  %span.radio-text Delivery Next Day!
+            %td
+              %span 3 to 7 days
+            %td
+              %span.font-16.in-gold-500 €28.50

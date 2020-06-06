@@ -18,7 +18,7 @@ class CheckoutController < ApplicationController
     if @checkout.call(step)
       flash[:notice] = 'Success'
     else
-      flash[:alert] = 'Fails'
+      redirect_to checkout_path(step), alert: 'Wrong'
     end
   end
 

@@ -220,7 +220,8 @@ en:
       create_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
       update_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
       destroy_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
-
+    address:
+    blank: 'Fields can not be blank!'
   quick_registration:
     returning _customer: Returning Customer
     new_customer: New Customer
@@ -263,3 +264,7 @@ en:
       coupon: "Coupon Total:"
     buttons:
       address_submit: Save and Continue
+    delivery:
+      method: Method
+      price: Price
+      days: Days

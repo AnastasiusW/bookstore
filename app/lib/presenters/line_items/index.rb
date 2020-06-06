@@ -31,6 +31,10 @@ module Presenters
       def delivery_price
         @current_order.delivery ? @current_order.delivery.price : 0
       end
+
+      def delivery_methods
+        Delivery.all
+      end
     end
   end
 end
