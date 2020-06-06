@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_181241) do
+ActiveRecord::Schema.define(version: 2020_06_06_143158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_181241) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.string "method"
+    t.string "method_name"
     t.string "from_time"
     t.string "to_time"
     t.decimal "price", precision: 10, scale: 2
