@@ -6,7 +6,7 @@ module Services
           @current_order = order
           @order_billing_address = billing
           @order_shipping_address = shipping
-          @use_billing_address = use_billing.to_i
+          @use_billing_address = use_billing[:use_billing_address].to_i
         end
 
         def call
@@ -28,8 +28,9 @@ module Services
             update_use_billing_address
             if  !@form_billing || !@form_shipping
               raise ActiveRecord::Rollback
+            else
+              return true
             end
-
           end
         end
 

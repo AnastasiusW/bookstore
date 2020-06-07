@@ -2,10 +2,10 @@
   %td
     .form-group.radio.mt-0.mb-0
       %label.radio-label
-        %input.radio-input{type: "radio", hidden: "true"}
+        = form.radio_button :delivery_id, delivery.id, class: 'radio-input', hidden: true,checked: order.checked_delivery(delivery.id)
         %span.radio-icon
-        %span.radio-text Delivery Next Day!
+        %span.radio-text= delivery.method_name
   %td
-    %span 3 to 7 days
+    %span= t('checkout.delivery.from') + delivery.from_time + t('checkout.delivery.to') + delivery.to_time
   %td
-    %span.font-16.in-gold-500 €28.50
+    %span.font-16.in-gold-500=number_to_currency(delivery.price,unit: '€')

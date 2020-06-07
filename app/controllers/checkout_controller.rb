@@ -2,7 +2,7 @@ class CheckoutController < ApplicationController
   include Wicked::Wizard
   before_action :validate_checkout
 
-  steps :address
+  steps :address, :delivery
 
   def show
     @checkout = Services::Checkout::Show.new(order: current_order, params: nil)
@@ -11,23 +11,33 @@ class CheckoutController < ApplicationController
   end
 
   def update
-    @checkout = Services::Checkout::Update::Update.new(order: current_order,
-                                                       billing: address_billing_params,
-                                                       shipping: address_shipping_params,
-                                                       use: use_billing_address_params)
-    if @checkout.call(step)
+    return redirect_to checkout_path(step),alert: I18n.t('checkout.alert.fail') unless params[:order]
+    @checkout = Services::Checkout::Update::Update.new(order: current_order,params: order_params)
+
+
+   if @checkout.call(step)
       flash[:notice] = 'Success'
+      redirect_to next_wizard_path
     else
-      redirect_to checkout_path(step), alert: 'Wrong'
+      redirect_to checkout_path(step), alert: I18n.t('checkout.alert.fail')
     end
   end
 
   def validate_checkout
     return authenticate_user unless user_signed_in?
+
   end
 
   def authenticate_user
     redirect_to new_quick_registration_path
+  end
+
+  def validate_params
+
+  end
+
+  def order_params
+    params.require(:order)
   end
 
   def address_billing_params
@@ -45,4 +55,6 @@ class CheckoutController < ApplicationController
   def use_billing_address_params
     params.require(:order).permit(:use_billing_address)
   end
+
+
 end

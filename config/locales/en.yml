@@ -264,7 +264,12 @@ en:
       coupon: "Coupon Total:"
     buttons:
       address_submit: Save and Continue
+      delivery_submit: Save and Continue
     delivery:
       method: Method
       price: Price
       days: Days
+      from: 'From '
+      to: ' to '
+    alert:
+      fail: 'You have entered invalid parameters. Be carefully!'
