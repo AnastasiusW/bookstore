@@ -12,12 +12,18 @@ module Services
       def call(step)
         case step
         when :address then manage_address
+        when :payment then manage_payment
         end
       end
 
       def manage_address
         @presenter = Presenters::Address.new(current_instance: @current_order)
       end
+
+      def manage_payment
+        @presenter = Presenters::Payment.new(current_instance: @current_order)
+      end
+
     end
   end
 end

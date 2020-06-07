@@ -2,7 +2,7 @@
   %h1.general-title-margin=t('checkout.titles.checkout')
   = render 'checkout/progress'
 
-  %h3.general-subtitle Delivery
+  %h3.general-subtitle=t('checkout.titles.delivery')
   = simple_form_for(@checkout.current_order, url: wizard_path, method: :put) do |f|
     .hidden-xs.mb-res-50
       %table.table.table-hover
