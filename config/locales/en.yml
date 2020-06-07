@@ -250,6 +250,8 @@ en:
       billing_address: Billing Address
       shipping_address: Shipping Address
       require: all fields are required
+      delivery: Delivery
+      payment: Credit Card
     tabs:
       address: Address
       delivery: Delivery
@@ -265,6 +267,7 @@ en:
     buttons:
       address_submit: Save and Continue
       delivery_submit: Save and Continue
+      payment_submit: Save and Continue
     delivery:
       method: Method
       price: Price
@@ -273,3 +276,11 @@ en:
       to: ' to '
     alert:
       fail: 'You have entered invalid parameters. Be carefully!'
+    payment:
+      number: Card Number
+      card_name: Name on Card
+      span_number: Please enter a valid credit card number
+      expiration_date: 'MM / YY'
+      cvv: CVV
+
+

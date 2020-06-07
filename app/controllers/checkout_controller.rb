@@ -2,7 +2,7 @@ class CheckoutController < ApplicationController
   include Wicked::Wizard
   before_action :validate_checkout
 
-  steps :address, :delivery
+  steps :address, :delivery, :payment
 
   def show
     @checkout = Services::Checkout::Show.new(order: current_order, params: nil)

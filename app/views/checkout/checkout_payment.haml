@@ -58,7 +58,7 @@
                     %a{href: "#"} Log out
               %li
                 %a{href: "#"} My account
-    %main.container.general-main-wrap
+    %main.container.mb-res-50
       %h1.general-title-margin Checkout
       %ul.steps.list-inline
         %li.step.active
@@ -81,82 +81,25 @@
           %span.step-number 5
           %span.step-text.hidden-xs Complete
       %h3.general-subtitle Credit Card
-      .visible-xs
-        .general-cart-item.divider-lg-bottom
-          %table.table
-            %tr
-              %td.col-half
-                %span.in-grey-600 Method
-              %td.col-half
-                .form-group.radio.mt-0.mb-0
-                  %label.radio-label
-                    %input.radio-input{type: "radio", hidden: "true"}
-                    %span.radio-icon
-                    %span.radio-text Delivery Next Day!
-            %tr
-              %td
-                %span.in-grey-600 Days
-              %td
-                %span.font-16.fw-300 3 to 7 days
-            %tr
-              %td
-                %span.in-grey-600 Price
-              %td
-                %span.font-16.in-gold-500 €5.00
-        .general-cart-item.divider-lg-bottom.mb-30
-          %table.table
-            %tr
-              %td.col-half
-                %span.in-grey-600 Method
-              %td.col-half
-                .form-group.radio.mt-0.mb-0
-                  %label.radio-label
-                    %input.radio-input{type: "radio", hidden: "true"}
-                    %span.radio-icon
-                    %span.radio-text Delivery Next Day!
-            %tr
-              %td
-                %span.in-grey-600 Days
-              %td
-                %span.font-16.fw-300 3 to 7 days
-            %tr
-              %td
-                %span.in-grey-600 Price
-              %td
-                %span.font-16.in-gold-500 €5.00
-      .hidden-xs.mb-res-50
-        %table.table.table-hover
-          %thead
-            %tr
-              %th.col-method
-                %span.in-grey-600.ml-40 Method
-              %th
-                %span.in-grey-600 Days
-              %th
-                %span.in-grey-600 Price
-          %tbody
-            %tr
-              %td
-                .form-group.radio.mt-0.mb-0
-                  %label.radio-label
-                    %input.radio-input{type: "radio", hidden: "true"}
-                    %span.radio-icon
-                    %span.radio-text Delivery Next Day!
-              %td
-                %span 3 to 7 days
-              %td
-                %span.font-16.in-gold-500 €28.50
-            %tr
-              %td
-                .form-group.radio.mt-0.mb-0
-                  %label.radio-label
-                    %input.radio-input{type: "radio", hidden: "true"}
-                    %span.radio-icon
-                    %span.radio-text Delivery Next Day!
-              %td
-                %span 3 to 7 days
-              %td
-                %span.font-16.in-gold-500 €28.50
+      %form.max-600.mb-80
+        .form-group.has-error
+          %label.control-label.input-label{for: "cardNumber"} Card Number
+          %input#cardNumber.form-control{type: "number", name: "cardnumber", placeholder: "Card Number"}
+          %span.help-block Please enter a valid credit card number
+        .row
+          .col-sm-6
+            .form-group
+              %label.control-label.input-label{for: "cardName"} Name on Card
+              %input#cardName.form-control{type: "text", name: "ccname", placeholder: "Name on Card"}
+          .col-sm-3
+            .form-group
+              %label.control-label.input-label{for: "firstName"} MM / YY
+              %input#firstName.form-control{name: "exp-date", type: "text", placeholder: "MM / YY"}
+          .col-sm-3
+            .form-group.relative
+              %label.control-label.input-label{for: "firstName"} CVV
+              %input#firstName.form-control{name: "cvc", type: "number", placeholder: "CVV"}
+              %i.fa.fa-question-circle.general-form-help
       .general-text-align
         %p.in-gold-500.font-18 Order Summary
         %table.general-summary-table
@@ -176,7 +119,7 @@
             %td
               %strong.font-18 €117.69
       .text-center
-        %button.btn.btn-default.mb-20 Save and Continue
+        %button.btn.btn-default.mb-80 Save and Continue
     %footer.navbar-inverse
       .container
         .row
