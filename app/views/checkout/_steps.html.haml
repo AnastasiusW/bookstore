@@ -1,0 +1,8 @@
+%h1.general-title-margin=t('checkout.titles.checkout')
+%ul.steps.list-inline
+  - wizard_steps.each_with_index do |step,index|
+    %li.step{class: ('active' if step == current_step)}
+      %span.step-number= index.next
+      %span.step-text.hidden-xs=step.capitalize
+    - unless step == :complete
+      %li.step-divider

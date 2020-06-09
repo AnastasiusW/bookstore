@@ -1,6 +1,5 @@
 %main.container.general-main-wrap
-  %h1.general-title-margin=t('checkout.titles.checkout')
-  = render 'checkout/progress'
+  = render 'checkout/steps', current_step:@steps
 
   %h3.general-subtitle=t('checkout.titles.delivery')
   = simple_form_for(@checkout.current_order, url: wizard_path, method: :put) do |f|
@@ -15,10 +14,10 @@
             %th
               %span.in-grey-600=t('checkout.delivery.price')
         %tbody
-          = render partial: 'checkout/show/delivery_info', collection: @checkout.presenter_order.delivery_methods, :as => :delivery, locals: {form:f, order: @checkout.presenter_order}
+          = render partial: 'checkout/show/delivery_info', collection: @checkout.presenter.delivery_methods, :as => :delivery, locals: {form:f, order: @checkout.presenter}
 
     .general-text-align.mb-60
-      = render partial: 'checkout/show/order_summary', locals: {presenter_order: @checkout.presenter_order}
+      = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
     .text-center
       = f.submit t('checkout.buttons.delivery_submit'), class: 'btn btn-default mb-20'

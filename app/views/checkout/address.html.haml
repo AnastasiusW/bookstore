@@ -1,7 +1,7 @@
 %main.container
   %h1.general-title-margin=t('checkout.titles.checkout')
 
-  = render 'checkout/progress'
+  = render 'checkout/steps', current_step: @step
 
   = simple_form_for(@checkout.current_order, url: wizard_path, method: :put,
   defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }, validate: true}) do |f|
@@ -33,5 +33,5 @@
               %i.fa.fa-check
             %span.checkbox-text Use Billing Adress
     .general-text-align.mb-60
-      = render partial: 'checkout/show/order_summary', locals: {presenter_order: @checkout.presenter_order}
+      = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
       = f.submit t('checkout.buttons.address_submit'), class: 'btn btn-default center-block mb-20'

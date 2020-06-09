@@ -2,7 +2,7 @@ class CheckoutController < ApplicationController
   include Wicked::Wizard
   before_action :validate_checkout
 
-  steps :address, :delivery, :payment
+  steps :address, :delivery, :payment, :confirm, :complite
 
   def show
     @checkout = Services::Checkout::Show.new(order: current_order, params: nil)
@@ -11,7 +11,7 @@ class CheckoutController < ApplicationController
   end
 
   def update
-    return redirect_to checkout_path(step),alert: I18n.t('checkout.alert.fail') unless params[:order]
+    return redirect_to checkout_path(step),alert: I18n.t('checkout.alert.fail') unless params[:order] || step == :confirm
     @checkout = Services::Checkout::Update::Update.new(order: current_order,params: order_params)
 
 
@@ -32,29 +32,8 @@ class CheckoutController < ApplicationController
     redirect_to new_quick_registration_path
   end
 
-  def validate_params
-
-  end
-
   def order_params
-    params.require(:order)
+    params.require(:order) if params[:order]
   end
-
-  def address_billing_params
-    params.require(:order).require(:billing).permit(*allowed_attributes)
-  end
-
-  def address_shipping_params
-    params.require(:order).require(:shipping).permit(*allowed_attributes)
-  end
-
-  def allowed_attributes
-    %w[first_name last_name country city address zip phone type]
-  end
-
-  def use_billing_address_params
-    params.require(:order).permit(:use_billing_address)
-  end
-
 
 end
