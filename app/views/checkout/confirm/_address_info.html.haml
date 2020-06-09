@@ -1,0 +1,13 @@
+.col-sm-3
+  %h3.general-subtitle=t('checkout.type.' + type)
+  %p.general-address
+    = address.full_name
+    = link_to t('checkout.edit'), wizard_path(:address), class: 'general-edit'
+    %br
+    = address.address.address
+    %br
+    = address.city
+    %br
+    = address.country
+    %br
+    = address.phone

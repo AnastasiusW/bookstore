@@ -4,19 +4,19 @@
     %td
       %p.font-16= t('checkout.order_summary.item_order')
     %td
-      %p.font-16=number_to_currency(presenter_order.subtotal,unit: '€')
+      %p.font-16=number_to_currency(presenter_items.subtotal,unit: '€')
   %tr
     %td
       %p.font-16= t('checkout.order_summary.coupon')
     %td
-      %p.font-16= number_to_currency(presenter_order.discount_price,unit: '€')
+      %p.font-16= number_to_currency(presenter_items.discount_price,unit: '€')
   %tr
     %td
       %p.font-16= t('checkout.order_summary.delivery')
     %td
-      %p.font-16= number_to_currency(presenter_order.delivery_price,unit: '€')
+      %p.font-16= number_to_currency(presenter_items.delivery_price,unit: '€')
   %tr
     %td
       %p.font-16= t('checkout.order_summary.order_item')
     %td
-      %p.font-16= number_to_currency(presenter_order.total,unit: '€')
+      %p.font-16= number_to_currency(presenter_items.total,unit: '€')

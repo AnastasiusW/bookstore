@@ -1,0 +1,30 @@
+%main.container.general-main-wrap
+  = render 'checkout/steps', current_step: @step
+
+  .row.mb-20
+    = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
+    = render partial: 'checkout/confirm/address_info', locals: {type: 'shiping', address: @checkout.shipping_address}
+    = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery}
+    = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment}
+
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('cart_block.product')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('cart_block.price')
+          %th
+            %span.in-grey-600= t('cart_block.quantity')
+          %th
+            %span.in-grey-600= t('cart_block.total_line')
+      = render partial: 'checkout/show/product_list', collection:  @checkout.presenter_items.items, :as => :item
+
+  .general-text-align.mb-60
+    = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
+
+  .text-center
+    = button_to t('checkout.buttons.confirm_submit'), wizard_path, method: :put, class: 'btn btn-default mb-20'
+

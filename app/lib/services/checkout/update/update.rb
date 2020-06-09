@@ -12,6 +12,8 @@ module Services
           case step
           when :address then manage_address
           when :delivery then manage_delivery
+          when :payment then manage_payment
+          when :confirm then manage_confirm
           end
         end
 
@@ -23,6 +25,14 @@ module Services
         def manage_delivery
           Services::Checkout::Update::Delivery.new(order: @current_order,delivery_params: delivery_params).call
 
+        end
+
+        def manage_payment
+          CreditCardForm.new(payment_params).save(@current_order.user)
+        end
+
+        def manage_confirm
+          OrderMailer.with(user:@current_order.user).order_confirmation.deliver_now
         end
 
         def address_billing_params
@@ -43,6 +53,10 @@ module Services
 
         def delivery_params
          return @order_params.permit(:delivery_id)
+        end
+
+        def payment_params
+          return @order_params.require(:payment).permit(:number, :card_name, :expiration_date, :cvv, :user_id)
         end
 
 

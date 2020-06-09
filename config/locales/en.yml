@@ -71,6 +71,7 @@ en:
     checkout_button: Checkout
     item_success_update: Item quantity was changed!
     item_fail_update: Item quantity was not changed!
+    total_line: Total
 
 
   coupon:
@@ -268,6 +269,7 @@ en:
       address_submit: Save and Continue
       delivery_submit: Save and Continue
       payment_submit: Save and Continue
+      confirm_submit: Place Order
     delivery:
       method: Method
       price: Price
@@ -282,5 +284,17 @@ en:
       span_number: Please enter a valid credit card number
       expiration_date: 'MM / YY'
       cvv: CVV
-
+      hint: '3-digit security code, usually found on the back of your card.American Express cards has 4-digit code, located on the front'
+    confirm:
+      edit: edit
+      type:
+        billing: Billing Address
+        shipping: Shipping Address
+      title:
+        delivery: Shipments
+        payment: Payment Information
+  mail:
+    title: Order was succesfully compleated!
+    hello: "Hello %{user_name}!"
+    body: Thanks for order
 
