@@ -16,6 +16,7 @@ module Services
         when :delivery then manage_delivery
         when :payment then manage_payment
         when :confirm then manage_confirm
+        when :complite then manage_complite
         end
       end
 
@@ -39,6 +40,10 @@ module Services
 
       end
 
+      def manage_complite
+        @billing_address = @current_order.billing_address.decorate
+
+      end
 
     end
   end
