@@ -5,7 +5,6 @@ module Services
         def initialize(order:, delivery_params:)
           @current_order = order
           @delivery_params = delivery_params[:delivery_id].to_i
-
         end
 
         def call
