@@ -5,7 +5,7 @@ class CheckoutController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complite
 
   def show
-    binding.pry
+    return redirect_to wizard_path(current_order.step) unless control_current_step
     @checkout = Services::Checkout::Show.new(order: current_order, params: nil)
     @checkout.call(step)
     render_wizard
@@ -19,6 +19,7 @@ class CheckoutController < ApplicationController
    if @checkout.call(step)
       flash[:notice] = 'Success'
       redirect_to next_wizard_path
+
     else
       redirect_to checkout_path(step), alert: I18n.t('checkout.alert.fail')
     end
@@ -27,10 +28,12 @@ class CheckoutController < ApplicationController
   def validate_checkout
     return back_to_cart if current_order.line_items.blank?
     return authenticate_user unless user_signed_in?
-
-    #return redirect_to wizard_path(:confirm) if previous_step == :confirm
-
   end
+
+  def control_current_step
+    Order.steps[current_order.step]>= Order.steps[@step]
+  end
+
 
   def back_to_cart
     redirect_to order_line_items_path(current_order), alert: t('checkout.alert.cart_empty')

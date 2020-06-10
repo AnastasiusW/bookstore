@@ -11,6 +11,7 @@ module Services
       end
 
       def call(step)
+
         case step
         when :address then manage_address
         when :delivery then manage_delivery

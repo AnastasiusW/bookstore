@@ -43,6 +43,13 @@ class Order < ApplicationRecord
     end
   end
 
+  enum step: {
+    address: 0,
+    delivery: 1,
+    payment: 2,
+    confirm: 3,
+    complite: 4
+  }
 
 
 
