@@ -5,6 +5,7 @@ class CheckoutController < ApplicationController
   steps :address, :delivery, :payment, :confirm, :complite
 
   def show
+    binding.pry
     @checkout = Services::Checkout::Show.new(order: current_order, params: nil)
     @checkout.call(step)
     render_wizard
@@ -26,6 +27,8 @@ class CheckoutController < ApplicationController
   def validate_checkout
     return back_to_cart if current_order.line_items.blank?
     return authenticate_user unless user_signed_in?
+
+    #return redirect_to wizard_path(:confirm) if previous_step == :confirm
 
   end
 
