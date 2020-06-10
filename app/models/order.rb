@@ -42,4 +42,9 @@ class Order < ApplicationRecord
       transitions from: %i[in_progress in_queue in_delivery delivered], to: :canceled
     end
   end
+
+
+
+
+
 end
