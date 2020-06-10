@@ -270,6 +270,7 @@ en:
       delivery_submit: Save and Continue
       payment_submit: Save and Continue
       confirm_submit: Place Order
+      beck: Back to Store
     delivery:
       method: Method
       price: Price
@@ -278,6 +279,7 @@ en:
       to: ' to '
     alert:
       fail: 'You have entered invalid parameters. Be carefully!'
+      cart_empty: Cart is empty!
     payment:
       number: Card Number
       card_name: Name on Card
@@ -293,6 +295,10 @@ en:
       title:
         delivery: Shipments
         payment: Payment Information
+    complite:
+      thanks: Thank You for your Order!
+      send: "An order confirmation has been has been sent to %{email}"
+
   mail:
     title: Order was succesfully compleated!
     hello: "Hello %{user_name}!"

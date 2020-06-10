@@ -3,7 +3,7 @@
 
   .row.mb-20
     = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
-    = render partial: 'checkout/confirm/address_info', locals: {type: 'shiping', address: @checkout.shipping_address}
+    = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address: @checkout.shipping_address}
     = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery}
     = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment}
 

@@ -24,8 +24,13 @@ class CheckoutController < ApplicationController
   end
 
   def validate_checkout
+    return back_to_cart if current_order.line_items.blank?
     return authenticate_user unless user_signed_in?
 
+  end
+
+  def back_to_cart
+    redirect_to order_line_items_path(current_order), alert: t('checkout.alert.cart_empty')
   end
 
   def authenticate_user
