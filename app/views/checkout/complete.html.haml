@@ -1,8 +1,8 @@
 %main.container.general-main-wrap
   = render 'checkout/steps', current_step: @step
   .text-center.mb-40
-    %h3.general-subtitle= t('checkout.complite.thanks')
-    %p.fw-300= t('checkout.complite.send',email: current_user.email)
+    %h3.general-subtitle= t('checkout.complete.thanks')
+    %p.fw-300= t('checkout.complete.send',email: current_user.email)
   .row.mb-20
     .col-sm-6
       = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
