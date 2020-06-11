@@ -9,7 +9,7 @@ module Presenters
         @current_order.user.credit_card || CreditCardForm.new
       end
 
-      def get_user_id
+      def take_user_id
         @current_order.user.id
       end
     end

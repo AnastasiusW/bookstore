@@ -50,6 +50,7 @@ Metrics/AbcSize:
   - 'app/controllers/user_addresses_controller.rb'
   - 'app/controllers/reviews_controller.rb'
   - 'app/policies/line_item_policy.rb'
+  - 'app/controllers/checkout_controller.rb'
 
 RSpec/DescribeClass:
   Exclude:
@@ -70,4 +71,8 @@ Metrics/BlockNesting:
 RSpec/RepeatedExample:
   Exclude:
     - 'spec/controllers/line_items_controller_spec.rb'
+
+Style/GuardClause:
+  Exclude:
+    - 'app/lib/services/checkout/update/address.rb'
 

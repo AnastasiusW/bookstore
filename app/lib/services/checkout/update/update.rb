@@ -5,7 +5,6 @@ module Services
         def initialize(order:, params:)
           @current_order = order
           @order_params = params
-
         end
 
         def call(step)
@@ -18,12 +17,16 @@ module Services
         end
 
         def manage_address
-          result = Services::Checkout::Update::Address.new(order: @current_order, billing: address_billing_params, shipping: address_shipping_params, use_billing: use_billing_address_params).call
+          result = Services::Checkout::Update::Address.new(order: @current_order,
+                                                           billing: address_billing_params,
+                                                           shipping: address_shipping_params,
+                                                           use_billing: use_billing_address_params).call
           result ? @current_order.delivery! : false
         end
 
         def manage_delivery
-          result = Services::Checkout::Update::Delivery.new(order: @current_order,delivery_params: delivery_params).call
+          result = Services::Checkout::Update::Delivery.new(order: @current_order,
+                                                            delivery_params: delivery_params).call
           result ? @current_order.payment! : false
         end
 
@@ -33,9 +36,8 @@ module Services
         end
 
         def manage_confirm
-         result = OrderMailer.with(user:@current_order.user).order_confirmation.deliver_now
+          result = OrderMailer.with(user: @current_order.user).order_confirmation.deliver_now
           result ? @current_order.complete! : false
-
         end
 
         def address_billing_params
@@ -55,14 +57,12 @@ module Services
         end
 
         def delivery_params
-         return @order_params.permit(:delivery_id)
+          @order_params.permit(:delivery_id)
         end
 
         def payment_params
-          return @order_params.require(:payment).permit(:number, :card_name, :expiration_date, :cvv, :user_id)
+          @order_params.require(:payment).permit(:number, :card_name, :expiration_date, :cvv, :user_id)
         end
-
-
       end
     end
   end

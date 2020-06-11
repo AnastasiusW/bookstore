@@ -13,17 +13,12 @@ module Services
 
         def save_delivery_method
           ActiveRecord::Base.transaction do
-            begin
-           @current_order.update!(delivery_id: @delivery_params )
-           Services::Orders::RecalculateAmount.new(@current_order).call
+            @current_order.update!(delivery_id: @delivery_params)
+            Services::Orders::RecalculateAmount.new(@current_order).call
           rescue ActiveRecord::InvalidForeignKey
             raise ActiveRecord::Rollback
-           end
           end
-
         end
-
-
       end
     end
   end
