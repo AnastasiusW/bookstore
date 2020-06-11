@@ -1,8 +1,8 @@
 class CheckoutController < ApplicationController
   include Wicked::Wizard
   before_action :validate_checkout
-
-  steps :address, :delivery, :payment, :confirm, :complite
+  after_action :checkout_complete
+  steps :address, :delivery, :payment, :confirm, :complete
 
   def show
     return redirect_to wizard_path(current_order.step) unless control_current_step
@@ -17,9 +17,7 @@ class CheckoutController < ApplicationController
 
 
    if @checkout.call(step)
-      flash[:notice] = 'Success'
-      redirect_to next_wizard_path
-
+      redirect_to next_wizard_path, notice: I18n.t('checkout.success.note')
     else
       redirect_to checkout_path(step), alert: I18n.t('checkout.alert.fail')
     end
@@ -28,6 +26,7 @@ class CheckoutController < ApplicationController
   def validate_checkout
     return back_to_cart if current_order.line_items.blank?
     return authenticate_user unless user_signed_in?
+    return redirect_to root_path if current_order.in_queue?
   end
 
   def control_current_step
@@ -45,6 +44,14 @@ class CheckoutController < ApplicationController
 
   def order_params
     params.require(:order) if params[:order]
+  end
+
+  def checkout_complete
+    return unless current_order.finish? && step == :complete
+    current_order.in_queue!
+
+    session.delete(:order_id)
+
   end
 
 end

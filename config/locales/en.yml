@@ -280,6 +280,8 @@ en:
     alert:
       fail: 'You have entered invalid parameters. Be carefully!'
       cart_empty: Cart is empty!
+    success:
+      note: Data was saved successfully!
     payment:
       number: Card Number
       card_name: Name on Card
@@ -295,7 +297,7 @@ en:
       title:
         delivery: Shipments
         payment: Payment Information
-    complite:
+    complete:
       thanks: Thank You for your Order!
       send: "An order confirmation has been has been sent to %{email}"
 

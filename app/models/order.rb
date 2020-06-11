@@ -48,7 +48,8 @@ class Order < ApplicationRecord
     delivery: 1,
     payment: 2,
     confirm: 3,
-    complite: 4
+    complete: 4,
+    finish: 5
   }
 
 

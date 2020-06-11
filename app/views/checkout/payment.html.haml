@@ -28,8 +28,9 @@
             .hint_cvv
               %i.fa.fa-question-circle.general-form-help
                 %span=t('checkout.payment.hint')
+
     .general-text-align
       = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
     .text-center
-      = f.submit t('checkout.buttons.payment_submit'), class: 'btn btn-default mb-20'
+      = f.submit t('checkout.buttons.payment_submit'), class: 'btn btn-default mb-80'

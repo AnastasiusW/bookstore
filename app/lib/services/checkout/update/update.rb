@@ -34,10 +34,8 @@ module Services
 
         def manage_confirm
          result = OrderMailer.with(user:@current_order.user).order_confirmation.deliver_now
-         if result
-          @current_order.complite!
-          @current_order.in_queue!
-         end
+          result ? @current_order.complete! : false
+
         end
 
         def address_billing_params
