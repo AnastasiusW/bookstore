@@ -51,8 +51,4 @@ class Order < ApplicationRecord
     complete: 4,
     finish: 5
   }
-
-
-
-
 end

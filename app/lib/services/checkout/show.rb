@@ -11,7 +11,6 @@ module Services
       end
 
       def call(step)
-
         case step
         when :address then manage_address
         when :delivery then manage_delivery
@@ -38,14 +37,12 @@ module Services
         @shipping_address = @current_order.shipping_address.decorate
         @delivery = @current_order.delivery
         @payment = @current_order.user.credit_card
-
       end
 
       def manage_complete
         @billing_address = @current_order.billing_address.decorate
         @current_order.finish! if @current_order.complete?
       end
-
     end
   end
 end

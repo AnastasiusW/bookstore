@@ -5,7 +5,7 @@
   = simple_form_for(@checkout.current_order, url: wizard_path, method: :put,html:{class:'max-600 mb-80'}) do |f|
     = f.simple_fields_for :payment, @checkout.presenter.check_credit_card do |form|
       .form-group
-        = form.hidden_field :user_id, value: @checkout.presenter.get_user_id
+        = form.hidden_field :user_id, value: @checkout.presenter.take_user_id
         = form.label :number,t('checkout.payment.number'), class: 'control-label input-label'
         = form.text_field :number, placeholder: t('checkout.payment.number'), class: 'form-control'
       %span.help-block=t('checkout.payment.span_number')
