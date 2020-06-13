@@ -21,23 +21,33 @@ module Services
                                                            billing: address_billing_params,
                                                            shipping: address_shipping_params,
                                                            use_billing: use_billing_address_params).call
-          result ? @current_order.delivery! : false
+
+          return false unless result
+          @current_order.address? ?  @current_order.delivery! : result
+         #return @current_order.delivery! if  @current_order.address?
+
         end
 
         def manage_delivery
           result = Services::Checkout::Update::Delivery.new(order: @current_order,
                                                             delivery_params: delivery_params).call
-          result ? @current_order.payment! : false
+          return false unless result
+          @current_order.delivery? ?  @current_order.payment! : result
+         # result && @current_order.delivery? ? @current_order.payment! : false
         end
 
         def manage_payment
           result = CreditCardForm.new(payment_params).save(@current_order.user)
-          result ? @current_order.confirm! : false
+          return false unless result
+
+           @current_order.payment? ?  @current_order.confirm! : result
+         # result && @current_order.payment? ? @current_order.confirm! : false
         end
 
         def manage_confirm
+
           result = OrderMailer.with(user: @current_order.user).order_confirmation.deliver_now
-          result ? @current_order.complete! : false
+           @current_order.confirm? ?  @current_order.complete! : result
         end
 
         def address_billing_params
