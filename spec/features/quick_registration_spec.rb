@@ -2,6 +2,9 @@ RSpec.describe 'QuickRegistration', type: :feature do
   let(:registration_page) { QuickRegistrationPage.new }
 
   before do
+    create(:book)
+    visit root_path
+    click_on(I18n.t('home.buy_now'))
     registration_page.load
   end
 
