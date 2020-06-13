@@ -15,12 +15,13 @@ class CreditCardForm
   attribute :expiration_date, String
   attribute :user_id, Integer
 
-  validates :card_name, :number, :cvv, :expiration_date, presence: true
+  validates :card_name, :number, :cvv, :expiration_date, :user_id, presence: true
 
   validates :number, numericality: { only_integer: true }
   validates :card_name, length: { maximum: LENGTH_CARD_NAME }, format: { with: VALIDATE_CARD_NAME }
   validates :cvv, length: { in: LENGTH_CVV }, numericality: { only_integer: true }
   validates :expiration_date, format: { with: VALIDATE_EXPIRATION_DATE }
+  validates :user_id, numericality: { only_integer: true }
 
   def save(instance)
     return false unless valid?

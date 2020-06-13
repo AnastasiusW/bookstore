@@ -281,7 +281,8 @@ end
 
     context 'when update payment,order status :step = payment' do
       let(:card) {create(:credit_card)}
-      let (:payment_params) {attributes_for(:credit_card).merge(user_id: user.id)}
+
+      let(:payment_params) { attributes_for(:credit_card, user_id: user.id)}
       let(:order) {create(:order,:with_line_items, user:user, step: :payment)}
       let(:invalid_card_params){
       {user_id: '',
