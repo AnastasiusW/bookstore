@@ -7,7 +7,7 @@ class CheckoutController < ApplicationController
   def show
     return redirect_to wizard_path(current_order.step) unless control_current_step
 
-    @checkout = Services::Checkout::Show.new(order: current_order, params: nil)
+    @checkout = Services::Checkout::Show.new(order: current_order)
     @checkout.call(step)
     render_wizard
   end

@@ -11,4 +11,10 @@ FactoryBot.define do
       create(:address, type: ShippingAddress.name, addressable_type: User.name, addressable_id: user.id)
     end
   end
+
+  trait :with_credit_card do
+    after(:create) do |user|
+      create(:credit_card, user:user)
+    end
+  end
 end
