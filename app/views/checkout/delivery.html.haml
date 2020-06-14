@@ -20,4 +20,4 @@
       = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
     .text-center
-      = f.submit t('checkout.buttons.delivery_submit'), class: 'btn btn-default mb-20'
+      = f.submit t('checkout.buttons.delivery_submit'), class: 'btn btn-default mb-20',id: 'checkout_delivery_button'

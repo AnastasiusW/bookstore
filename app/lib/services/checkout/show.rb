@@ -4,9 +4,8 @@ module Services
       attr_reader :current_order, :presenter, :presenter_items, :billing_address, :shipping_address,
                   :delivery, :payment
 
-      def initialize(order:, params:)
+      def initialize(order:)
         @current_order = order
-        @params = params
         @presenter_items = Presenters::LineItems::Index.new(current_order)
       end
 

@@ -33,4 +33,4 @@
             %span.checkbox-text Use Billing Adress
     .general-text-align.mb-60
       = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
-      = f.submit t('checkout.buttons.address_submit'), class: 'btn btn-default center-block mb-20'
+      = f.submit t('checkout.buttons.address_submit'), class: 'btn btn-default center-block mb-20', id: 'checkout_address_button'
