@@ -2,10 +2,14 @@
   = render 'checkout/steps', current_step: @step
 
   .row.mb-20
-    = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
-    = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address: @checkout.shipping_address}
-    = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery}
-    = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment}
+    .col-sm-3.billing_info
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
+    .col-sm-3.shipping_info
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address: @checkout.shipping_address}
+    .col-sm-3.delivery_info
+      = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery}
+    .col-sm-3.payment_info
+      = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment}
 
   .hidden-xs.divider-lg.pt-20
     %table.table.table-hover

@@ -30,4 +30,4 @@
     = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
   .text-center
-    =link_to t('checkout.buttons.back'),  books_path, class: 'btn btn-default mb-20'
+    =link_to t('checkout.buttons.back'),  books_path, class: 'btn btn-default mb-20', id: 'checkout_complete_button'

@@ -270,7 +270,7 @@ en:
       delivery_submit: Save and Continue
       payment_submit: Save and Continue
       confirm_submit: Place Order
-      beck: Back to Store
+      back: Back to Store
     delivery:
       method: Method
       price: Price
