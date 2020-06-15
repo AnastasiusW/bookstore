@@ -7,6 +7,16 @@ RSpec.describe CheckoutController, type: :controller do
   end
 
   describe 'Show' do
+    context 'when order has not line_items' do
+      let(:order) { create(:order, user: user) }
+
+      it 'redirect to card page' do
+        get :show, params: { id: :address }
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(order_line_items_path(order.id))
+      end
+    end
+
     context 'when address step, order status :step = address' do
       let(:order) { create(:order, :with_line_items, user: user) }
 

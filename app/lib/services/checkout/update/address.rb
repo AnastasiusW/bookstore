@@ -19,6 +19,7 @@ module Services
         end
 
         private
+
         def save_addresses
           ActiveRecord::Base.transaction do
             @form_billing = AddressForm.new(params: @order_billing_address, current_instance: @current_order).save
