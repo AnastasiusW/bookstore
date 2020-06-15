@@ -59,7 +59,7 @@ RSpec.describe 'CheckoutPayment', type: :feature do
       expect(Order.first.step).to eq("payment")
     end
 
-    it 'can not transfer to next step' do
+    it 'impossible to go to the next step until it completes the current step' do
       expect(Order.first.step).to eq("payment")
       visit checkout_path(:confirm)
       expect(payment_page).to have_current_path checkout_path(:payment)

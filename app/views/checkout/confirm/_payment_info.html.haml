@@ -1,7 +1,6 @@
-.col-sm-3
-  %h3.general-subtitle= t('checkout.title.payment')
-  %p.general-address
-    = payment.number
-    = link_to t('checkout.confirm.edit'), wizard_path(:payment), class: 'general-edit'
-    %br
-    = payment.expiration_date
+%h3.general-subtitle= t('checkout.title.payment')
+%p.general-address
+  = payment.number
+  = link_to t('checkout.confirm.edit'), wizard_path(:payment), class: 'general-edit'
+  %br
+  = payment.expiration_date

@@ -105,7 +105,7 @@ RSpec.describe 'CheckoutAddress', type: :feature do
 
   context 'when order :step=address' do
 
-    it 'can not transfer to next step' do
+    it 'impossible to go to the next step until it completes the current step' do
       expect(Order.first.step).to eq("address")
       visit checkout_path(:delivery)
       expect(address_page).to have_current_path checkout_path(:address)
