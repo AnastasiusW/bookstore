@@ -1,12 +1,5 @@
 = simple_form_for(address, url: address.id ? user_address_path(address.id) : user_addresses_path, method: method_type,
 defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }, validate: true}) do |form|
-  = form.input :first_name, placeholder: t('settings_form.first_name')
-  = form.input :last_name, placeholder: t('settings_form.last_name')
-  = form.input :country, placeholder: t('settings_forms.country'), include_blank: false
-  = form.input :city, placeholder: t('settings_form.city')
-  = form.input :address, placeholder: t('settings_form.address')
-  = form.input :zip, placeholder: t('settings_form.zip')
-  = form.input :phone, placeholder: t('settings_form.phone')
-  = form.hidden_field :type, value: type
+  = render partial:'addresses/form_fields', locals:{ form: form, type: type }
   .text-center.general-text-align
     = form.submit t('settings_form.buttons.button_save'), class: 'btn',id: "save-#{type}"

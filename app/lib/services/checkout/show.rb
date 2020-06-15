@@ -19,6 +19,8 @@ module Services
         end
       end
 
+      private
+
       def manage_address
         @presenter = Presenters::Address.new(current_instance: @current_order)
       end
