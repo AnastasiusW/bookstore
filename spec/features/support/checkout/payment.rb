@@ -1,7 +1,6 @@
 class PaymentOrderPrism < SitePrism::Page
   set_url '/checkout/payment'
 
-
   element :flash_success, '#flash_success_id'
   element :flash_fail, '#flash_fail_id'
   element :payment_submit_button, '#checkout_payment_button'
@@ -15,8 +14,7 @@ class PaymentOrderPrism < SitePrism::Page
     payment_card_name.set(payment[:card_name])
     expiration_date.set(payment[:expiration_date])
     cvv.set(payment[:cvv])
-
-end
+  end
 
   def flash_success_message
     flash_success.text

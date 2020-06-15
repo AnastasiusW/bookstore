@@ -5,12 +5,13 @@ module Services
         def initialize(order:, delivery_params:)
           @current_order = order
           @delivery_params = delivery_params[:delivery_id].to_i
-
         end
 
         def call
           save_delivery_method
         end
+
+        private
 
         def save_delivery_method
           ActiveRecord::Base.transaction do

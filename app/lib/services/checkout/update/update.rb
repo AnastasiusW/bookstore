@@ -16,6 +16,8 @@ module Services
           end
         end
 
+        private
+
         def manage_address
           result = Services::Checkout::Update::Address.new(order: @current_order,
                                                            billing: address_billing_params,
@@ -23,31 +25,28 @@ module Services
                                                            use_billing: use_billing_address_params).call
 
           return false unless result
-          @current_order.address? ?  @current_order.delivery! : result
-         #return @current_order.delivery! if  @current_order.address?
 
+          @current_order.address? ? @current_order.delivery! : result
         end
 
         def manage_delivery
           result = Services::Checkout::Update::Delivery.new(order: @current_order,
                                                             delivery_params: delivery_params).call
           return false unless result
-          @current_order.delivery? ?  @current_order.payment! : result
-         # result && @current_order.delivery? ? @current_order.payment! : false
+
+          @current_order.delivery? ? @current_order.payment! : result
         end
 
         def manage_payment
           result = CreditCardForm.new(payment_params).save(@current_order.user)
           return false unless result
 
-           @current_order.payment? ?  @current_order.confirm! : result
-         # result && @current_order.payment? ? @current_order.confirm! : false
+          @current_order.payment? ? @current_order.confirm! : result
         end
 
         def manage_confirm
-
           result = OrderMailer.with(user: @current_order.user).order_confirmation.deliver_now
-           @current_order.confirm? ?  @current_order.complete! : result
+          @current_order.confirm? ? @current_order.complete! : result
         end
 
         def address_billing_params

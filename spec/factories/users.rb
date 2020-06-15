@@ -14,7 +14,7 @@ FactoryBot.define do
 
   trait :with_credit_card do
     after(:create) do |user|
-      create(:credit_card, user:user)
+      create(:credit_card, user: user)
     end
   end
 end

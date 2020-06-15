@@ -7,11 +7,10 @@ RSpec.describe CreditCardForm, type: :model do
     it { is_expected.to validate_presence_of(:user_id) }
   end
 
-
-
   context 'when input valid data' do
     let(:valid_params) { attributes_for(:credit_card) }
-    let!(:user) {create(:user)}
+    let!(:user) { create(:user) }
+
     it { is_expected.to allow_value(valid_params[:card_name]).for(:card_name) }
     it { is_expected.to allow_value(valid_params[:number]).for(:number) }
     it { is_expected.to allow_value(valid_params[:cvv]).for(:cvv) }
@@ -23,8 +22,8 @@ RSpec.describe CreditCardForm, type: :model do
     let(:invalid_card_name) { '!!!!!' }
     let(:invalid_number) { FFaker::Lorem.word }
     let(:invalid_cvv) { rand(10) }
-    let(:invalid_expiration_date) { FFaker::Lorem.word}
-    let(:invalid_user){FFaker::Lorem.word}
+    let(:invalid_expiration_date) { FFaker::Lorem.word }
+    let(:invalid_user) { FFaker::Lorem.word }
 
     it { is_expected.not_to allow_value(invalid_card_name).for(:card_name) }
     it { is_expected.not_to allow_value(invalid_number).for(:number) }

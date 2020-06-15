@@ -37,9 +37,14 @@ RSpec/MultipleExpectations:
   - 'spec/forms/address_form_spec.rb'
   - 'spec/forms/review_form_spec.rb'
   - 'spec/services/**/*'
+  - 'spec/forms/credit_card_form_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
 
 RSpec/ExampleLength:
   Max: 7
+  Exclude:
+  - 'spec/features/checkout/checkout_address_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -75,4 +80,16 @@ RSpec/RepeatedExample:
 Style/GuardClause:
   Exclude:
     - 'app/lib/services/checkout/update/address.rb'
+
+RSpec/RepeatedExampleGroupDescription:
+  Exclude:
+    - 'spec/features/review_spec.rb'
+    - 'spec/controllers/checkout_controller_spec.rb'
+
+Capybara/VisibilityMatcher:
+  Exclude:
+    - 'spec/features/home_spec.rb'
+
+
+
 
