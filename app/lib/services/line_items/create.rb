@@ -15,7 +15,7 @@ module Services
           Services::Orders::RecalculateAmount.new(@current_order).call
         end
       rescue ActiveRecord::RecordInvalid
-        flash[:alert] = I18n.t('transaction.fail.create_line_item')
+        I18n.t('transaction.fail.create_line_item')
       end
 
       private
@@ -29,14 +29,14 @@ module Services
       end
 
       def update_item
-        @current_item.update(quantity: set_quantity, total_price: set_total_price)
+        @current_item.update!(quantity: set_quantity, total_price: set_total_price)
       end
 
       def create_line_item
-        @current_order.line_items.create(book_id: @book_id,
-                                         quantity: set_quantity,
-                                         item_price: set_item_price,
-                                         total_price: set_total_price)
+        @current_order.line_items.create!(book_id: @book_id,
+                                          quantity: set_quantity,
+                                          item_price: set_item_price,
+                                          total_price: set_total_price)
       end
 
       def set_item_price

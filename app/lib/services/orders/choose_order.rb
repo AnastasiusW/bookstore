@@ -23,7 +23,7 @@ module Services
         if @current_order_without_user
           return @current_order_without_user if @current_order_without_user.update(user_id: @current_user.id)
         else
-          Order.create(user_id: @current_user.id, number: generate_number_order)
+          Order.create!(user_id: @current_user.id, number: generate_order_number)
         end
       end
 
@@ -34,13 +34,16 @@ module Services
       end
 
       def create_new_order_without_user
-        number = generate_number_order
-        return create_new_order_without_user if Order.find_by(number: number)
-
-        Order.create(number: number)
+        Order.create!(number: generate_order_number)
       end
 
-      def generate_number_order
+      def generate_order_number
+        number = generate_number
+        number = generate_number while Order.find_by(number: number)
+        number
+      end
+
+      def generate_number
         'R' + rand.to_s[NUMBER_MIN..NUMBER_MAX]
       end
     end

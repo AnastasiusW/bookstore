@@ -14,11 +14,11 @@ module Services
         return false unless @current_item
 
         ActiveRecord::Base.transaction do
-          @current_item.destroy
+          @current_item.destroy!
           Services::Orders::RecalculateAmount.new(@current_order).call
         end
       rescue ActiveRecord::RecordInvalid
-        flash[:alert] = I18n.t('transaction.fail.destroy_line_item')
+        I18n.t('transaction.fail.destroy_line_item')
       end
     end
   end

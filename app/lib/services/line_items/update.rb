@@ -30,7 +30,7 @@ module Services
           recount_price
         end
       rescue ActiveRecord::RecordInvalid
-        flash[:alert] = I18n.t('transaction.fail.update_line_item')
+        I18n.t('transaction.fail.update_line_item')
       end
 
       def increment_line_item
@@ -39,16 +39,20 @@ module Services
           recount_price
         end
       rescue ActiveRecord::RecordInvalid
-        flash[:alert] = I18n.t('transaction.fail.update_line_item')
+        I18n.t('transaction.fail.update_line_item')
       end
 
       def update_total_price_line_items
-        @current_item.update(total_price: @current_item.item_price * @current_item.quantity)
+        @current_item.update!(total_price: @current_item.item_price * @current_item.quantity)
       end
 
       def recount_price
-        update_total_price_line_items
-        Services::Orders::RecalculateAmount.new(@current_order).call
+        ActiveRecord::Base.transaction do
+          update_total_price_line_items
+          Services::Orders::RecalculateAmount.new(@current_order).call
+        end
+      rescue ActiveRecord::RecordInvalid
+        I18n.t('transaction.fail.update_line_item')
       end
     end
   end
