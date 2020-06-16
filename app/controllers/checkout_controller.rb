@@ -26,6 +26,8 @@ class CheckoutController < ApplicationController
     end
   end
 
+  private
+
   def validate_checkout
     return back_to_cart if current_order.line_items.blank?
     return authenticate_user unless user_signed_in?
