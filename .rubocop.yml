@@ -45,6 +45,7 @@ RSpec/ExampleLength:
   Exclude:
   - 'spec/features/checkout/checkout_address_spec.rb'
   - 'spec/features/checkout/checkout_payment_spec.rb'
+  - 'spec/controllers/checkout_controller_spec.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false

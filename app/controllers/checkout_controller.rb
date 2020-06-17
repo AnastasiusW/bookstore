@@ -53,7 +53,6 @@ class CheckoutController < ApplicationController
     return unless current_order.finish? && step == :complete
 
     current_order.in_queue!
-
     session.delete(:order_id)
   end
 end

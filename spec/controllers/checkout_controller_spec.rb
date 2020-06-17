@@ -114,7 +114,8 @@ RSpec.describe CheckoutController, type: :controller do
     context 'when complete step, order status :step = confirm' do
       let(:order) { create(:order, :with_line_items, :order_addresses, user: user, step: :complete) }
 
-      it 'show complete template,because params step is complete' do
+      it 'show complete template,because params step is complete, session will be cleaned' do
+        expect(session[:order_id]).to eq(order.id)
         expect(Order.find_by(id: order.id).status).to eq('in_progress')
         expect(Order.find_by(id: order.id).step).to eq('complete')
         get :show, params: { id: :complete }
@@ -122,6 +123,7 @@ RSpec.describe CheckoutController, type: :controller do
         expect(response).to render_template :complete
         expect(Order.find_by(id: order.id).status).to eq('in_queue')
         expect(Order.find_by(id: order.id).step).to eq('finish')
+        expect(session[:order_id]).to eq(nil)
       end
     end
 
