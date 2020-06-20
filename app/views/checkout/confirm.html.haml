@@ -3,14 +3,15 @@
 
   .row.mb-20
     .col-sm-3.billing_info
-      = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address}
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address: @checkout.billing_address,edit_flag: true}
     .col-sm-3.shipping_info
-      = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address: @checkout.shipping_address}
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address: @checkout.shipping_address, edit_flag: true}
     .col-sm-3.delivery_info
-      = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery}
+      = render partial: 'checkout/confirm/delivery_info', locals: {delivery: @checkout.delivery, edit_flag: true}
     .col-sm-3.payment_info
-      = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment}
+      = render partial: 'checkout/confirm/payment_info', locals: {payment: @checkout.payment, edit_flag: true}
 
+  = render partial: 'checkout/show/mobile_product_list', collection:  @checkout.presenter_items.items, as: :item
   .hidden-xs.divider-lg.pt-20
     %table.table.table-hover
       %thead
@@ -26,7 +27,7 @@
             %span.in-grey-600= t('cart_block.total_line')
       = render partial: 'checkout/show/product_list', collection:  @checkout.presenter_items.items, :as => :item
 
-  .general-text-align.mb-60
+  .text-center.general-text-right
     = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
   .text-center

@@ -16,7 +16,7 @@
         %tbody
           = render partial: 'checkout/show/delivery_info', collection: @checkout.presenter.delivery_methods, :as => :delivery, locals: {form:f, order: @checkout.presenter}
 
-    .general-text-align.mb-60
+    .text-center.general-text-right
       = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
     .text-center

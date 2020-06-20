@@ -19,6 +19,8 @@
                 %li
                     = link_to t('default.settings'), edit_user_path(current_user)
                 %li
+                    = link_to t('default.orders'), orders_path
+                %li
                     = link_to t('default.logout'), destroy_user_session_path, method: :delete
     - else
         %li
