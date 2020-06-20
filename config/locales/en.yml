@@ -306,3 +306,18 @@ en:
     hello: "Hello %{user_name}!"
     body: Thanks for order
 
+  order_block:
+    sorting:
+      in_queue: Waiting for processing
+      in_delivery: In delivery
+      delivered: Delivered
+      canceled: Canceled
+    title: My Orders
+    sort: Sort by
+    table_header:
+      number: Number
+      compleated: Completed at
+      status: Status
+      total: Total
+
+

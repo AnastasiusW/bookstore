@@ -1,0 +1,9 @@
+%p.lead.small.mb-10.visible-xs= t('order_block.sort')
+.dropdowns.dropdown.general-order-dropdown
+  %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+    = selected_order
+    %i.fa.fa-angle-down.dropdown-icon.pull-right
+  %ul.dropdown-menu
+    - order_list.each do |sort_index, sort_name|
+      %li
+        = link_to sort_name, orders_path(sort_by: sort_index)

@@ -29,7 +29,7 @@
               %i.fa.fa-question-circle.general-form-help
                 %span=t('checkout.payment.hint')
 
-    .general-text-align
+    .text-center.general-text-right
       = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
 
     .text-center

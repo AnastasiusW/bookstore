@@ -1,0 +1,24 @@
+.visible-xs
+  .general-cart-item.divider-lg-bottom.pt-0
+    %table.table
+      %tr
+        %td.col-half
+          %span.in-grey-600=t('order_block.table_header.number')
+        %td.col-half
+          %span.general-order-number=order.number
+      %tr
+        %td
+          %span.in-grey-600=t('order_block.table_header.compleated')
+        %td
+          %span.in-grey-900.font-16.fw-300=order.date_order
+      %tr
+        %td
+          %span.in-grey-600=t('order_block.table_header.status')
+        %td
+          %span.font-16.in-grey-900.fw-300==order.status
+      %tr
+        %td
+          %span.in-grey-600=t('order_block.table_header.total')
+        %td
+          %strong.font-16=number_to_currency(order.total_price,unit: '€')
+

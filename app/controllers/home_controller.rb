@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @presenter = Presenters::Home.new
+    @best_sellers = Queries::Home::Index.call
+    @presenter = Presenters::Home.new(best_sellers: @best_sellers)
   end
 end
