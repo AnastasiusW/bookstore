@@ -3,7 +3,6 @@ module Queries
     class Index
       BEST_SELLERS_COUNT = 4
 
-
       def self.call
         query = %[SELECT books.* from books  where id in(SELECT DISTINCT ON (b.category_id) b.id FROM line_items as li
         INNER JOIN orders as o on li.order_id = o.id
@@ -14,8 +13,6 @@ module Queries
 
         Book.find_by_sql(query).first(BEST_SELLERS_COUNT)
       end
-
-
     end
   end
 end

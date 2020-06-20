@@ -1,7 +1,7 @@
 module Presenters
   module Orders
     class Index
-      def initialize(orders:,sort_order:)
+      def initialize(orders:, sort_order:)
         @orders = orders
         @sort_order = sort_order
       end

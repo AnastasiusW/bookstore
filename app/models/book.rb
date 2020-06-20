@@ -7,7 +7,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :authors_books
   has_many :reviews, dependent: :destroy
   has_many :book_images, dependent: :destroy
-  #has_many :line_items
+  # has_many :line_items
   accepts_nested_attributes_for :book_images, allow_destroy: true
 
   validates :title, :description, :price, :year, :quantity, presence: true
@@ -19,6 +19,6 @@ class Book < ApplicationRecord
   scope :by_title_desc, -> { order('title DESC') }
   scope :by_price_asc, -> { order('price ASC') }
   scope :by_price_desc, -> { order('price DESC') }
-  scope :popular, -> {order('created_at DESC')}
+  scope :popular, -> { order('created_at DESC') }
   scope :latest, -> { order('created_at DESC').limit(LATEST_BOOK_COUNT) }
 end

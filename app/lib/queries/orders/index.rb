@@ -1,7 +1,7 @@
 module Queries
   module Orders
     class Index
-      DEFAULT_SORT_PARAM  = :in_queue
+      DEFAULT_SORT_PARAM = :in_queue
 
       ALLOWED_STATUS = {
         in_queue: I18n.t('order_block.sorting.in_queue'),
@@ -10,10 +10,8 @@ module Queries
         canceled: I18n.t('order_block.sorting.canceled')
       }.freeze
 
-
-
       def initialize(sort_param:, user:)
-        @sort_param= sort_param&.to_sym
+        @sort_param = sort_param&.to_sym
         @current_user = user
       end
 
@@ -22,8 +20,9 @@ module Queries
       end
 
       private
+
       def check_sort
-        ALLOWED_STATUS.keys.include?(@sort_param) ? @sort_param :  DEFAULT_SORT_PARAM
+        ALLOWED_STATUS.keys.include?(@sort_param) ? @sort_param : DEFAULT_SORT_PARAM
       end
     end
   end
