@@ -27,7 +27,7 @@ module Services
             @current_order.update!(use_billing_address: @use_billing_address)
             raise ActiveRecord::Rollback unless @form_billing && @form_shipping
 
-            return true
+            true
           end
         end
       end
