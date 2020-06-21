@@ -1,7 +1,7 @@
 module Services
   module Checkout
-    module Update
-      class Delivery
+    module Delivery
+      class Update
         def initialize(order:, delivery_params:)
           @current_order = order
           @delivery_params = delivery_params[:delivery_id].to_i

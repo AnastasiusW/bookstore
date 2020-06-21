@@ -1,7 +1,7 @@
 module Services
   module Checkout
-    module Update
-      class Address
+    module Address
+      class Update
         def initialize(order:, billing:, shipping:, use_billing:)
           @current_order = order
           @order_billing_address = billing
@@ -25,11 +25,9 @@ module Services
             @form_billing = AddressForm.new(params: @order_billing_address, current_instance: @current_order).save
             @form_shipping = AddressForm.new(params: @order_shipping_address, current_instance: @current_order).save
             @current_order.update!(use_billing_address: @use_billing_address)
-            if !@form_billing || !@form_shipping
-              raise ActiveRecord::Rollback
-            else
-              return true
-            end
+            raise ActiveRecord::Rollback unless @form_billing && @form_shipping
+
+            return true
           end
         end
       end

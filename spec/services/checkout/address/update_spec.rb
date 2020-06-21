@@ -1,4 +1,4 @@
-RSpec.describe Services::Checkout::Update::Address do
+RSpec.describe Services::Checkout::Address::Update do
   subject(:service) { described_class.new(order: order, billing: billing_params, shipping: shipping_params, use_billing: use_billing) }
 
   let(:billing_params) { attributes_for(:address, type: 'billing_address') }
