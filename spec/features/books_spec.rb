@@ -25,4 +25,15 @@ RSpec.describe 'Books', type: :feature, js: true do
       expect(book_page.id_quantity.value).to eq('1')
     end
   end
+
+  context 'with add book when click cart button' do
+    it 'when increment count book' do
+      expect(LineItem.count).to eq(0)
+      book_page.plus.click
+      expect(book_page.id_quantity.value).to eq('2')
+      book_page.add_to_cart_button.click
+      expect(LineItem.count).to eq(1)
+      expect(LineItem.find_by(book_id: book.id).quantity).to eq(2)
+    end
+  end
 end

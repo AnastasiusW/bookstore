@@ -57,6 +57,32 @@ en:
 
   cart_block:
     add_to_cart: Add to Cart
+    success: 'Book was added to cart!'
+    fail: 'Error when you add to cart!'
+    title_cart: Cart
+    product: Product
+    price: Price
+    quantity: Quantity
+    subtotal: SubTotal
+    subtotal_title: 'Subtotal:'
+    coupon_title: 'Coupon:'
+    total_title: 'Order Total:'
+    order_summary: Order Summary
+    checkout_button: Checkout
+    item_success_update: Item quantity was changed!
+    item_fail_update: Item quantity was not changed!
+
+
+  coupon:
+    title: Enter Your Coupon Code
+    code_placeholder: Enter Your Coupon Code
+    button: Apply Coupon
+    applied: Coupon was successfully applied
+    not_applied: Coupon not found or has already been applied
+
+  line_item:
+    destroy_success: Item was success deleted
+
 
   authentication:
     login: Log in
@@ -185,3 +211,11 @@ en:
     errors:
       user:
         warning: You are not authorized to perform this action.
+
+
+  transaction:
+    fail:
+      coupon: There was a failure while recounting the coupon amount. Transaction rolled back!
+      create_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
+      update_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!
+      destroy_line_item: There was a failure while recounting the coupon amount. Transaction rolled back!

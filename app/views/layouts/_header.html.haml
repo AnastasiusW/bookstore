@@ -1,21 +1,18 @@
 %header.navbar.navbar-default
-    .container
-        .navbar-header
-            %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
-                %span.sr-only
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
-            %a.navbar-brand= t('default.bookstore')
-            %a.shop-link.pull-right.visible-xs{href: "#"}
-                %span.shop-icon
-                    %span.shop-quantity 3
-        %a.shop-link.pull-right.hidden-xs{href: "#"}
-            %span.shop-icon
-                %span.shop-quantity 3
-        #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
-            .visible-xs
-                = render partial: 'layouts/mobile_menu'
-            .hidden-xs
-                = render partial: 'layouts/menu'
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand= t('default.bookstore')
+    = link_to order_line_items_path(current_order), class: 'shop-link pull-right hidden-xs' do
+      %span.shop-icon
+        %span.shop-quantity#cart_count=current_order.line_items.count || 0
+    #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
+      .visible-xs
+        = render partial: 'layouts/mobile_menu'
+      .hidden-xs
+        = render partial: 'layouts/menu'
 

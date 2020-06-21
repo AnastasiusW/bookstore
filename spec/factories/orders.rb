@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :order do
-    user { create(:user) }
+    number { 'R' + rand.to_s[2..11] }
   end
 end

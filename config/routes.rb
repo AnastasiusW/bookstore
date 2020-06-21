@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :user_addresses, only: %i[create update]
   resources :users, only: %i[update edit destroy show]
   resources :reviews, only: :create
+  resources :orders do
+    resources :line_items
+  end
+  resources :coupons, only: :create
 end

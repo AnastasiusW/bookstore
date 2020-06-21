@@ -1,0 +1,44 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('cart_block.title_cart')
+  = render partial: 'line_items/index/line_mobile', collection: @presenter.items, :as => :item
+  .hidden-xs
+    %table.table.table-hover
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600= t('cart_block.product')
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600= t('cart_block.price')
+        %th.col-quantity
+          %span.in-grey-600= t('cart_block.quantity')
+        %th.col-total
+          %span.in-grey-600= t('cart_block.subtotal')
+        %th.col-close
+      = render partial: 'line_items/index/item_info', collection: @presenter.items, :as => :item
+
+  .general-order-wrap
+    .row
+      .col-sm-4
+        = render partial: 'line_items/index/coupon_form'
+      .col-sm-8
+        .res-mr-200.text-center.general-text-right
+          %p.in-gold-500.font-18=t('cart_block.order_summary')
+          %table.general-summary-table.general-summary-table-right.general-text-right
+            %tr
+              %td
+                %p.font-16= t('cart_block.subtotal_title')
+              %td
+                %p.font-16= number_to_currency(@presenter.subtotal,unit: '€')
+            %tr
+              %td
+                %p.font-16=t('cart_block.coupon_title')
+              %td
+                %p.font-16= number_to_currency(@presenter.discount_price,unit: '€')
+            %tr
+              %td
+                %strong.font-18= t('cart_block.total_title')
+              %td
+                %strong.font-18= number_to_currency(@presenter.total,unit: '€')
+          %button.btn.btn-default.mb-20.visible-xs-inline-block= t('cart_block.checkout_button')
+  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('cart_block.checkout_button')
+
