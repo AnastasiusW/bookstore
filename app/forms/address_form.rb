@@ -5,7 +5,7 @@ class AddressForm
   VALIDATE_NAME = /\A[a-zA-Z]*\z/.freeze
   VALIDATE_CITY = /\A[a-zA-Z\s*]*\z/.freeze
   VALIDATE_COUNTRY = /\A[a-zA-Z\s]*\z/.freeze
-  VALIDATE_ADDRESS = /\A[a-zA-Z0-9 \-\,\s]*\z/.freeze
+  VALIDATE_ADDRESS = /\A[a-zA-Z0-9 \-\,\'\s]*\z/.freeze
   VALIDATE_ZIP = /\A[0-9\-]*\z/.freeze
   VALIDATE_PHONE = /\A\+[0-9]*\z/.freeze
 
@@ -52,17 +52,17 @@ class AddressForm
 
   def process_billing_address
     if billing_address_exists?
-      @current_instance.billing_address.update!(address_attrs)
+      @current_instance.billing_address.update(address_attrs)
     else
-      @current_instance.create_billing_address!(address_attrs)
+      @current_instance.create_billing_address(address_attrs)
     end
   end
 
   def process_shipping_address
     if shipping_address_exists?
-      @current_instance.shipping_address.update!(address_attrs)
+      @current_instance.shipping_address.update(address_attrs)
     else
-      @current_instance.create_shipping_address!(address_attrs)
+      @current_instance.create_shipping_address(address_attrs)
     end
   end
 

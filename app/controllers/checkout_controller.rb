@@ -17,7 +17,7 @@ class CheckoutController < ApplicationController
       return redirect_to checkout_path(step), alert: I18n.t('checkout.alert.fail')
     end
 
-    @checkout = Services::Checkout::Update::Update.new(order: current_order, params: order_params)
+    @checkout = Services::Checkout::Update.new(order: current_order, params: order_params)
 
     if @checkout.call(step)
       redirect_to next_wizard_path, notice: I18n.t('checkout.success.note')

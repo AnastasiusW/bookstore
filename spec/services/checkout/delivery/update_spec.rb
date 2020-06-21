@@ -1,4 +1,4 @@
-RSpec.describe Services::Checkout::Update::Delivery do
+RSpec.describe Services::Checkout::Delivery::Update do
   subject(:service) { described_class.new(order: order, delivery_params: delivery_params) }
 
   let(:order) { create(:order, delivery: delivery_one, total_price: 15, subtotal_price: 5) }
