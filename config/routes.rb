@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :line_items
   end
   resources :coupons, only: :create
+  resources :quick_registrations, only: %i[new create]
+  resources :checkout
 end

@@ -39,6 +39,8 @@
                 %strong.font-18= t('cart_block.total_title')
               %td
                 %strong.font-18= number_to_currency(@presenter.total,unit: '€')
-          %button.btn.btn-default.mb-20.visible-xs-inline-block= t('cart_block.checkout_button')
-  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('cart_block.checkout_button')
+
+          = link_to t('cart_block.checkout_button'), checkout_path(:address),class: 'btn btn-default mb-20 visible-xs-inline-block'
+  .text-center
+    = link_to t('cart_block.checkout_button'), checkout_path(:address), class: 'btn btn-default mb-20 hidden-xs'
 
