@@ -2,7 +2,7 @@
 .dropdowns.dropdown.general-order-dropdown
   %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
     = selected_order
-    %i.fa.fa-angle-down.dropdown-icon.pull-right
+    %i.fa.fa-angle-down.dropdown-icon.pull-right#order_sort_id
   %ul.dropdown-menu
     - order_list.each do |sort_index, sort_name|
       %li
