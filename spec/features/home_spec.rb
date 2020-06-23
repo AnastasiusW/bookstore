@@ -2,7 +2,7 @@ RSpec.describe 'Homes', type: :feature do
   let(:count_book) { Book::LATEST_BOOK_COUNT }
   let(:home_page) { HomePage.new }
 
-  context 'when get started click button' do
+  context 'when get started click button and slider' do
     before do
       create_list(:book, 5)
       home_page.load
@@ -57,7 +57,7 @@ RSpec.describe 'Homes', type: :feature do
       home_page.load
     end
 
-    it 'must have 4 beatseller book' do
+    it 'must have 4 beatsellers book' do
       expect(home_page).to have_selector('.general-thumb-link-wrap', visible: false, count: 4)
     end
 
@@ -70,6 +70,86 @@ RSpec.describe 'Homes', type: :feature do
 
     it 'adds book to card' do
       home_page.shopping_cart.first.click
+    end
+  end
+
+  context 'when footer, click to ' do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+      home_page.load
+    end
+
+    it 'home link and redirect to home page' do
+      find(text: I18n.t('default.homepage'), class: 'link-footer').click
+      expect(home_page).to have_current_path(root_path)
+    end
+
+    it 'order link and redirect to order page' do
+      find(text: I18n.t('default.orders'), class: 'link-footer').click
+      expect(home_page).to have_current_path(orders_path)
+    end
+
+    it 'shop link and redirect to caralog page' do
+      find(text: I18n.t('default.shop'), class: 'link-footer').click
+      expect(home_page).to have_current_path(books_path)
+    end
+
+    it 'settings link and redirect to order page' do
+      find(text: I18n.t('default.settings'), class: 'link-footer').click
+      expect(home_page).to have_current_path(edit_user_path(user))
+    end
+  end
+
+  context 'when user is not signed' do
+    before do
+      home_page.load
+    end
+
+    it 'click to sign_in in menu' do
+      click_on(I18n.t('default.login'))
+
+      expect(home_page).to have_current_path(new_user_session_path)
+    end
+
+    it 'click to sign_up in menu' do
+      click_on(I18n.t('default.sign_up'))
+
+      expect(home_page).to have_current_path(new_user_registration_path)
+    end
+  end
+
+  context 'when user is  signed' do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+      home_page.load
+    end
+
+    it 'click to settings link in menu and will be redirect to settings page' do
+      click_on(I18n.t('default.settings'))
+
+      expect(home_page).to have_current_path(edit_user_path(user))
+    end
+
+    it 'click to order link in memu and will be redirect to orders page' do
+      click_on(I18n.t('default.orders'))
+
+      expect(home_page).to have_current_path(orders_path)
+    end
+  end
+
+  context 'when click on cart icon' do
+    before do
+      home_page.load
+    end
+
+    it 'redirect to cart page' do
+      find(class: 'shop-link').click
+
+      expect(home_page).to have_current_path(order_line_items_path(Order.first))
     end
   end
 end
