@@ -18,16 +18,6 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
   context 'when sort logic' do
     let!(:count_book) { 5 }
     let(:sorting_list) { Queries::Books::SortOrder::SORTING_LIST }
-    let(:sort_list_for_database) do
-      {
-        newest: 'created_at DESC',
-        popular: 'created_at DESC',
-        by_price_asc: 'price ASC',
-        by_price_desc: 'price DESC',
-        by_title_asc: 'title ASC',
-        by_title_desc: 'title DESC'
-      }
-    end
 
     before do
       create_list(:book, count_book)
@@ -39,7 +29,7 @@ RSpec.describe 'Catalogs', type: :feature, js: true do
       sorting_list.each do |sort_key, sort_value|
         catalog_page.sort_id.first.click
         click_link(sort_value, match: :first)
-        database_books = Book.order(sort_list_for_database[sort_key]).map(&:title)
+        database_books = Book.public_send(sort_key).map(&:title)
         catalog_books = catalog_page.title_books.map(&:text)
         expect(catalog_books).to eq(database_books)
       end
