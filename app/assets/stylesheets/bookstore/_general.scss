@@ -334,3 +334,19 @@ img {
     margin-bottom: 85px;
   }
 }
+
+.hint_cvv {
+  text-align: center;
+  &:hover span {
+    display: inline-block;
+    position: absolute;
+    background: rgb(221, 235, 226);
+    color: black;
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  span {
+    display: none;
+  }
+}

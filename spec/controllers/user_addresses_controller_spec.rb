@@ -17,7 +17,7 @@ RSpec.describe UserAddressesController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
+  describe 'PATCH #update' do
     it 'when patch  billing address' do
       patch :update, params: { id: user.billing_address.id, billing_address: attributes_for(:address) }
       expect(response).to redirect_to edit_user_path(user)

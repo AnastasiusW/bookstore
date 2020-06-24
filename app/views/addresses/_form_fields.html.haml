@@ -1,0 +1,8 @@
+= form.input :first_name, placeholder: t('settings_form.first_name')
+= form.input :last_name, placeholder: t('settings_form.last_name')
+= form.input :country, placeholder: t('settings_forms.country'), include_blank: false
+= form.input :city, placeholder: t('settings_form.city')
+= form.input :address, placeholder: t('settings_form.address')
+= form.input :zip, placeholder: t('settings_form.zip')
+= form.input :phone, placeholder: t('settings_form.phone')
+= form.hidden_field :type, value: type

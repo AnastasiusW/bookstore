@@ -1,0 +1,6 @@
+%h3.general-subtitle=t('checkout.title.delivery')
+%p.general-address
+  = delivery.method_name
+  = link_to t('checkout.confirm.edit'), wizard_path(:delivery), class: 'general-edit'
+  %br
+  = number_to_currency(delivery.price,unit: '€')

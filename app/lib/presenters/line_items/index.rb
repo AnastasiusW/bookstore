@@ -27,6 +27,22 @@ module Presenters
 
         @current_order.subtotal_price * @current_order.coupon.discount_amount / 100
       end
+
+      def delivery_price
+        @current_order.delivery ? @current_order.delivery.price : 0
+      end
+
+      def delivery_methods
+        Delivery.all
+      end
+
+      def checked_delivery(delivery_id)
+        order_delivery_exists?(delivery_id) || Delivery.first.id == delivery_id
+      end
+
+      def order_delivery_exists?(delivery_id)
+        @current_order.delivery_id && @current_order.delivery_id == delivery_id
+      end
     end
   end
 end

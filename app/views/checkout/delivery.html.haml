@@ -1,0 +1,23 @@
+%main.container.general-main-wrap
+  = render 'checkout/steps', current_step:@steps
+
+  %h3.general-subtitle=t('checkout.titles.delivery')
+  = simple_form_for(@checkout.current_order, url: wizard_path, method: :put) do |f|
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40=t('checkout.delivery.method')
+            %th
+              %span.in-grey-600=t('checkout.delivery.days')
+            %th
+              %span.in-grey-600=t('checkout.delivery.price')
+        %tbody
+          = render partial: 'checkout/show/delivery_info', collection: @checkout.presenter.delivery_methods, :as => :delivery, locals: {form:f, order: @checkout.presenter}
+
+    .general-text-align.mb-60
+      = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
+
+    .text-center
+      = f.submit t('checkout.buttons.delivery_submit'), class: 'btn btn-default mb-20',id: 'checkout_delivery_button'

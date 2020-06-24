@@ -15,7 +15,7 @@ RSpec.describe ReviewForm, type: :model do
     it { is_expected.to allow_value(valid_rating).for(:rating) }
   end
 
-  context 'when input valid data' do
+  context 'when input invalid data' do
     let(:invalid_title) { '' }
     let(:invalid_comment) { '' }
     let(:invalid_rating) { 10 }

@@ -37,9 +37,15 @@ RSpec/MultipleExpectations:
   - 'spec/forms/address_form_spec.rb'
   - 'spec/forms/review_form_spec.rb'
   - 'spec/services/**/*'
+  - 'spec/forms/credit_card_form_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
 
 RSpec/ExampleLength:
   Max: 7
+  Exclude:
+  - 'spec/features/checkout/checkout_address_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
+  - 'spec/controllers/checkout_controller_spec.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -50,6 +56,7 @@ Metrics/AbcSize:
   - 'app/controllers/user_addresses_controller.rb'
   - 'app/controllers/reviews_controller.rb'
   - 'app/policies/line_item_policy.rb'
+  - 'app/controllers/checkout_controller.rb'
 
 RSpec/DescribeClass:
   Exclude:
@@ -70,4 +77,20 @@ Metrics/BlockNesting:
 RSpec/RepeatedExample:
   Exclude:
     - 'spec/controllers/line_items_controller_spec.rb'
+
+Style/GuardClause:
+  Exclude:
+    - 'app/lib/services/checkout/update/address.rb'
+
+RSpec/RepeatedExampleGroupDescription:
+  Exclude:
+    - 'spec/features/review_spec.rb'
+    - 'spec/controllers/checkout_controller_spec.rb'
+
+Capybara/VisibilityMatcher:
+  Exclude:
+    - 'spec/features/home_spec.rb'
+
+
+
 

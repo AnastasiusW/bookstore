@@ -7,7 +7,7 @@ ActiveAdmin.register Order do
 
   index do
     selectable_column
-
+    column :number
     column :created_at
     column :status
     actions

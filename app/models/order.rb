@@ -6,6 +6,9 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_one :coupon, dependent: :nullify
   belongs_to :delivery, optional: true
+
+  has_one :billing_address, class_name: 'BillingAddress', as: :addressable, dependent: :destroy
+  has_one :shipping_address, class_name: 'ShippingAddress', as: :addressable, dependent: :destroy
   validates :number, uniqueness: true
 
   enum status: {
@@ -39,4 +42,13 @@ class Order < ApplicationRecord
       transitions from: %i[in_progress in_queue in_delivery delivered], to: :canceled
     end
   end
+
+  enum step: {
+    address: 0,
+    delivery: 1,
+    payment: 2,
+    confirm: 3,
+    complete: 4,
+    finish: 5
+  }
 end
