@@ -1,0 +1,23 @@
+%main.container
+    %h1.general-title-margin= t('shop.catalog')
+    .hidden-xs.clearfix
+        = render partial: 'books/index/sorting', locals: {selected_order:@presenter.selected_order, book_list:@presenter.books_sorting_list }
+        %ul.list-inline.pt-10.mb-25.mr-240
+            %li.mr-35
+                %a.filter-link{href: books_path}
+                    = t('shop.all')
+                    %span.badge.general-badge= @presenter.count_of_book
+            = render partial: 'books/index/filter', collection: @presenter.categories, :as => :category
+    .dropdowns.mb-25.visible-xs
+        %p.lead.small.mb-10= t('shop.filter_by')
+        .dropdown
+            = render partial: 'books/index/mobile_filter', collection: @presenter.categories, :as => :category
+        %p.lead.small.mb-10= t('book.sort_title')
+        .dropdown
+            = render partial: 'books/index/mobile_sort', locals: {selected_order:@presenter.selected_order, book_list:@presenter.books_sorting_list}
+    .mb-120
+        .row#add_books
+            = render partial: 'books/index/books', collection: @presenter.books, :as => :book_view
+
+        .text-center#div_next_link
+            = render 'books/index/next_link', pagy: @pagy

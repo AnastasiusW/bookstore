@@ -1,0 +1,14 @@
+%tbody
+  %tr
+    %td
+      .general-img-wrap-table
+        =image_tag(item.image, class: 'cart-img-shadow pull-left')
+    %td
+      %p.title= item.book.title
+      %p.in-grey-600.fw-300= item.book.description
+    %td
+      %span.font-16.in-gold-500=number_to_currency(item.item_price,unit: '€')
+    %td
+      %span.ml-30=item.quantity
+    %td
+      %span.font-16.in-gold-500=number_to_currency(item.total_price,unit: '€')

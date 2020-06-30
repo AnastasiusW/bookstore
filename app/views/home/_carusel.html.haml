@@ -1,0 +1,13 @@
+.item{ class: ('active' if last_books_counter.zero?) }
+  .row
+    .col-sm-5
+      .general-img-wrap
+        = image_tag(last_books.medium_image, class: 'img-shadow.general-thumbnail-img')
+
+    .col-sm-7
+      .mb-60
+        %h1= last_books.title
+        %p.lead= last_books.description
+        %p.lead.small= last_books.authors_names
+        .general-align
+          = link_to t('home.buy_now'), order_line_items_path(current_order,book_id:last_books.id,quantity:1),method: :post, class:'btn btn-primary'

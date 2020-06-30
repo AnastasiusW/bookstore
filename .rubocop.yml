@@ -1,0 +1,92 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'tmp/*'
+    - 'storage/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'public/*'
+    - 'coverage/*'
+    - bin/bundle
+    - config/initializers/devise.rb
+    - config/initializers/simple_form.rb
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+    - 'app/admin/books.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 40
+  ExcludedMethods: ['describe','context','ActiveAdmin.register']
+
+RSpec/MultipleExpectations:
+  Max: 1
+  Exclude:
+  - 'spec/features/**/*'
+  - 'spec/controllers/**/*'
+  - 'spec/forms/address_form_spec.rb'
+  - 'spec/forms/review_form_spec.rb'
+  - 'spec/services/**/*'
+  - 'spec/forms/credit_card_form_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
+
+RSpec/ExampleLength:
+  Max: 7
+  Exclude:
+  - 'spec/features/checkout/checkout_address_spec.rb'
+  - 'spec/features/checkout/checkout_payment_spec.rb'
+  - 'spec/controllers/checkout_controller_spec.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+  - 'spec/features/**/*'
+  - 'app/controllers/user_addresses_controller.rb'
+  - 'app/controllers/reviews_controller.rb'
+  - 'app/policies/line_item_policy.rb'
+  - 'app/controllers/checkout_controller.rb'
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/admin/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/NestedGroups:
+  Exclude:
+    - 'spec/features/admin/admin_order_spec.rb'
+
+Metrics/BlockNesting:
+  Exclude:
+    - 'config/initializers/carrierwave.rb'
+
+RSpec/RepeatedExample:
+  Exclude:
+    - 'spec/controllers/line_items_controller_spec.rb'
+
+Style/GuardClause:
+  Exclude:
+    - 'app/lib/services/checkout/update/address.rb'
+
+RSpec/RepeatedExampleGroupDescription:
+  Exclude:
+    - 'spec/features/review_spec.rb'
+    - 'spec/controllers/checkout_controller_spec.rb'
+
+Capybara/VisibilityMatcher:
+  Exclude:
+    - 'spec/features/home_spec.rb'

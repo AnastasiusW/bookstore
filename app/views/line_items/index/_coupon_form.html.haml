@@ -1,0 +1,6 @@
+.input-group.general-input-group
+  %label.input-label= t('coupon.title')
+  = form_with(url: coupons_path, method: :post, local: true) do |f|
+    = f.text_field :code, class: 'form-control mb-30', placeholder: t('coupon.code_placeholder')
+    %div
+      = f.submit t('coupon.button'), class: 'btn btn-primary mr-5.mb-15'

@@ -1,0 +1,36 @@
+%main.container
+
+  = render 'checkout/steps', current_step: @step
+
+  = simple_form_for(@checkout.current_order, url: wizard_path, method: :put,
+  defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }, validate: true}) do |f|
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle= t('checkout.titles.billing_address')
+          %p.general-info-text= t('checkout.titles.require')
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle= t('checkout.titles.shipping_address')
+    .row
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('checkout.titles.billing_address')
+          %p.general-info-text= t('checkout.titles.require')
+        = f.simple_fields_for :billing, @checkout.presenter.order_billing_address do |form|
+          = render partial: 'addresses/form_fields', locals: {form: form, type: :billing_address}
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle=t('checkout.titles.shipping_address')
+        .shipping_order_form
+          = f.simple_fields_for :shipping, @checkout.presenter.order_shipping_address do |form|
+            = render partial: 'addresses/form_fields', locals: {form: form, type: :shipping_address}
+
+        .form-group.checkbox
+          %label.checkbox-label
+            = f.check_box :use_billing_address, {class: 'checkbox-input',  hidden: true, id: 'use_billing_address' }
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text Use Billing Adress
+    .text-center.general-text-right
+      = render partial: 'checkout/show/order_summary', locals: {presenter_items: @checkout.presenter_items}
+      = f.submit t('checkout.buttons.address_submit'), class: 'btn btn-default center-block mb-20', id: 'checkout_address_button'

@@ -1,0 +1,31 @@
+.visible-xs
+  .general-cart-item.divider-lg-bottom
+    =button_to order_line_item_path(current_order,item), method: :delete, class: 'close.general-cart-close', id: 'button_delete' + item.id.to_s do
+      %span{'aria-hidden': "true"} &times;
+    = link_to book_path(item.book.id) do
+      .general-img-wrap-table
+        =image_tag(item.image, class: 'cart-img-shadow')
+    = link_to book_path(item.book.id) do
+      %p.title= item.book.title
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600=t('cart_block.price')
+        %td
+          %span.font-16.in-gold-500=number_to_currency(item.item_price,unit: '€')
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('cart_block.quantity')
+        %td
+          .input-group
+            = link_to order_line_item_path(current_order,item.id, quantity_action: :decrement), method: :put, class: 'input-link' do
+              %i.fa.fa-minus.line-heaght-40
+            %input.form-control.quantity-input{value: item.quantity,  id: 'quantity_input' + item.id.to_s}
+            = link_to order_line_item_path(current_order,item.id,quantity_action: :increment), method: :put, class: 'input-link' do
+              %i.fa.fa-plus.line-heaght-40
+      %tr
+        %td
+          %span.in-grey-600=t('cart_block.subtotal')
+        %td
+          %span.font-16.in-gold-500=number_to_currency(item.total_price,unit: '€')
+

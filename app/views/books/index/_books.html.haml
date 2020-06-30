@@ -1,0 +1,15 @@
+.col-xs-6.col-sm-3
+  .general-thumb-wrap
+    .thumbnail.general-thumbnail
+      = image_tag(book_view.medium_image, class: 'img-shadow general-thumbnail-img')
+      .thumb-hover
+        .general-thumb-link-wrap
+          %a.thumb-hover-link{href: book_path(book_view)}
+            %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+          = link_to order_line_items_path(current_order,book_id: book_view, quantity: 1), method: :post, class: 'thumb-hover-link' do
+            %i.fa.fa-shopping-cart.thumb-icon
+    .general-thumb-info
+      %p.title= book_view.title
+      %p.font-16.in-gold-500= book_view.price
+      %span.divider-sm
+      %p.lead.small= book_view.authors_names

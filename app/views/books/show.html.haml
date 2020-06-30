@@ -1,0 +1,23 @@
+%main.container
+    =link_to :back,class: 'general-back-link' do
+        %i.fa.fa-long-arrow-left.mr-15
+            = t('book.back_to_result')
+    .row
+        .col-sm-6
+            .product-gallery
+                = render partial: 'books/show/images', locals: {presenter_book: @presenter_book}
+
+        .col-sm-6
+            %h1.mt-res-0= @presenter_book.book.title
+            %p.lead.small= @presenter_book.book.authors_names
+            .row
+                .col-xs-12.col-md-4
+                    %p.h1.in-gold-500.mt-10#price= number_to_currency(@presenter_book.book.price,unit: '€')
+                = render partial: 'books/show/cart_form',locals: {presenter_book: @presenter_book}
+            = render partial: 'books/show/book_info', locals: {presenter_book: @presenter_book}
+    .mb-80
+        - if user_signed_in?
+            = render partial: 'books/show/review_form', locals:{ presenter_book: @presenter_book }
+    .mb-80
+        %h3.in-gold-500.mb-25= t('review_block.reviews', count: @presenter_book.count_reviews)
+        = render partial: 'books/show/reviews', collection: @presenter_book.reviews, :as => :review

@@ -1,0 +1,26 @@
+%main.container
+  #slider.carousel.slide{'data-ride': "carousel"}
+    %ol.carousel-indicators
+      - @presenter.latest_books.each_with_index do |_book, index|
+        -if index.zero?
+          %li.active{'data-target': "#slider", 'data-slide-to': "#{index}"}
+        -else
+          %li{'data-target': "#slider", 'data-slide-to': "#{index}"}
+    .carousel-inner{role: "listbox"}
+      = render partial: 'carusel', collection: @presenter.latest_books, :as => :last_books
+    %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
+      %span.icon-prev{'aria-hidden': "true"}
+      %span.sr-only= t('home.previous')
+    %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
+      %span.icon-next{'aria-hidden': "true"}
+      %span.sr-only= t('home.next')
+.container
+  .jumbotron.text-center.mb-0
+    %h2.h1=t('home.greeting')
+    .mb-res-50
+      %p=t('home.greeting_description')
+    =link_to t('home.get_started'), books_path, class: 'button btn btn-default'
+  .mb-35
+    %h3=t('home.best_sellers')
+    .row
+      = render partial: 'home/bestsellers', collection: @presenter.best_sellers, :as => :book

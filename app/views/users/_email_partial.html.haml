@@ -1,0 +1,7 @@
+.col-sm-5
+    %p.in-gold-500.font-18.mb-25= t('settings_form.email.email_edit')
+    = simple_form_for(current_user, url: user_path, method: :put, defaults: {input_html: {class: "form-control"}}) do |f|
+        .form-group.mb-35
+            = f.input :email, placeholder: t('settings_form.email.email_placeholder')
+        .general-text-align
+            = f.button :submit, t('settings_form.buttons.email_button'), class: 'btn btn-default mb-35', id:'saveEmail'

@@ -1,0 +1,17 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25=t('order_block.title')
+  = render partial: 'orders/index/sorting', locals: {selected_order:@presenter.selected_order, order_list:@presenter.orders_sorting_list }
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600=t('order_block.table_header.number')
+          %th
+            %span.in-grey-600=t('order_block.table_header.compleated')
+          %th
+            %span.in-grey-600=t('order_block.table_header.status')
+          %th
+            %span.in-grey-600=t('order_block.table_header.total')
+      = render partial: 'orders/index/order_info', collection: @presenter.orders, :as => :order
+  = render partial: 'orders/index/mobile_order', collection: @presenter.orders, :as => :order

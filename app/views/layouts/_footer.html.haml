@@ -1,0 +1,30 @@
+%footer.navbar-inverse
+  .container
+    .row
+      .col-sm-9
+        %ul.list-inline.general-align.mb-25
+          %li
+            = link_to t('default.homepage'),root_path, class: 'nav-link link-footer'
+          %li
+            = link_to t('default.shop'),books_path, class: 'nav-link link-footer'
+          - if user_signed_in?
+            %li
+            = link_to t('default.orders'), orders_path,class: 'nav-link link-footer'
+            %li
+            = link_to t('default.settings'), edit_user_path(current_user), class: 'nav-link link-footer'
+      .col-sm-3
+        %p.general-nav-mail= t('default.contact_us_email')
+        %p.general-nav-number= t('default.contact_us_phone')
+        %ul.list-inline.general-align
+          %li
+          %a.nav-link{href: "https://facebook.com"}
+            %i.fa.fa-facebook{'aria-hidden': "true"}
+          %li
+          %a.nav-link{href: "https://twitter.com"}
+            %i.fa.fa-twitter{'aria-hidden': "true"}
+          %li
+          %a.nav-link{href: "https://google.com"}
+            %i.fa.fa-google-plus{'aria-hidden': "true"}
+          %li
+          %a.nav-link{href: "https://instagram.com"}
+            %i.fa.fa-instagram{'aria-hidden': "true"}

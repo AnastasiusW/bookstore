@@ -1,0 +1,2 @@
+$('#add_books').append("<%=j render(partial: 'books/index/books', collection: @presenter.books, :as=> :book_view) %>");
+$('#div_next_link').html("<%=j render 'books/index/next_link', pagy: @pagy %>");

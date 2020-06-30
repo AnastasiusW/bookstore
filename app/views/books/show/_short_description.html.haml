@@ -1,0 +1,6 @@
+.general-info-wrap.divider-lg#short_description
+    %p= t("book.description")
+    %p.lead.small.line-height-2
+        = truncate(@presenter_book.description, length: Presenters::Books::Show::DESCRIPTION_LIMIT)
+        - if @presenter_book.render_show_more?
+            = link_to t('book.read_more'), @presenter_book.book, class: 'in-gold-500 ml-10', remote: true
