@@ -1,7 +1,8 @@
 %h3.general-subtitle=t('checkout.confirm.type.' + type)
 %p.general-address
   = address.full_name
-  = link_to t('checkout.confirm.edit'), wizard_path(:address), class: 'general-edit'
+  - if edit_flag
+    = link_to t('checkout.confirm.edit'), wizard_path(:address), class: 'general-edit'
   %br
   = address.address.address
   %br

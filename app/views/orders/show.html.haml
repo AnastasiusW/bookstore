@@ -1,0 +1,32 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin Order R25314582
+  .row.mb-20
+    .col-sm-3.billing_info
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'billing', address:  @presenter_order.billing_address, edit_flag: false}
+    .col-sm-3.shipping_info
+      = render partial: 'checkout/confirm/address_info', locals: {type: 'shipping', address:  @presenter_order.shipping_address, edit_flag: false}
+    .col-sm-3.delivery_info
+      = render partial: 'checkout/confirm/delivery_info', locals: {delivery:  @presenter_order.delivery, edit_flag: false}
+    .col-sm-3.payment_info
+      = render partial: 'checkout/confirm/payment_info', locals: {payment:  @presenter_order.payment, edit_flag: false}
+
+    = render partial: 'checkout/show/mobile_product_list', collection:  @presenter_order.presenter_item.items, as: :item
+
+    .hidden-xs.divider-lg.pt-20
+      %table.table.table-hover
+        %thead
+          %tr
+            %th
+              %span.in-grey-600= t('cart_block.product')
+            %th.col-method
+            %th
+              %span.in-grey-600= t('cart_block.price')
+            %th
+              %span.in-grey-600= t('cart_block.quantity')
+            %th
+              %span.in-grey-600= t('cart_block.total_line')
+        = render partial: 'checkout/show/product_list', collection:  @presenter_order.presenter_item.items, as: :item
+
+
+    .text-center.general-text-right
+      = render partial: 'checkout/show/order_summary', locals: {presenter_items: @presenter_order.presenter_item}

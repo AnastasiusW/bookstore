@@ -1,0 +1,22 @@
+.visible-xs
+  .general-cart-item.divider-lg
+    .general-img-wrap-table
+      = image_tag(item.image, class: 'cart-img-shadow pull-left')
+    %p.title= item.book.title
+    %P.in-grey-600.fw-300= item.book.description
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600=t('cart_block.price')
+        %td
+          %span.font-16.in-gold-500=number_to_currency(item.item_price,unit: '€')
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('cart_block.quantity')
+        %td
+          %span 1
+      %tr
+        %td
+          %span.in-grey-600= t('cart_block.total_line')
+        %td
+          %span.font-16.in-gold-500=number_to_currency(item.total_price,unit: '€')

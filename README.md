@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Admin panel:
+
+login: admin
+password: password
+
+Heroku: https://bookstore-volkova-demo.herokuapp.com/

@@ -90,7 +90,3 @@ RSpec/RepeatedExampleGroupDescription:
 Capybara/VisibilityMatcher:
   Exclude:
     - 'spec/features/home_spec.rb'
-
-
-
-

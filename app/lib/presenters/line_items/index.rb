@@ -1,9 +1,8 @@
 module Presenters
   module LineItems
     class Index
-      def initialize(order_id)
-        @order_id = order_id
-        @current_order = Order.find_by(id: @order_id)
+      def initialize(order)
+        @current_order = order
       end
 
       def items
