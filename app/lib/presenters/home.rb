@@ -1,7 +1,7 @@
 module Presenters
   class Home
-    def initialize(best_sellers:)
-      @best_sellers = best_sellers
+    def initialize
+      @best_sellers = Queries::Home::Index.call
     end
 
     def latest_books
